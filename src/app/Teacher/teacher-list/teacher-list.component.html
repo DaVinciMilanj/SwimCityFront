@@ -1,0 +1,11 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-4" *ngFor="let teacher of allTeacher">
+                <h2>{{teacher.last_name}}</h2>
+                <a [routerLink]="['/teacher' , teacher.id , 'details']" routerLinkActive="router-link-active" >جزِیات</a>
+            </div>
+        </div>
+
+    </div>
+</section>

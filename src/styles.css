@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+/***** variables ******/
+:root{
+    --light-blue : #DCF1EC;
+    --dark-blue : #00bcd4 ;
+    --white : #fff ;
+    --black : #000000 ;
+    --blue-main-navbar : rgba(26 , 223 , 223);
+    --dark-title : rgba(12 , 78 , 78 , .5) ;
+
+}
+
+/***** general styles ******/
+* {
+    padding: 0;
+    margin: 0;
+}
+a {
+    text-decoration: none;
+}
+ul , ol {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+html {
+    font-size: 10px;
+}
+body {
+    background-color: var(--light-blue);
+}

@@ -1,0 +1,39 @@
+<div *ngIf="profileData">
+  <form (ngSubmit)="updateProfile()" enctype="multipart/form-data" >
+    <label>Username:</label>
+    <span>{{profileData[0].username }}</span>
+    <br>
+    <label>Phone:</label>
+    <span>{{profileData[0].phone }}</span>
+    <br>
+    <img [src]="profileData[0].image" class="img-fluid rounded-circle" width="200" height="200" [alt]="profileData[0].first_name">
+    <label for="image">Upload Image:</label>
+    <input type="file" (change)="onFileSelected($event)" />
+    <br>
+    <label>Code Meli:</label>
+    <input type="text" [(ngModel)]="profileData[0].code_meli" name="code_meli" />
+    <br>
+    <label>First Name:</label>
+    <input type="text" [(ngModel)]="profileData[0].first_name" name="first_name" />
+    <br>
+    <label>Last Name:</label>
+    <input type="text" [(ngModel)]="profileData[0].last_name" name="last_name" />
+    <br>
+    <label>Email:</label>
+    <input type="email" [(ngModel)]="profileData[0].email" name="email" />
+    <br>
+    <label>Birthday:</label>
+    <input type="text"  data-jdp [(ngModel)]="profileData[0].birthday" name="birthday" />
+    <br>
+    <label>Gender:</label>
+    <select [(ngModel)]="profileData[0].gender" name="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+    <br>
+    <button class="btn btn-danger" type="submit">Update Profile</button>
+  </form>
+</div>
+<script>
+  jalaliDatepicker.startWatch();
+</script>

@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg fixed-top color">
+  <div class="container justify-content-center ali">
+    <a class="navbar-brand fw-bold fs-1 text-white" href="#">LOGO</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+        <li class="nav-item px-5 fs-3 hover-4">
+          <a class="nav-link" href="#">مربیان</a>
+        </li>
+        <li class="nav-item px-5 fs-3 hover-4">
+          <a class="nav-link" href="#">استخر ها</a>
+        </li>
+        <li class="nav-item px-5 fs-3 hover-4">
+          <a class="nav-link" href="#">دوره ها</a>
+        </li>
+        <li class="nav-item px-5 fs-3 hover-4">
+          <a class="nav-link" href="#">درباره ما</a>
+        </li>
+        <li class="nav-item px-5 fs-3 hover-4">
+          <a class="nav-link" href="#">ارتباط با ما</a>
+        </li>
+        <li class="nav-item px-5 fs-3 hover-4">
+          <a class="nav-link" href="#">سوالات متداول</a>
+        </li>
+      </ul>
+    </div>
+    <button class="blob-btn me-5" routerLink="auth/login" *ngIf="!isLoggedIn">
+      ورود/ثبت نام
+      <span class="blob-btn__inner">
+        <span class="blob-btn__blobs">
+          <span class="blob-btn__blob"></span>
+          <span class="blob-btn__blob"></span>
+          <span class="blob-btn__blob"></span>
+          <span class="blob-btn__blob"></span>
+        </span>
+      </span>
+    </button>
+
+
+    <button class="blob-btn me-5" (click)="onLogout()" *ngIf="isLoggedIn">
+      خروج
+      <span class="blob-btn__inner">
+        <span class="blob-btn__blobs">
+          <span class="blob-btn__blob"></span>
+          <span class="blob-btn__blob"></span>
+          <span class="blob-btn__blob"></span>
+          <span class="blob-btn__blob"></span>
+        </span>
+      </span>
+    </button>
+    
+  </div>
+  
+</nav>
