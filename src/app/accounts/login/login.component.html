@@ -1,0 +1,44 @@
+<div class="login-container">
+  <h2>Login</h2>
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <div>
+      <label for="user">Username or Phone:</label>
+      <input
+        type="text"
+        id="user"
+        required
+        [(ngModel)]="user"
+        name="user"
+        #userModel="ngModel"
+        class="form-control"
+      />
+      <div *ngIf="userModel.invalid && userModel.touched" class="error">
+        Username or Phone is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        required
+        [(ngModel)]="password"
+        name="password"
+        #passwordModel="ngModel"
+        class="form-control"
+      />
+      <div *ngIf="passwordModel.invalid && passwordModel.touched" class="error">
+        Password is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
+      Login
+    </button>
+
+    <div *ngIf="errorMessage" class="error">
+      {{ errorMessage }}
+    </div>
+  </form>
+</div>

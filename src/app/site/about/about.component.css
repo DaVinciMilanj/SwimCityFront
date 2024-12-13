@@ -1,0 +1,24 @@
+.circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    font-size: 6rem;
+    color: var(--white);
+  }
+  .circle-blue { background-color: #5bc0de; }
+  .circle-orange { background-color: #f0ad4e; }
+  .circle-green { background-color: #5cb85c; }
+  .circle-purple { background-color: #6f42c1; }
+  
+
+section {
+    margin-top: 150px;
+}
+p {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
