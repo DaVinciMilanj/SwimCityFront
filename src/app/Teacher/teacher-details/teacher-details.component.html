@@ -1,9 +1,26 @@
 <section>
-    <div class="container">
+    <div class="container ">
         <div class="row">
-            <h1>{{teacherDeatail.last_name}}</h1>
-            <div class="tate" *ngIf="loggedIn">
-                <p>rate</p>
+            
+            <div class="test" *ngIf="loggedIn">
+                <h1>{{teacherDetail.last_name}}</h1>
+                <div class="rating ">
+                    <i
+                      *ngFor="let star of stars; let i = index"
+                      [class.filled]="i < selectedRating"
+                      class="bi bi-star-fill"
+                      (click)="rateTeacher(i + 1)"
+                    ></i>
+                  </div>
+                
+                  <button 
+                    (click)="submitRating()" 
+                    [disabled]="!loggedIn" 
+                    class="btn btn-primary mt-3">
+                    Submit Rating
+                </button>
+                  
+                  
 
             </div>
         </div>

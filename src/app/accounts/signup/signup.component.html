@@ -1,47 +1,60 @@
-<div class="signup-container">
-    <h2>Sign Up</h2>
-    <form #signUpForm="ngForm" (ngSubmit)="onSubmit(signUpForm)">
-      <div>
-        <label for="username">Username:</label>
-        <input id="username" name="username" ngModel required />
-        <div *ngIf="signUpForm.submitted && !signUpForm.controls['username']?.valid">
-          <small>Username is required.</small>
-        </div>
-      </div>
-  
-      <div>
-        <label for="phone">Phone:</label>
-        <input id="phone" name="phone" ngModel required />
-        <div *ngIf="signUpForm.submitted && !signUpForm.controls['phone']?.valid">
-          <small>Phone is required.</small>
-        </div>
-      </div>
-  
-      <div>
-        <label for="password">Password:</label>
-        <input id="password" name="password" type="password" ngModel required minlength="8" />
-        <div *ngIf="signUpForm.submitted && !signUpForm.controls['password']?.valid">
-          <small>Password is required and must be at least 8 characters.</small>
-        </div>
-      </div>
-  
-      <div>
-        <label for="password2">Confirm Password:</label>
-        <input id="password2" name="password2" type="password" ngModel required />
-        <div *ngIf="signUpForm.submitted && signUpForm.controls['password']?.value !== signUpForm.controls['password2']?.value">
-          <small>Passwords do not match.</small>
-        </div>
-      </div>
-  
-      <button type="submit" [disabled]="signUpForm.invalid">Sign Up</button>
-    </form>
-  
-    <div *ngIf="registrationSuccess">
-      <p>Registration successful!</p>
+<div class="container form-container d-flex justify-content-center align-items-center">
+  <div class="row g-0">
+    <div class="col-lg-6 form-image d-none d-lg-block">
+      <img src="../../../assets/images/pexels-photo-11866177.jpeg" class="img-fluid">
     </div>
+    <div class="col-lg-6 form-content">
+      <div class="form-header">
+        <h2 class="fw-bold fs-1 title-login mb-5">فرم ثبت نام</h2>
+        <a href="#" class="back-to-home">⟵ صفحه اصلی</a>
+      </div>
+      <form #signUpForm="ngForm" (ngSubmit)="onSubmit(signUpForm)">
+        <div class="mb-3">
+          <label for="username" class="form-label fs-5">یوزرنیم :</label>
+          <input id="username" name="username" ngModel required class="form-control" />
+          <div *ngIf="signUpForm.submitted && !signUpForm.controls['username']?.valid" class="error mt-3">
+            <small>پر کردن فیلد یوزرنیم اجباری است</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="phone" class="form-label fs-5">شماره موبایل :</label>
+          <input id="phone" name="phone" ngModel required class="form-control" />
+          <div *ngIf="signUpForm.submitted && !signUpForm.controls['phone']?.valid" class="error mt-3">
+            <small>پر کردن فیلد شماره موبایل الزامی است</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label fs-5">پسورد:</label>
+          <input id="password" name="password" type="password" ngModel required minlength="8" class="form-control" />
+          <div *ngIf="signUpForm.submitted && !signUpForm.controls['password']?.valid" class="error mt-3">
+            <small>پر کردن این فیلد الزامی است و پسورد حداقل 8 کارکتر باید داشته باشد</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password2" class="form-label fs-5">تکرار پسورد:</label>
+          <input id="password2" name="password2" type="password" ngModel required class="form-control" />
+          <div
+            *ngIf="signUpForm.submitted && signUpForm.controls['password']?.value !== signUpForm.controls['password2']?.value"
+            class="error mt-3">
+            <small>دو پسورد وارد شده همخوانی ندارند</small>
+          </div>
+        </div>
+        <div class="options d-flex justify-content-between align-items-center my-4">
+          <a routerLink="/auth/login" class="options-item fs-5 fw-bold">اکانت دارید؟</a>
+        </div>
+        <button type="submit" [disabled]="signUpForm.invalid" class="btn btn-login w-100 fs-5">Sign Up</button>
+        <div *ngIf="registrationSuccess">
+          <p>Registration successful!</p>
+        </div>
   
-    <div *ngIf="errorMessage">
-      <p>{{ errorMessage }}</p>
+        <div *ngIf="errorMessage">
+          <p>{{ errorMessage }}</p>
+        </div>
+      </form>
+      
     </div>
   </div>
-  
+</div>

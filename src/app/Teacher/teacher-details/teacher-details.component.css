@@ -1,0 +1,26 @@
+
+.rating {
+    font-size: 2rem;
+    color: #ccc;
+    display: flex;
+    gap: 0.5rem;
+    
+    
+  }
+  
+
+  .rating i {
+    cursor: pointer;
+    transition: color 0.3s ease;
+    
+  }
+  
+  .rating i.filled {
+    color: gold;
+  }
+  
+  .rating i:hover,
+  .rating i:hover ~ i {
+    color: gold;
+  }
+  
