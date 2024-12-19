@@ -1,19 +1,29 @@
-<nav class="navbar navbar-expand-lg fixed-top color">
-  <div class="container justify-content-center ali">
-    <a class="navbar-brand fw-bold fs-1 text-white" href="#">LOGO</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
+<nav class="navbar fixed-top">
+  <div class="container justify-content-lg-between align-items-center">
+    <button class="blob-btn me-5" routerLink="auth/login" *ngIf="!isLoggedIn">
+      ورود/ثبت نام
+      <span class="blob-btn__inner">
+        <span class="blob-btn__blobs">
+          <span class="blob-btn__blob"></span>
+          <span class="blob-btn__blob"></span>
+          <span class="blob-btn__blob"></span>
+          <span class="blob-btn__blob"></span>
+        </span>
+      </span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+    <button class="blob-btn me-5" routerLink="profile" *ngIf="isLoggedIn">
+        مشاهده پروفایل 
+      <span class="blob-btn__inner">
+        <span class="blob-btn__blobs">
+          <span class="blob-btn__blob"></span>
+          <span class="blob-btn__blob"></span>
+          <span class="blob-btn__blob"></span>
+          <span class="blob-btn__blob"></span>
+        </span>
+      </span>
+    </button>
+    <div class="header-main__wrapper special-background d-none d-lg-block">
+      <ul class="nav justify-content-center align-items-center me-auto mb-2 mb-lg-0">
         <li class="nav-item px-5 fs-3 hover-4">
           <a class="nav-link" href="#">مربیان</a>
         </li>
@@ -34,31 +44,25 @@
         </li>
       </ul>
     </div>
-    <button class="blob-btn me-5" routerLink="auth/login" *ngIf="!isLoggedIn">
-      ورود/ثبت نام
-      <span class="blob-btn__inner">
-        <span class="blob-btn__blobs">
-          <span class="blob-btn__blob"></span>
-          <span class="blob-btn__blob"></span>
-          <span class="blob-btn__blob"></span>
-          <span class="blob-btn__blob"></span>
-        </span>
-      </span>
-    </button>
-
-
-    <button class="blob-btn me-5" (click)="onLogout()" *ngIf="isLoggedIn">
-      خروج
-      <span class="blob-btn__inner">
-        <span class="blob-btn__blobs">
-          <span class="blob-btn__blob"></span>
-          <span class="blob-btn__blob"></span>
-          <span class="blob-btn__blob"></span>
-          <span class="blob-btn__blob"></span>
-        </span>
-      </span>
-    </button>
+    <a class="navbar-brand fw-bold fs-1 text-white" href="#">LOGO</a> 
     
+    <div class="d-lg-none">
+      <button class="responsive-btn" type="button" (click)="openSidebar()">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
   </div>
-  
 </nav>
+
+<!-- Sidebar Section -->
+<div class="custom-sidebar" id="sidebar">
+  <button class="close-btn" (click)="closeSidebar()" >×</button>
+  <ul class="mt-5">
+    <li><a href="#" class="text-dark">مربیان</a></li>
+    <li><a href="#" class="text-dark">استخر ها</a></li>
+    <li><a href="#" class="text-dark">دوره ها</a></li>
+    <li><a href="#" class="text-dark">درباره ما</a></li>
+    <li><a href="#" class="text-dark">ارتباط با ما</a></li>
+    <li><a href="#" class="text-dark">سوالات متداول</a></li>
+  </ul>
+</div> 

@@ -4,6 +4,7 @@ import { HttpService } from '../../service/http.service';
 import { FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from '../../service/auth.service';
 
 
 
@@ -18,7 +19,7 @@ export class ProfileComponent implements OnInit {
   profileData: Profile[]; 
   selectedFile: File | null = null; // متغیر برای ذخیره فایل
 
-  constructor(private profileService: HttpService , private cdr: ChangeDetectorRef , private route : Router) {}
+  constructor(private profileService: HttpService , private cdr: ChangeDetectorRef , private route : Router , private authService : AuthService ) {}
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -77,6 +78,10 @@ export class ProfileComponent implements OnInit {
       
     }
   }
+  onLogout(): void {
+    this.authService.logout();
+  }
+  
   
   
 }
