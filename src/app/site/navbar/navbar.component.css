@@ -4,7 +4,7 @@
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   z-index: 10; /* برای نمایش بالاتر از ویدیو */
-  height: 15vh;
+  height: 18vh;
 }
 
 .navbar .nav-link, .navbar .nav-link:hover {
@@ -158,3 +158,134 @@ ul li {
   left: 75%;
   transition-delay: 0.24s;
 }
+.responsive-btn {
+  background-color: var(--white);
+  outline: none;
+  border: none;
+  font-size: 2.6rem;
+  padding: .3rem 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-blue);
+}
+
+.custom-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 30vh; /* ارتفاع کامل */
+  width: 100%; /* عرض کامل */
+  background-color: rgba(26 , 223 , 223 , .5);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  z-index: 100; /* برای نمایش بالاتر از ویدیو */
+  transform: translateY(-100%); /* پیش‌فرض: پنهان */
+  transition: transform 0.4s ease-in-out; /* انیمیشن برای باز شدن */
+  overflow-y: auto; /* برای اسکرول اگر محتوا زیاد باشد */
+  text-align: right; /* راست‌چین کردن متن */
+  padding: 25px 45px; /* فاصله داخلی */
+}
+
+.custom-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-sidebar ul li {
+  margin: 15px 0;
+  width: 30%;
+  text-align: center;
+  margin-top: 30px;
+  border-radius: 40%;
+  padding: 15px 10px;
+}
+.custom-sidebar ul li:nth-child(even) {
+  background-color: var(--dark-title);
+  color: var(--white);
+}
+.custom-sidebar ul li:nth-child(odd) {
+  background-color: var(--white);
+  color: var(--black);
+}
+.custom-sidebar ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.7rem;
+
+
+}
+.custom-sidebar .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px; 
+  font-weight: bold; 
+  background: none; 
+  border: none; 
+  color: var(--white); 
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.custom-sidebar .close-btn:hover {
+  transform: scale(1.1); /* تغییر اندازه هنگام هاور */
+}
+
+.custom-sidebar.active {
+  transform: translateY(0); /* نمایش Sidebar */
+}
+
+.open-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.close-btn {
+  margin-right: 30px;
+}
+
+/**** responsive ****/
+ /* --- Medium devices (tablets, less than 992px) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+  .custom-sidebar{
+    height: 45vh;
+  }
+  .navbar {
+    height: 13vh;
+  }
+  .responsive-btn{
+    margin-right: 50px;
+  }
+ }
+/* === Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) { 
+  .custom-sidebar{
+    height: 45vh;
+  }
+  .navbar {
+    height: 13vh;
+  }
+  .responsive-btn{
+    font-size: 2rem;
+    padding: .3rem 1rem;
+    font-weight: bold;
+  }
+  .navbar .blob-btn {  
+    font-size: 12px; 
+  }
+ }

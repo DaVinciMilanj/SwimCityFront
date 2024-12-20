@@ -33,7 +33,9 @@ export class TeacherDetailsComponent implements OnInit {
     this._service.getTeacherDetails(this.teacherId).subscribe(
       (data: Teacher) => {
         this.teacherDetail = data;
-        this.selectedRating = data.rate ; // مقداردهی اولیه رأی کاربر
+        this.selectedRating = data.rate ;
+        this.userPreviousRate = data.user_rating;
+        
         console.log(this.selectedRating);
         
       },
