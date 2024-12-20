@@ -5,4 +5,5 @@ export interface Teacher {
     phone  : string ; 
     rate : number ;
     image : string ;
+    user_rating : number
   }

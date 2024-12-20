@@ -13,6 +13,15 @@ import { CommonModule } from '@angular/common';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
+  openSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar?.classList.add('active');
+  }
+
+  closeSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar?.classList.remove('active');
+  }
 
   isLoggedIn: boolean = false;
 
@@ -24,5 +33,7 @@ export class NavbarComponent implements OnInit {
   onLogout(): void {
     this.authService.logout();
   }
+
+  
  
 }

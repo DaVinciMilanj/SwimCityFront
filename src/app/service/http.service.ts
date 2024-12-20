@@ -60,11 +60,13 @@ export class HttpService {
   
 
   getTeacher(): Observable<Teacher[]> {
-    return this.http.get<Teacher[]>(`${this.apiBase}accounts/teacher/`);
+    const headers = this.getAuthHeaders();
+    return this.http.get<Teacher[]>(`${this.apiBase}accounts/teacher/` , {headers});
   }
 
   getTeacherDetails(id: number): Observable<Teacher> {
-    return this.http.get<Teacher>(`${this.apiBase}accounts/teacher/${id}/`);
+    const headers = this.getAuthHeaders();
+    return this.http.get<Teacher>(`${this.apiBase}accounts/teacher/${id}/` , {headers});
   }
   rateTeacher(id: number, rate: number): Observable<any> {
     const headers = this.getAuthHeaders(); // باید توکن معتبر ارسال شود
