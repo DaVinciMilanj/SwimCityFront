@@ -6,16 +6,15 @@ import { NavbarComponent } from "../navbar/navbar.component";
 import { HeaderComponent } from "../header/header.component";
 import { FooterComponent } from "../footer/footer.component";
 import { AboutComponent } from "../about/about.component";
-import { PoolComponent } from "../../Pool/pool/pool.component";
-import { CourseComponent } from "../../Pool/course/course.component";
 import { TeachersComponent } from "../teachers/teachers.component";
 import { PoolSectionComponent } from "../pool-section/pool-section.component";
+import { CourseSectionComponent } from "../course-section/course-section.component";
 
 
 @Component({
   selector: 'app-welcome',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, FooterComponent, AboutComponent, CourseComponent, TeachersComponent, NavbarComponent, PoolSectionComponent],
+  imports: [CommonModule, HeaderComponent, FooterComponent, AboutComponent, TeachersComponent, NavbarComponent, PoolSectionComponent, CourseSectionComponent],
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.css'
 })

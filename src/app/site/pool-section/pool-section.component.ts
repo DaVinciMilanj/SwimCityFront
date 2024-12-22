@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { HttpService } from '../../service/http.service';
 import { poolsEntity } from '../../model/pool-model/pools.model';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pool-section',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule , RouterLink],
   templateUrl: './pool-section.component.html',
   styleUrl: './pool-section.component.css'
 })
