@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-pool',
   standalone: true,
-  imports: [CommonModule , HttpClientModule ],
+  imports: [CommonModule , HttpClientModule , RouterLink ],
   templateUrl: './pool.component.html',
   styleUrl: './pool.component.css'
 })

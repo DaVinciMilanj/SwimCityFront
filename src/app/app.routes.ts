@@ -23,5 +23,6 @@ export const routes: Routes = [
     {path:'profile' , component:ProfileComponent , canActivate:[authGuard]},
     {path:'teacher-form' , component:TeacherFormComponent , canActivate:[authGuard]},
     {path:'teacher' , component:TeacherListComponent},
-    {path:'teacher/:teacherId/details' , component:TeacherDetailsComponent}
+    {path:'teacher/:teacherId/details' , component:TeacherDetailsComponent},
+    {path:'teacher-form' , component:TeacherFormComponent , canActivate:[authGuard]}
 ];

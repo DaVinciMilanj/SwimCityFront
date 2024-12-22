@@ -74,10 +74,11 @@ export class HttpService {
   }
 
 
-  teacherForm(formData:FormData):Observable<any>{
+  teacherForm(form:any):Observable<any>{
     const headers = this.getAuthHeaders();
-    return this.http.post(`${this.apiBase}accounts/teacher-form/` , {formData} ,{headers})
+    return this.http.post(`${this.apiBase}accounts/teacher-form/` , form , { headers })
   }
   
+
 
 }
