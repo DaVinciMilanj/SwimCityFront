@@ -11,12 +11,13 @@ import { CourseComponent } from './Pool/course/course.component';
 import { TeacherFormComponent } from './accounts/teacher-form/teacher-form.component';
 import { TeacherListComponent } from './Teacher/teacher-list/teacher-list.component';
 import { TeacherDetailsComponent } from './Teacher/teacher-details/teacher-details.component';
+import { forbiddenGuard } from './guard/forbidden.guard';
 
 export const routes: Routes = [
     {path : '' , component:WelcomeComponent},
     {path : 'auth' , component:AuthComponent , children:[
-        {path : 'login' , component:LoginComponent  },
-        {path:'signup' , component:SignupComponent}
+        {path : 'login' , component:LoginComponent , canActivate:[forbiddenGuard]},
+        {path:'signup' , component:SignupComponent , canActivate:[forbiddenGuard]}
     ]},
     {path:'pools' , component:PoolComponent },
     {path: 'pools/:poolId/course', component: CourseComponent },
