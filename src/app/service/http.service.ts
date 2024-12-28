@@ -39,7 +39,7 @@ export class HttpService {
     const token = localStorage.getItem('authToken');
     if (!token) {
       console.error('No token found, redirecting to login...');
-      this.router.navigate(['/login']); // هدایت کاربر به صفحه ورود
+      this.router.navigate(['/login']); 
       return new HttpHeaders(); // بازگشت یک هدر خالی
     }
     return new HttpHeaders({

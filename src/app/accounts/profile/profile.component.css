@@ -1,0 +1,88 @@
+/* .form-container */
+.form-container {
+    background-color: var(--white);
+    border-radius: 30% 0 30% 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    max-width: 700px;
+    width: 100%;
+    margin-top: 8vh;
+    padding: 20px;
+  }
+  
+  .profile-image {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-pic {
+    width: 15rem;
+    height: 15rem;
+  }
+  
+  .profile-image img {
+    border: 3px solid rgb(12 , 78 , 78);
+  }
+  
+  .form-content {
+    padding: 30px;
+  }
+  
+  .form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .back-to-home {
+    font-size: 1.6rem;
+    color: var(--black);
+  }
+  
+  .back-to-home:hover {
+    color: rgb(12 , 78 , 78);
+    cursor: pointer;
+  }
+  
+  .btn-logout {
+    border: none;
+    background-color: darkred;
+    color: var(--white);
+  }
+  
+  .btn-update {
+    border: none;
+    background-color: rgb(12 , 78 , 78);
+    color: var(--white);
+  }
+  
+  /* responsive */
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    .form-container {
+      max-width: 550px;
+      padding: 15px;
+    }
+    
+    .form-content {
+      border-left: 2px solid rgb(12 , 78 , 78);
+      border-right: 2px solid rgb(12 , 78 , 78);
+    }
+  
+    .profile-pic {
+      width: 14rem;
+      height: 14rem;
+    }
+  }
+  
+  @media (max-width: 767.98px) {
+    .form-container {
+      padding: 10px;
+      margin: 8vh auto;
+    }
+  
+    .profile-pic {
+      width: 11rem;
+      height: 11rem;
+    }
+  }

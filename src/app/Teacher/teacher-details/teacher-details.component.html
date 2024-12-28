@@ -4,6 +4,8 @@
             <div *ngIf="loggedIn">
                 <p *ngIf="userPreviousRate !== null">
                   Your previous rating: {{ userPreviousRate }}
+                  <br>
+                  Teacher rate {{teacherDetail.rate}}
                 </p>
                 <p *ngIf="userPreviousRate === null">
                   You have not rated this teacher yet.
