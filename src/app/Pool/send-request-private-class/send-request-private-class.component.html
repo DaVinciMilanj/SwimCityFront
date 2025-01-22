@@ -1,0 +1,61 @@
+<div class="create-private-class-request">
+    <h2>Create Private Class Request</h2>
+  
+    <form [formGroup]="privateClassForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="pool">Pool</label>
+        <select id="pool" formControlName="pool">
+          <option value="" disabled selected>Select a teacher</option>
+          <option *ngFor="let pool of poolsList" [value]="pool.id">
+            {{ pool.name }} {{ pool.gender | gender }}
+          </option>
+        </select>
+        <div *ngIf="privateClassForm.get('pool')?.invalid && privateClassForm.get('pool')?.touched">
+          Pool is required.
+        </div>
+      </div>
+  
+      <div *ngIf="!teacherId">
+        <label for="teacher">Teacher</label>
+        <select id="teacher" formControlName="teacher">
+          <option value="" disabled selected>Select a teacher</option>
+          <option *ngFor="let teacher of teachersList" [value]="teacher.id">
+            {{ teacher.first_name }} {{ teacher.last_name }}
+          </option>
+        </select>
+        <div *ngIf="privateClassForm.get('teacher')?.invalid && privateClassForm.get('teacher')?.touched">
+          Teacher is required.
+        </div>
+      </div>
+      
+      <div *ngIf="teacherId">
+        <label for="teacher">Teacher</label>
+        <select id="teacher" formControlName="teacher">
+          <option [value]="teacherId">
+            {{selectedTeacher.first_name}} {{selectedTeacher.last_name}}
+          </option>
+
+
+        </select>
+
+      </div>
+  
+      <div>
+        <label for="person">Number of People</label>
+        <input type="number" id="person" formControlName="person" />
+        <div *ngIf="privateClassForm.get('person')?.invalid && privateClassForm.get('person')?.touched">
+          Must be at least 1 person.
+        </div>
+      </div>
+  
+      <div>
+        <label for="massage">Message</label>
+        <textarea id="massage" formControlName="massage"></textarea>
+        <div *ngIf="privateClassForm.get('massage')?.invalid && privateClassForm.get('massage')?.touched">
+          Message is required.
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="privateClassForm.invalid">Submit</button>
+    </form>
+  </div>

@@ -12,6 +12,11 @@ import { TeacherFormComponent } from './accounts/teacher-form/teacher-form.compo
 import { TeacherListComponent } from './Teacher/teacher-list/teacher-list.component';
 import { TeacherDetailsComponent } from './Teacher/teacher-details/teacher-details.component';
 import { forbiddenGuard } from './guard/forbidden.guard';
+import { GetRequestPrivateClassComponent } from './Pool/get-request-private-class/get-request-private-class.component';
+import { RequestPrivateClassComponent } from './Pool/request-private-class/request-private-class.component';
+import { SendRequestPrivateClassComponent } from './Pool/send-request-private-class/send-request-private-class.component';
+import { CreatePrivateClassComponent } from './Pool/create-private-class/create-private-class.component';
+import { UserPrivateClassesComponent } from './Pool/user-private-classes/user-private-classes.component';
 
 export const routes: Routes = [
     {path : '' , component:WelcomeComponent},
@@ -25,5 +30,10 @@ export const routes: Routes = [
     {path:'teacher-form' , component:TeacherFormComponent , canActivate:[authGuard]},
     {path:'teacher' , component:TeacherListComponent},
     {path:'teacher/:teacherId/details' , component:TeacherDetailsComponent},
-    {path:'teacher-form' , component:TeacherFormComponent , canActivate:[authGuard]}
+    {path:'teacher-form' , component:TeacherFormComponent , canActivate:[authGuard]},
+    {path:'private-class',component:GetRequestPrivateClassComponent ,canActivate:[authGuard]},
+    {path:'private-class/:privateId',component:RequestPrivateClassComponent ,canActivate:[authGuard]},
+    {path:'request-class' , component:SendRequestPrivateClassComponent ,canActivate:[authGuard]},
+    {path:'creat-private-class/:requestId', component:CreatePrivateClassComponent , canActivate:[authGuard]},
+    {path:'my-private-class' , component:UserPrivateClassesComponent , canActivate:[authGuard]}
 ];

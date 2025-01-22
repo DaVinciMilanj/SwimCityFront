@@ -4,33 +4,80 @@ import { ActivatedRoute } from '@angular/router';
 import { courseEntity } from '../../model/pool-model/course.model';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { poolsEntity } from '../../model/pool-model/pools.model';
+import { response } from 'express';
+import { SearchTablePipe } from '../../pip/search-table.pipe';
+import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from "../../site/navbar/navbar.component";
 
 @Component({
   selector: 'app-course',
   standalone: true,
-  imports: [CommonModule , HttpClientModule , CommonModule],
+  imports: [CommonModule, HttpClientModule, CommonModule, SearchTablePipe, FormsModule, NavbarComponent],
   templateUrl: './course.component.html',
   styleUrl: './course.component.css'
 })
 export class CourseComponent implements OnInit {
   courses: courseEntity[] = [];
+  filteredCourses: courseEntity[] = [];
+  pool: poolsEntity[] = [];
   poolId: number | undefined;
+  searchText: string = '';
 
-  constructor(private http:HttpService , private route: ActivatedRoute) {}
+  // Pagination variables
+  displayedCourses: courseEntity[] = [];
+  currentPage: number = 0;
+  pageSize: number = 4; // تعداد سطرها در هر صفحه
+  totalPages: number = 0;
+
+  constructor(private http: HttpService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    // دریافت poolId از URL
     this.poolId = Number(this.route.snapshot.paramMap.get('poolId'));
 
     if (this.poolId) {
-      // فراخوانی API برای دریافت دوره‌های استخر
+      // دریافت داده‌ها
       this.http.getCourse(this.poolId).subscribe((data: courseEntity[]) => {
-        
         this.courses = data;
-        
-        
+        this.filteredCourses = [...this.courses]; // کپی داده‌ها
+        this.totalPages = Math.ceil(this.filteredCourses.length / this.pageSize); // تعداد صفحات
+        this.updateDisplayedCourses();
+      });
+
+      this.http.getPools().subscribe((res) => {
+        res.find((x) => {
+          if (x.id == this.poolId) {
+            this.pool.push(x);
+          }
+        });
       });
     }
   }
 
+  // به‌روزرسانی سطرهای جدول برای صفحه‌بندی
+  updateDisplayedCourses() {
+    const startIndex = this.currentPage * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.displayedCourses = this.filteredCourses.slice(startIndex, endIndex);
+  }
+
+  // تغییر صفحه
+  changePage(page: number) {
+    this.currentPage = page;
+    this.updateDisplayedCourses();
+  }
+
+  // جستجو
+  onSearch() {
+    const searchLowerCase = this.searchText.toLowerCase();
+    this.filteredCourses = this.courses.filter(course =>
+      course.teacher.toLowerCase().includes(searchLowerCase) || 
+      course.id.toString().includes(this.searchText)
+    );
+    this.currentPage = 0; // بازگشت به صفحه اول
+    this.totalPages = Math.ceil(this.filteredCourses.length / this.pageSize);
+    this.updateDisplayedCourses();
+  }
 }
+
+

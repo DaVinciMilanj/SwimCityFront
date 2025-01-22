@@ -1,179 +1,226 @@
- /* CSS برای کارت‌ها */
- .hover-card {
-    position: relative;
-    width: 300px;  /* عرض کارت */
-    height: 300px; /* ارتفاع کارت */
-    margin: 10px;
-    border: 1px solid var(--white);
-    overflow: hidden;
-    transition: transform 0.3s ease;
+.teacher-list {
+  margin-top: 200px;
+}
+
+/* تنظیمات کارت */
+.e-card {
+  margin: auto;
+  background: transparent;
+  box-shadow: 0px 8px 28px -9px rgba(0, 0, 0, 0.45);
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+  height: 300px;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+ 
+}
+
+/* انیمیشن موج‌ها */
+.wave {
+  position: absolute;
+  width: 540px;
+  height: 700px;
+  opacity: 0.6;
+  right: 0;
+  top: 0;
+  margin-right: -40%; 
+  margin-top: -50%;
+  background: linear-gradient(744deg, var(--dark-blue), var(--blue-main-navbar) 60%, var(--white));
+  border-radius: 40%;
+  animation: wave 55s infinite linear;
+  z-index: 1;
+}
+
+.playing .wave:nth-child(2) {
+  animation-duration: 4000ms;
+}
+
+.wave:nth-child(2) {
+  animation-duration: 50s;
+}
+
+.playing .wave:nth-child(3) {
+  animation-duration: 5000ms;
+}
+
+.wave:nth-child(3) {
+  animation-duration: 45s;
+}
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* تنظیمات محتوا */
+.card-image * , .card-content * {
+  z-index: 10;
+}
+/* تصویر گرد */
+.card-image {
+  width: 70%;
+  height: 300px;
+  border-left: 20px solid var(--white);
+  border-right: 20px solid var(--white);
+  border-bottom: 40px solid var(--light-blue);
+  border-top: 40px solid var(--light-blue);
+  
+} 
+.card-image img{
+  width: 100%;
+  height: 100%;
+  border: 5px solid var(--white);
+  
+
+}
+
+/* متن */
+.text {
+  color: var(--white);
+  font-size: 1.6rem;
+  width: 50%;
+
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: rgba(12 , 78 , 78 , .8);
+}
+/****************** search *************/
+.search {
+  margin: 20px;
+}
+
+.search > h3 {
+  font-weight: normal;
+}
+
+
+.search-box {
+  display: inline-block;
+  position: relative;
+}
+
+.search-box .icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: rgb(12 , 78 , 78);
+  font-size: 20px;
+}
+
+.search-box input {
+  color: rgb(12 , 78 , 78);
+  font-size: 16px;
+  background: transparent;
+  width: 0;
+  height: 30px;
+  padding: 10px;
+  padding-left: 40px; /* فاصله از ذره‌بین */
+  border: solid 3px rgb(12 , 78 , 78);
+  outline: none;
+  border-radius: 25px;
+  transition: width 0.5s ease;
+}
+
+.search-box input::placeholder {
+  color: var(--black);
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+}
+
+.search-box input:focus::placeholder {
+  opacity: 1;
+}
+
+.search-box input:focus,
+.search-box input:not(:placeholder-shown) {
+  width: 250px; /* اندازه‌ی باز شدن جستجو */
+}
+
+.search-box input:focus + .icon,
+.search-box input:not(:placeholder-shown) + .icon {
+  display: none; /* وقتی فیلد جستجو پر میشه ذره‌بین رو مخفی میکنه */
+}
+
+/* button */
+.btn-detail {
+  background-color: var(--white);
+  width: 160px;
+}
+.btn-detail:hover {
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
+
+
+/**** responsive ****/
+ /* --- Medium devices (tablets, less than 992px) */
+ @media (min-width: 768px) and (max-width: 991.98px) { 
+  .title {
+    font-size: 2.7rem;
+   
   }
 
-  .hover-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .hover-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(26 , 223 , 223 , .5); /* لایه رنگی هنگام هاور */
-    color: var(--white);
-    display: flex;
+ }
+/* === Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) { 
+  .e-card {
+    flex-direction: column; /* مشابه موبایل */
+    max-width: 300px;
+    height: 350px;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .hover-card:hover .hover-overlay {
-    opacity: 1;
-  }
-
-  .hover-content {
-    text-align: center;
-  }
-
-  .container {
-    margin-top: 30px;
-  }
-
-  .btn {
-    margin-top: 10px;
-  }
-
-  /* ریسپانسیو برای نمایش کارت‌ها */
-  @media (max-width: 576px) {
-    .hover-card {
-      width: 120px;
-      height: 160px;
-    }
-  }
-/* button */
-  .blob-btn {
-    z-index: 1;
-    position: relative;
-    padding: 10px 30px;
-    margin-bottom: 0;
-    text-align: center;
-    text-transform: uppercase;
-    color: var(--dark-blue);
-    font-size: 16px;
-    font-weight: bold;
-    background-color: transparent;
-    outline: none;
-    border: none;
-    transition: color 0.5s;
-    cursor: pointer;
-    border-radius: 30px;
-  }
-  
-  .blob-btn:before, .navbar .blob-btn:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 30px;
-  }
-  
-   .blob-btn:before {
-    z-index: 1;
-    left: 0;
-    top: 0;
-    border: 2px solid var(--dark-blue);
-  }
-  
-  .blob-btn:after {
-    z-index: -2;
-    left: 3px;
-    top: 3px;
-    transition: all 0.3s 0.2s;
-  }
-  
-   .blob-btn:hover {
-    color: var(--white);
-  }
-  
-   .blob-btn:hover:after {
-    left: 0;
-    top: 0;
-  }
-  
-   .blob-btn__inner {
-    z-index: -1;
-    overflow: hidden;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 30px;
-    background: var(--white);
-  }
-  
-   .blob-btn__blobs {
-    position: relative;
-    display: block;
-    height: 100%;
-    filter: url('#goo');
-  }
-  
-   .blob-btn__blob {
-    position: absolute;
-    top: 2px;
-    width: 25%;
-    height: 100%;
-    background: var(--dark-blue);
-    border-radius: 100%;
-    transform: translate3d(0, 150%, 0) scale(1.4);
-    transition: transform 0.45s;
-  }
-  
-   .blob-btn:hover .blob-btn__blob {
-    transform: translateZ(0) scale(1.4);
-  }
-  
-   .blob-btn__blob:nth-child(1) {
-    left: 0;
-    transition-delay: 0s;
-  }
-  
-   .blob-btn__blob:nth-child(2) {
-    left: 25%;
-    transition-delay: 0.08s;
-  }
-  
-   .blob-btn__blob:nth-child(3) {
-    left: 50%;
-    transition-delay: 0.16s;
-  }
-  
-   .blob-btn__blob:nth-child(4) {
-    left: 75%;
-    transition-delay: 0.24s;
-  }
-
-section {
-    margin-top: 120px;
-}
-.title {
-    margin-bottom: 30px;
-    color: var(--dark-title);
     
-}
-.title h2 {
-    font-size: 3rem;
-    font-weight: bold;
-}
+  }
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .title {
+    font-size: 2.4rem;
+   
+  }
+ 
+  .card-image {
+    z-index: 1000;
+    border: none;
+    width: 80%;
+    margin-top: 3rem;
+  }
+  .card-image img{
+    width: 100%;
+    
+  }
+  .card-content {
+    padding: 20px;
+    text-align: center;
+  }
+  .search-box input:focus,
+  .search-box input:not(:placeholder-shown) {
+  width: 180px; /* اندازه‌ی باز شدن جستجو */
+  }
+  .search-box {
+    margin-bottom: 10px;
+  }
+  .text {
+    font-size: 1.4rem;
+    
+  }
 
-/* btn read more */
-.btn-readmore {
-    background-color: var(--white);
-    color: var(--dark-title);
-    font-weight: bold;
-    font-size: 1.3rem;
-}
+
+
+ }

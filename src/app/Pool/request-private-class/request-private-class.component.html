@@ -1,0 +1,42 @@
+<section>
+    <div class="container">
+      <div class="row">
+        <div class="card">
+          <h1>{{ requestDetails.pool.name }}</h1>
+          <img
+            [src]="requestDetails.pool.image"
+            [alt]="requestDetails.pool.name"
+            class="img-fluid"
+          />
+          <p>توضیحات: {{ requestDetails.massage }}</p>
+          <p>تعداد افراد: {{ requestDetails.person }}</p>
+          <p>وضعیت پذیرش: 
+            <span *ngIf="requestDetails?.acceptation === true">پذیرفته شده</span>
+            <span *ngIf="requestDetails?.acceptation === false">رد شده</span>
+            <span *ngIf="requestDetails?.acceptation === null">در انتظار بررسی</span>
+          </p>
+  
+         
+          <div *ngIf="userStatus === 'teacher'">
+            <button class="btn btn-success" (click)="acceptRequest(requestDetails.id)" [disabled]="requestDetails.acceptation !== null">Accept</button>
+            <button class="btn btn-danger" (click)="rejectRequest(requestDetails.id)" [disabled]="requestDetails.acceptation !== null">Reject</button>
+            <button class="btn btn-primary" *ngIf="requestDetails.acceptation !== null" (click)="creatClass(requestDetails.id)" >CreatClass</button>
+          </div>
+
+
+
+          <div *ngIf="userStatus !== 'teacher'  " >
+            <button (click)="deleteRequest(requestDetails.id)">Delete</button>
+          </div>
+          
+          
+          
+          <div *ngIf="!requestDetails">
+            <p>No request details available.</p>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </section>
+  

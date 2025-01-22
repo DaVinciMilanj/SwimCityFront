@@ -1,0 +1,22 @@
+<section class="mt-5">
+    <div class="container">
+        <div class="row justify-content-center" *ngFor="let class of privateClass ">
+            <div class="col-6" *ngIf="userStatus!='teacher'">
+                <h2>{{class.pool}}</h2>
+                <h3>{{class.teacher.first_name}} | {{class.teacher.last_name}}</h3>
+                <h5>{{class.price }}</h5>
+                <h6>{{class.paid | paid}}</h6>
+                <p>{{class.start_date}}</p>
+                <p>{{class.start_time}}</p>
+                <button class="btn btn-primary">پرداخت</button>
+
+            </div>
+
+            <div class="col-6" *ngIf="userStatus=='teacher'">
+                <h3>{{class.pool}}</h3>
+                <h2>{{class.user.first_name}}{{class.user.last_name}}</h2>
+
+            </div>
+        </div>
+    </div>
+</section>
