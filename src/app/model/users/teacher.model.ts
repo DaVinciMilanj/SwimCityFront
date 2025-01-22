@@ -3,7 +3,7 @@ export interface Teacher {
     first_name : string ;
     last_name : string ;
     phone  : string ; 
-    rate : number ;
+    average_rate : number ;
     image : string ;
-    user_rating : number
+    user_rating : number ;
   }

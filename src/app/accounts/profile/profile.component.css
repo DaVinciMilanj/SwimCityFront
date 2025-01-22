@@ -6,7 +6,8 @@
     overflow: hidden;
     max-width: 700px;
     width: 100%;
-    margin-top: 8vh;
+    
+  
     padding: 20px;
   }
   
@@ -86,3 +87,16 @@
       height: 11rem;
     }
   }
+
+
+
+  .hight{
+    height: 100vh ;
+    background: url(../../../assets/images/background/470318.jpg) ;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  
+   }
+  
+  

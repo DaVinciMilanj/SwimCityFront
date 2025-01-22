@@ -1,59 +1,69 @@
-<div *ngIf="profileData" class="container form-container d-flex justify-content-center align-items-center">
+<section class="hight align-content-center align-items-center">
+  <div *ngIf="profileData" class="container form-container d-flex justify-content-center align-items-center">
   
-  <form (ngSubmit)="updateProfile()" enctype="multipart/form-data" class="row g-4 w-80 ">
-    <div class="col-12 d-flex  align-items-center profile-image justify-content-between">
-      <div class="col-lg-6 col-6">
-        <img [src]="profileData[0].image" class="img-fluid  profile-pic" [alt]="profileData[0].first_name">
+    <form (ngSubmit)="updateProfile()" enctype="multipart/form-data" class="row g-4 w-80 ">
+      <div class="col-12 d-flex  align-items-center profile-image justify-content-between">
+        <div class="col-lg-6 col-6">
+          <img [src]="profileData[0].image" class="img-fluid  profile-pic" [alt]="profileData[0].first_name">
+        </div>
+        <div class="col-lg-6 col-6">
+          <input id="image" type="file" (change)="onFileSelected($event)" class="form-control w-50" />
+        </div>
       </div>
       <div class="col-lg-6 col-6">
-        <input id="image" type="file" (change)="onFileSelected($event)" class="form-control w-50" />
+        <label for="username" class="form-label fs-5">یوزرنیم:</label>
+        <span class="form-control">{{ profileData[0].username }}</span>
       </div>
-    </div>
-    <div class="col-lg-6 col-6">
-      <label for="username" class="form-label fs-5">یوزرنیم:</label>
-      <span class="form-control">{{ profileData[0].username }}</span>
-    </div>
-    <div class="col-lg-6 col-6">
-      <label for="phone" class="form-label fs-5">شماره موبایل:</label>
-      <span class="form-control">{{ profileData[0].phone }}</span>
-    </div>
-    <div class="col-lg-6 col-6">
-      <label for="code_meli" class="form-label fs-5">کد ملی:</label>
-      <input id="code_meli" type="text" [(ngModel)]="profileData[0].code_meli" name="code_meli" required class="form-control" />
-    </div>
-    <div class="col-lg-6 col-6">
-      <label for="first_name" class="form-label fs-5">نام:</label>
-      <input id="first_name" type="text" [(ngModel)]="profileData[0].first_name" name="first_name" required class="form-control" />
-    </div>
-    <div class="col-lg-6 col-6">
-      <label for="last_name" class="form-label fs-5">نام خانوادگی:</label>
-      <input id="last_name" type="text" [(ngModel)]="profileData[0].last_name" name="last_name" required class="form-control" />
-    </div>
-    <div class="col-lg-6 col-6">
-      <label for="email" class="form-label fs-5">ایمیل:</label>
-      <input id="email" type="email" [(ngModel)]="profileData[0].email" name="email" required class="form-control" />
-    </div>
-    <div class="col-lg-6 col-6">
-      <label for="birthday" class="form-label fs-5">تاریخ تولد:</label>
-      <input id="birthday" type="text" data-jdp [(ngModel)]="profileData[0].birthday" name="birthday" required class="form-control" />
-    </div>
-    <div class="col-lg-6 col-6">
-      <label for="gender" class="form-label fs-5">جنسیت:</label>
-      <select id="gender" [(ngModel)]="profileData[0].gender" name="gender" required class="form-select">
-        <option value="male">مرد</option> 
-        <option value="female">زن</option>
-      </select>
-    </div>
-    <div class="col-12 text-center">
-      <button type="submit" class="btn btn-update w-50 fs-5">بروزرسانی پروفایل</button>
-    </div>
-    <div class="col-12 text-center">
-      <button class="btn btn-logout w-50 fs-5" (click)="onLogout()" routerLink="auth/login">خروج از حساب کاربری</button>
-    </div>
-    <div class="col-12 text-center mt-3">
-      <a href="#" class="back-to-home">
-        <i class="bi bi-house-door-fill"></i>
-      </a>
-    </div>
-  </form>
-</div>
+      <div class="col-lg-6 col-6">
+        <label for="phone" class="form-label fs-5">شماره موبایل:</label>
+        <span class="form-control">{{ profileData[0].phone }}</span>
+      </div>
+      <div class="col-lg-6 col-6">
+        <label for="code_meli" class="form-label fs-5">کد ملی:</label>
+        <input id="code_meli" type="text" [(ngModel)]="profileData[0].code_meli" name="code_meli" required class="form-control" />
+      </div>
+      <div class="col-lg-6 col-6">
+        <label for="first_name" class="form-label fs-5">نام:</label>
+        <input id="first_name" type="text" [(ngModel)]="profileData[0].first_name" name="first_name" required class="form-control" />
+      </div>
+      <div class="col-lg-6 col-6">
+        <label for="last_name" class="form-label fs-5">نام خانوادگی:</label>
+        <input id="last_name" type="text" [(ngModel)]="profileData[0].last_name" name="last_name" required class="form-control" />
+      </div>
+      <div class="col-lg-6 col-6">
+        <label for="email" class="form-label fs-5">ایمیل:</label>
+        <input id="email" type="email" [(ngModel)]="profileData[0].email" name="email" required class="form-control" />
+      </div>
+      <div class="col-lg-6 col-6">
+        <label for="birthday" class="form-label fs-5">تاریخ تولد:</label>
+        <input id="birthday" type="text" data-jdp [(ngModel)]="profileData[0].birthday" data-format="YYYY-MM-DD" name="birthday" required class="form-control" />
+      </div>
+      <div class="col-lg-6 col-6">
+        <label for="gender" class="form-label fs-5">جنسیت:</label>
+        <select id="gender" [(ngModel)]="profileData[0].gender" name="gender" required class="form-select">
+          <option value="male">مرد</option> 
+          <option value="female">زن</option>
+        </select>
+      </div>
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-update w-50 fs-5">بروزرسانی پروفایل</button>
+      </div>
+      <div class="col-12 text-center">
+        <button class="btn btn-logout w-50 fs-5" (click)="onLogout()" routerLink="auth/login">خروج از حساب کاربری</button>
+      </div>
+      <div class="col-12 text-center mt-3">
+        <a href="#" class="back-to-home">
+          <i class="bi bi-house-door-fill"></i>
+        </a>
+      </div>
+    </form>
+  </div>
+  
+</section>
+
+
+<script type="text/javascript" src="https://unpkg.com/@majidh1/jalalidatepicker/dist/jalalidatepicker.min.js">
+  jalaliDatepicker.startWatch();
+</script>
+
+

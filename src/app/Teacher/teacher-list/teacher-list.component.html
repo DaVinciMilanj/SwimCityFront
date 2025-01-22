@@ -1,11 +1,51 @@
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-4" *ngFor="let teacher of allTeacher">
-                <h2>{{teacher.last_name}}</h2>
-                <a [routerLink]="['/teacher' , teacher.id , 'details']" routerLinkActive="router-link-active" >جزِیات</a>
+<div class="container teacher-list">
+  <div class="row mb-0">
+    <!-- ردیف اول -->
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="title">همه اساتید</h2>
+        <div class="search">
+          <div class="search-box">
+            <input type="text" placeholder="جستجو استاد..." required [(ngModel)]="searchTerm">
+            <div class="icon">
+              <i class="bi bi-search"></i> 
             </div>
+          </div>
         </div>
-
+      </div>
     </div>
-</section>
+  </div>
+  
+  
+  <div class="row ">
+    <!-- ردیف دوم (کارت‌ها) -->
+    <div class="col-lg-4 col-md-6 col-12 mb-5" *ngFor="let teacher of allTeacher | filterTeacher: searchTerm">
+      <div class="e-card playing">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="content">
+          <div class="rate">
+            <span *ngFor="let star of stars; let i = index" 
+                  [ngClass]="{'filled': i < teacher.average_rate}">
+              ★
+            </span>
+          </div>
+          <h1>{{teacher.user_rating}}</h1>
+          <img [src]="teacher.image" alt="{{teacher.last_name}}" class="profile-img mb-3">
+          <p class="text my-3">{{teacher.first_name}}&nbsp;{{teacher.last_name}}</p>
+          <button class="btn btn-detail px-5 fw-bold py-2" [routerLink]="['/teacher', teacher.id, 'details']">مشاهده جزییات</button>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  
+  
+  <!-- <div class="row">
+   
+    <div class="col-12 text-end mt-4">
+      <button class="btn btn-primary">بیشتر ببینید</button>
+    </div>
+  </div> -->
+</div>

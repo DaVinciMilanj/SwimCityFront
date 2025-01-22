@@ -1,0 +1,26 @@
+<section>
+    <div class="container">
+      <div class="row">
+        <div class="col-6" *ngFor="let request of allRequests">
+
+          <div *ngIf="userStatus === 'teacher'">
+            <strong>User:</strong> {{ request.user.first_name }} {{request.user.last_name}}<br>
+            <strong>Id:{{request.id}}</strong><br>
+            <strong>pool : {{request.pool.name}}</strong><br>
+            <strong>Request massage:</strong> {{ request.massage }}<br>
+            <button [routerLink]="['/private-class' ,request.id]"  >more</button>
+          </div>
+  
+
+          <div *ngIf="userStatus !== 'teacher'">
+            <strong>Request ID:</strong> {{ request.id }}<br>
+            <strong>Teacher:</strong> {{ request.teacher.first_name }} {{request.teacher.last_name}}<br>
+            <strong>Pool:</strong> {{ request.pool.name }}<br>
+            <button [routerLink]="['/private-class' , request.id]">more</button>
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,49 +1,47 @@
-<div class="form-container">
-    <form (ngSubmit)="onSubmit()" #teacherForm="ngForm">
-      <div class="form-group">
-        <label for="l_name">Last Name:</label>
-        <input
-          type="text"
-          id="l_name"
-          name="l_name"
-          [(ngModel)]="formData.l_name"
-          required
-          class="form-control"
-        />
+<section class="hight align-content-center align-items-center">
+  <div class="container form-container d-flex justify-content-center align-items-center">
+    <div class="row g-0">
+      <div class="col-lg-6 form-image d-none d-lg-block ">
+        <img src="../../../assets/images/pexels-photo-11866177.jpeg" class="img-fluid ">
       </div>
+      <div class="col-lg-6 form-content">
+        <div class="form-header">
+          <h2 class="fw-bold title-login mb-5">فرم تقاضای همکاری</h2>
+          <a href="#" class="back-to-home mb-5 ms-5">
+            <i class="bi bi-house-door-fill"></i>
+          </a>
+        </div>
+        <form (ngSubmit)="onSubmit()" #teacherForm="ngForm">
+          <div class="mb-3">
+            <label for="l_name" class="form-label fs-5">نام خانوادگی :</label>
+            <input type="text" class="form-control" id="l_name"  required [(ngModel)]="formData.l_name" name="l_name" >
+          </div>
+          <div class="mb-3">
+            <label for="phone_number" class="form-label fs-5">شماره موبایل:</label>
+            <input type="text" class="form-control" id="phone_number"  required
+            [(ngModel)]="formData.phone_number" name="phone_number">
+            
+          </div>
   
-      <div class="form-group">
-        <label for="phone_number">Phone Number:</label>
-        <input
-          type="text"
-          id="phone_number"
-          name="phone_number"
-          [(ngModel)]="formData.phone_number"
-          required
-          class="form-control"
-        />
+          <div class="mb-3">
+            <label for="massage" class="form-label fs-5">توضیحات :</label>
+            <input type="text" class="form-control" id="massage"  required
+            [(ngModel)]="formData.massage" name="massage">
+            
+          </div>
+  
+          <button type="submit" class="btn btn-login w-100 fs-5 mt-5">ارسال اطلاعات</button>
+          
+        </form>
+        <div *ngIf="successMessage" class="alert alert-success mt-2">
+          {{ successMessage }}
+        </div>
+      
+        <div *ngIf="errorMessage" class="alert alert-danger  mt-2">
+          {{ errorMessage }}
+        </div>
       </div>
-  
-      <div class="form-group">
-        <label for="massage">Message:</label>
-        <textarea
-          id="massage"
-          name="massage"
-          [(ngModel)]="formData.massage"
-          required
-          class="form-control"
-        ></textarea>
-      </div>
-  
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  
-    <div *ngIf="successMessage" class="alert alert-success mt-3">
-      {{ successMessage }}
-    </div>
-  
-    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
-      {{ errorMessage }}
+      
     </div>
   </div>
-  
+</section>

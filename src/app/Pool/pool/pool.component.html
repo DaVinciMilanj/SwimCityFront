@@ -1,11 +1,59 @@
-<div class="row">
-    <div class="col-md-4 my-3" *ngFor="let pool of allPools">
-        <div class="w-100">
-            <h3>{{ pool.name }}</h3>
-            <p>مکان: {{ pool.address }}</p>
-            <img *ngIf="pool.image" [src]="pool.image" alt="{{ pool.name }}" class="img-fluid my-2" />  <!-- نمایش تصویر -->
-             <a [routerLink]="['/pools', pool.id, 'course']">مشاهده دوره‌ها</a>
+<div class="container teacher-list">
+  <div class="row mb-0">
+    <!-- ردیف اول -->
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="title">لیست استخر ها</h2>
+        <div class="search">
+          <div class="search-box">
+            <input type="text" placeholder="جستجو استخر..." required [(ngModel)]="searchTerm">
+            <div class="icon">
+              <i class="bi bi-search"></i>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div> 
+  </div>
+
+
+  <div class="row ">
+    <!-- ردیف دوم (کارت‌ها) -->
+    <div class="col-lg-6 mb-5 " *ngFor="let pool of allPools | filterPools: searchTerm">
+      <div class="e-card playing ">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+
+        <div class="card-image">
+          <img *ngIf="pool.image" [src]="pool.image" alt="{{ pool.name }}" class="img-fluid">
+        </div>
+
+
+        <div class="card-content d-flex flex-column justify-content-center ms-4">
+          <h3 class="fw-bold mb-lg-5 fw-bold">استخر &nbsp;{{ pool.name }}</h3>
+          <p class="text py-lg-2">مکان: {{ pool.address }}</p>  
+          <button class="btn btn-detail px-5 fw-bold py-2 mt-lg-3" [routerLink]="['/pools', pool.id, 'course']">مشاهده
+            دوره ها</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- <div class="row">
+     
+      <div class="col-12 text-end mt-4">
+        <button class="btn btn-primary">بیشتر ببینید</button>
+      </div>
+    </div> -->
+</div>
+
+
+
+
+
+
 

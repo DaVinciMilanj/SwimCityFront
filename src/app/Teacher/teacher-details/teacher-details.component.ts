@@ -4,6 +4,8 @@ import { HttpService } from '../../service/http.service';
 import { Teacher } from '../../model/users/teacher.model';
 import { AuthService } from '../../service/auth.service';
 import { CommonModule } from '@angular/common';
+import { Profile } from '../../model/users/profile.model';
+import { ReturnStatement } from '@angular/compiler';
 
 @Component({
   selector: 'app-teacher-details',
@@ -16,13 +18,14 @@ export class TeacherDetailsComponent implements OnInit {
   constructor(private activeRoute : ActivatedRoute , private _service:HttpService , private authService : AuthService,private router: Router
   ){}
 
+  sendUserId : number ;
   teacherId : number;
   teacherDetail : Teacher;
   loggedIn : boolean = false;
   stars: number[] = [1, 2, 3, 4, 5]; 
   userPreviousRate: number | null = null; // رأی قبلی کاربر
   selectedRating: number = 0; // رأی جدید کاربر
-
+  rate : number = 0
 
 
 
@@ -33,7 +36,7 @@ export class TeacherDetailsComponent implements OnInit {
     this._service.getTeacherDetails(this.teacherId).subscribe(
       (data: Teacher) => {
         this.teacherDetail = data;
-        this.selectedRating = data.rate ;
+        this.selectedRating = this.rate ;
         this.userPreviousRate = data.user_rating;
         
         console.log(this.selectedRating);
@@ -71,6 +74,48 @@ export class TeacherDetailsComponent implements OnInit {
     });
   }
 
+
+
+  requestPrivateClass(): void {
+
+    this._service.getUser().subscribe((response:Profile[])=>{
+      const teacherList:Profile[] = response.filter(user=>user.status =='teacher')
+
+      for(const teacher of teacherList){
+        
+        if(teacher.phone == this.teacherDetail.phone){
+          this.sendUserId = teacher.id
+          console.log(this.sendUserId);
+          
+          break;
+  
+          
+        }
+        
+      }
+      if (this.sendUserId) {
+        // زمانی که sendUserId مقداردهی شد
+        this.router.navigate(['/request-class'], {
+          state: { teacherId: this.sendUserId },
+        });
+        console.log(this.sendUserId);
+      } else {
+        console.error('Teacher ID not found.');
+        alert('Teacher not found.');
+      }
+      
+      
+      
+     
+
+    })
+    
+
+
+
+   
+    
+  }
   
 
 }

@@ -1,37 +1,48 @@
-<section>
-    <div class="container ">
-        <div class="row">
-            <div *ngIf="loggedIn">
-                <p *ngIf="userPreviousRate !== null">
-                  Your previous rating: {{ userPreviousRate }}
+<section class="align-content-center align-items-center height">
+  <div class="container teacher-list">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="e-card playing">
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="rate">
+            <span *ngFor="let star of stars; let i = index" 
+                  [ngClass]="{'filled': i < teacherDetail.average_rate}">
+              ★
+            </span>
+          </div>
+          <div class="card-image">
+            <img *ngIf="teacherDetail.image" [src]="teacherDetail.image" alt="{{teacherDetail.last_name }}" class="img-fluid">
+          </div>
+  
+          <div class="card-content d-flex flex-column justify-content-center align-content-center  ">
+            <h3 class="fw-bold mb-lg-4 fs-1 pool-name ">نام مربی :{{teacherDetail.first_name}}&nbsp;{{teacherDetail.last_name}}</h3>
+            <div class=" d-flex justify-content-between align-content-center flex-column">
+              <div *ngIf="loggedIn">
+                <p *ngIf="userPreviousRate !== null" class="fs-5 fw-bold">
+                  رای قبلی شما به این مربی: {{ userPreviousRate }} ستاره
                   <br>
-                  Teacher rate {{teacherDetail.rate}}
                 </p>
-                <p *ngIf="userPreviousRate === null">
-                  You have not rated this teacher yet.
+                <p *ngIf="userPreviousRate === null" class="fs-5 fw-bold">
+                  شما تا به حال رایی برای این مربی ثبت نکرده اید
                 </p>
               </div>
-            <div class="test" *ngIf="loggedIn">
-                <h1>{{teacherDetail.last_name}}</h1>
-                <div class="rating ">
-                    <i
-                      *ngFor="let star of stars; let i = index"
-                      [class.filled]="i < selectedRating"
-                      class="bi bi-star-fill"
-                      (click)="rateTeacher(i + 1)"
-                    ></i>
-                  </div>
-                
-                  <button 
-                    (click)="submitRating()" 
-                    [disabled]="!loggedIn" 
-                    class="btn btn-primary mt-3">
-                    Submit Rating
-                </button>
-                  
-                  
-
+              <div class="rating">
+                <i *ngFor="let star of stars; let i = index" [class.filled]="i < selectedRating" class="bi bi-star-fill mx-3"
+                (click)="rateTeacher(i + 1)"></i>
+              </div>
             </div>
+            
+  
+            <button (click)="submitRating()" [disabled]="!loggedIn" class="btn btn-login w-100 fs-5 mt-3 fw-bold">
+              ثبت رای
+            </button>
+
+            <button (click)="requestPrivateClass()">درخواست کلاس خصوصی</button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>

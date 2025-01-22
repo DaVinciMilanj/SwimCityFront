@@ -1,81 +1,96 @@
+<app-navbar></app-navbar>
 <section>
-    <div class="container justify-content-center align-items-center">
-        <!-- عنوان سمت راست -->
-        <div class="row mb-4">
-            <div class="col-12 text-start title">
-                <h2>دوره ها</h2>
+    <!-- اولین بخش: لیست معلم‌ها -->
+    <div class="container teacher-list">
+      <div class="row">
+        <div class="col-lg-12" *ngFor="let pool of pool">
+          <div class="e-card playing">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+  
+            <div class="card-image">
+              <img *ngIf="pool.image" [src]="pool.image" alt="{{ pool.name }}" class="img-fluid">
             </div>
+  
+            <div class="card-content d-flex flex-column justify-content-center">
+              <h3 class="fw-bold mb-lg-5 fs-1 pool-name mt-5 mt-lg-0">استخر&nbsp;{{pool.name}}</h3>
+              <p class="text py-3 fs-4 w-50"><strong class="pool-info">آدرس :</strong> {{pool.address}}</p>
+              <p class="text py-3 fs-4"><strong class="pool-info">جنسیت :</strong>{{pool.gender}}</p>
+            </div>
+          </div>
         </div>
-
-        <!-- کارت‌ها -->
-        <div class="row ms-lg-0 ms-md-5">
-            <div class="col-md-6 col-lg-3 col-6" *ngFor="let course of courses">
-                <div class="hover-card">
-                    <div class="hover-overlay">
-                        <div class="hover-content">
-                            <h5 class="fw-bold fs-3">{{course.teacher}}</h5>
-                            <p class="fw-bold fs-3 text-dark">{{course.start}} - {{course.end}} :تاریخ</p>
-                            <p class="fw-bold fs-3 text-dark">{{course.start_clock}} - {{course.end_clock}} : ساعت</p>
-
-                            <a href="#" class="btn btn-readmore">اطلاعات بیشتر</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 col-6">
-                <div class="hover-card">
-                    <img src="../../../assets/images/course-example.jpg" alt="کارت 1">
-                    <div class="hover-overlay">
-                        <div class="hover-content">
-                            <h5 class="fw-bold fs-3">عنوان کارت 1</h5>
-                            <p class="fw-bold fs-3 text-dark">خلاصه اطلاعات کارت 1</p>
-                            <a href="#" class="btn btn-readmore">اطلاعات بیشتر</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 col-6">
-                <div class="hover-card">
-                    <img src="../../../assets/images/course-example.jpg" alt="کارت 1">
-                    <div class="hover-overlay">
-                        <div class="hover-content">
-                            <h5 class="fw-bold fs-3">عنوان کارت 1</h5>
-                            <p class="fw-bold fs-3 text-dark">خلاصه اطلاعات کارت 1</p>
-                            <a href="#" class="btn btn-readmore">اطلاعات بیشتر</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 col-6">
-                <div class="hover-card">
-                    <img src="../../../assets/images/course-example.jpg" alt="کارت 1">
-                    <div class="hover-overlay">
-                        <div class="hover-content">
-                            <h5 class="fw-bold fs-3">عنوان کارت 1</h5>
-                            <p class="fw-bold fs-3 text-dark">خلاصه اطلاعات کارت 1</p>
-                            <a href="#" class="btn btn-readmore">اطلاعات بیشتر</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- دکمه سمت چپ پایین -->
-        <div class="row mt-4">
-            <div class="col-12 text-end">
-                <button class="blob-btn me-5">
-                    دیدن دوره های بیشتر
-                    <span class="blob-btn__inner">
-                        <span class="blob-btn__blobs">
-                            <span class="blob-btn__blob"></span>
-                            <span class="blob-btn__blob"></span>
-                            <span class="blob-btn__blob"></span>
-                            <span class="blob-btn__blob"></span>
-                        </span>
-                    </span>
-                </button>
-            </div>
-        </div>
+      </div>
     </div>
-
-</section>
+  
+    <!-- دومین بخش: جدول اطلاعات -->  
+    <div class="container table-wrapper">
+      <!-- Header Row -->
+      <div class="row align-items-center">
+        <div class="col-12">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2 class="title">لیست استخر ها</h2>
+            <div class="search">
+              <div class="search-box">
+                <input type="text" placeholder="جستجو نام استاد یا کد کلاس ..." required [(ngModel)]="searchText" (input)="onSearch()">
+                <div class="icon">
+                  <i class="bi bi-search"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Table -->
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr class="table-header">
+              <th>کد دوره</th>
+              <th>نام مربی</th>
+              <th>ساعت شروع</th>
+              <th>ساعت پایان</th>
+              <th>تاریخ شروع</th>
+              <th>تاریخ پایان</th>
+              <th>قیمت اولیه</th>
+              <th>تخفیف</th>
+              <th>قیمت نهایی</th>
+              <th>ظرفیت باقیمانده</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let course of displayedCourses | searchTable : searchText">
+              <td>{{ course.id }}</td>
+              <td>{{ course.teacher }}</td>
+              <td>{{ course.start_clock }}</td>
+              <td>{{ course.end_clock }}</td>
+              <td>{{ course.start }}</td>
+              <td>{{ course.end }}</td>
+              <td>{{ course.price }}</td>
+              <td>{{ course.discount }}</td>
+              <td>{{ course.total_price }}</td>
+              <td>8/16</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    
+      <!-- Pagination -->
+      <nav>
+        <ul class="pagination">
+          <li class="page-item" [class.disabled]="currentPage === 0">
+            <a class="page-link" (click)="changePage(currentPage - 1)">قبلی</a>
+          </li>
+          <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index" 
+              [class.active]="i === currentPage">
+            <a class="page-link" (click)="changePage(i)">{{ i + 1 }}</a>
+          </li>
+          <li class="page-item" [class.disabled]="currentPage === totalPages - 1">
+            <a class="page-link" (click)="changePage(currentPage + 1)">بعدی</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  
+  </section>

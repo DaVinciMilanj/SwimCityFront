@@ -32,6 +32,10 @@ export class ProfileComponent implements OnInit {
     this.getProfileData();
     console.log(this.profileData)
   }
+  convertDateFormat(date: string): string {
+    if (!date) return '';
+    return date.replace(/\//g, '-'); // جایگزینی `/` با `-`
+  }
 
   getProfileData(): void {
     this.profileService.getProfile().subscribe({
@@ -56,8 +60,10 @@ export class ProfileComponent implements OnInit {
       formData.append('first_name', this.profileData[0].first_name || '');
       formData.append('last_name', this.profileData[0].last_name || '');
       formData.append('email', this.profileData[0].email || '');
-      formData.append('birthday', this.profileData[0].birthday || '');
+      formData.append('birthday', this.convertDateFormat(this.profileData[0].birthday || '')); 
       formData.append('gender', this.profileData[0].gender || '');
+
+      
   
      
       if (this.selectedFile) {
@@ -82,6 +88,6 @@ export class ProfileComponent implements OnInit {
     this.authService.logout();
   }
   
-  
+ 
   
 }

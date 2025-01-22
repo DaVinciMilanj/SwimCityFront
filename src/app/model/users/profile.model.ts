@@ -9,4 +9,5 @@ export interface Profile {
     birthday?: string;
     gender?: string; 
     image?: string;
+    status?: string;
   }
