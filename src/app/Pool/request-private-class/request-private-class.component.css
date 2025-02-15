@@ -1,0 +1,214 @@
+section {
+    margin-top: 150px;
+    margin-bottom: 150px;
+  }
+  /* تنظیمات کارت */
+  .e-card {
+    margin: auto;
+    background: transparent;
+    box-shadow: 0px 8px 28px -9px var(--black);
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-around;
+    align-items: center;
+    border: 5px solid rgb(12, 78, 78);
+   
+  }
+  
+  .wave {
+    position: absolute;
+    width: 540px;
+    height: 700px;
+    opacity: 0.6;
+    right: 0;
+    top: 0;
+    margin-right: 20%;
+    margin-top: -60%;
+    background: linear-gradient(744deg, var(--dark-blue), var(--blue-main-navbar) 60%, var(--white));
+    border-radius: 40%;
+    animation: wave 55s infinite linear;
+    z-index: 1;
+    border: 2px solid rgb(1, 1, 56);
+  }
+  
+  .playing .wave:nth-child(2) {
+    animation-duration: 4000ms;
+  }
+  
+  .wave:nth-child(2) {
+    animation-duration: 50s;
+  }
+  
+  .playing .wave:nth-child(3) {
+    animation-duration: 5000ms;
+  }
+  
+  .wave:nth-child(3) {
+    animation-duration: 45s;
+  }
+  
+  @keyframes wave {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  
+  /* تنظیمات محتوا */
+  .content-request {
+    font-size: 1.5rem;
+    color: var(--black);
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+  .title-request {
+    z-index: 80;
+    color: var(--black);
+    font-size: 3rem;
+
+  }
+  .card-image {
+    width: 300px;
+    height: 250px;
+    border: 15px solid rgb(12 , 78 , 78);
+    z-index: 50;
+  }
+  
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    border: 5px solid var(--white);
+    z-index: 50;
+  }
+  
+  .card-content {
+    z-index: 50;
+    text-align: center;
+    padding: 15px;
+  }
+  
+  .card-content p {
+    font-size: 1.5rem;
+    color: rgb(12, 78, 78);
+    margin-bottom: 10px;
+  }
+  
+  .card-content span {
+    font-weight: bold;
+  }
+  
+  .card-content button {
+    margin: 5px;
+    padding: 8px 15px;
+    font-size: 1rem;
+    border-radius: 6px;
+  }
+  .info-request{
+    width: 50%;
+   margin: 0 auto;
+  }
+  /* btn */
+  .btn{
+      border: none;
+      color: var(--white);
+      padding: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  .btn-green {
+    background-color: rgb(12, 78, 78);
+  }
+  .btn-red {
+    background-color: darkred;
+  }
+  .btn-blue {
+    background-color: var(--dark-blue);
+  }
+  /* error */
+  .error{
+    color: darkred;
+  }
+  @media (max-width: 767.98px) { 
+    .card-content {
+      padding: 10px;
+    }
+  
+    .card-content p {
+      font-size: 1.4rem;
+      width: 100%;
+    }
+  
+    .card-content button {
+      font-size: 0.9rem;
+      padding: 6px 12px;
+    }
+    .e-card {
+        flex-direction: column; /* تغییر جهت چیدمان کارت */
+        height: auto; /* ارتفاع کارت برای موبایل خودکار باشد */
+        padding: 20px; /* کاهش padding برای موبایل */
+        width: 80%;
+        
+      }
+      .card-image {
+        width: 240px;
+        height: 200px;
+        
+      }
+      .wave {
+       display: none;
+        
+      }
+  }
+
+  /* Large devices (desktops, 992px and up)  */
+@media (min-width: 991.98px) and (max-width : 1200px){ 
+  section {
+    margin-top: 350px;
+    
+  }
+ }
+  
+ /* --- Medium devices (tablets, less than 992px) */
+ @media (min-width: 768px) and (max-width: 991.98px) { 
+  .card-content {
+    padding: 10px;
+  }
+
+  .card-content p {
+    font-size: 1.4rem;
+      width: 100%;
+  }
+
+  .card-content button {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+  .e-card {
+      flex-direction: column; /* تغییر جهت چیدمان کارت */
+      height: auto; /* ارتفاع کارت برای موبایل خودکار باشد */
+      padding: 20px; /* کاهش padding برای موبایل */
+      width: 80%;
+      
+    }
+    
+    
+ }
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 991.98px) and (max-width : 1400px){ 
+  section {
+      margin-top: 150px;
+      margin-bottom: 200px;
+    }
+  }

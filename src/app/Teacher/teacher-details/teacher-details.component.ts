@@ -18,6 +18,9 @@ export class TeacherDetailsComponent implements OnInit {
   constructor(private activeRoute : ActivatedRoute , private _service:HttpService , private authService : AuthService,private router: Router
   ){}
 
+
+  
+
   sendUserId : number ;
   teacherId : number;
   teacherDetail : Teacher;
@@ -26,12 +29,25 @@ export class TeacherDetailsComponent implements OnInit {
   userPreviousRate: number | null = null; // رأی قبلی کاربر
   selectedRating: number = 0; // رأی جدید کاربر
   rate : number = 0
-
+  hoveredRating :number = -1;
+  userStatus : any ;
 
 
   ngOnInit(): void {
     this.teacherId = this.activeRoute.snapshot.params['teacherId'];
     this.loggedIn = this.authService.isLoggedIn();
+
+
+
+
+    this._service.getProfile().subscribe((response)=>{
+      console.log(response[0].status);
+      this.userStatus = response[0].status;
+      
+      
+     
+      
+    })
     
     this._service.getTeacherDetails(this.teacherId).subscribe(
       (data: Teacher) => {
@@ -48,7 +64,7 @@ export class TeacherDetailsComponent implements OnInit {
     );
   }
   rateTeacher(rating: number): void {
-    this.selectedRating = rating;
+    this.selectedRating = this.stars.length - rating + 1;
   }
 
   submitRating(): void {

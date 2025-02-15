@@ -3,11 +3,12 @@ import { HttpService } from '../../service/http.service';
 import { PrivateClass } from '../../model/pool-model/private-class.model';
 import { CommonModule } from '@angular/common';
 import { PaidPipe } from '../../pip/paid.pipe';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-user-private-classes',
   standalone: true,
-  imports: [CommonModule , PaidPipe],
+  imports: [CommonModule , PaidPipe , RouterModule , ],
   templateUrl: './user-private-classes.component.html',
   styleUrl: './user-private-classes.component.css'
 })

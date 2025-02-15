@@ -1,13 +1,13 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
 import { HttpService } from '../../service/http.service';
 
 @Component({
   selector: 'app-create-private-class',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule , RouterModule , RouterLink],
   templateUrl: './create-private-class.component.html',
   styleUrl: './create-private-class.component.css'
 })

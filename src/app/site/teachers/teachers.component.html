@@ -14,16 +14,13 @@
         <div class="wave"></div>
         <div class="wave"></div>
         <div class="content">
-          
           <div class="rate">
-            
-            
             <span  *ngFor="let star of stars; let i = index"
             [class.filled]="i < teacher.average_rate">
               ★
             </span>
           </div>
-          
+          <h1>{{teacher.user_rating}}</h1>
           <img [src]="teacher.image" alt="{{teacher.last_name}}" class="profile-img mb-3 img-fluid">
           <p class="text my-3">{{teacher.first_name}}&nbsp;{{teacher.last_name}}</p>
           <button class="btn btn-detail px-5 fw-bold py-2" [routerLink]="['/teacher', teacher.id, 'details']">مشاهده جزییات</button>

@@ -1,5 +1,6 @@
 .teacher-list {
   margin-top: 200px;
+  margin-bottom: 150px;
 }
 
 /* تنظیمات کارت */
@@ -33,7 +34,7 @@
   background: linear-gradient(744deg, var(--dark-blue), var(--blue-main-navbar) 60%, var(--white));
   border-radius: 40%;
   animation: wave 55s infinite linear;
-  z-index: 1;
+  z-index: -100;
 }
 
 .playing .wave:nth-child(2) {
@@ -224,3 +225,11 @@
 
 
  }
+ 
+  
+
+ @media (min-width: 900px) and (max-width: 1200px) { 
+  .teacher-list {
+    margin-top: 150px;
+  }
+}

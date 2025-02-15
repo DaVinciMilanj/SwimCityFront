@@ -6,11 +6,16 @@
           <div class="wave"></div>
           <div class="wave"></div>
           <div class="wave"></div>
-          <div class="rate">
+    
+          <div class="rate align-items-center">
+            <span class="text-muted size">{{teacherDetail.average_rate}}</span>
+            
             <span *ngFor="let star of stars; let i = index" 
                   [ngClass]="{'filled': i < teacherDetail.average_rate}">
               ★
             </span>
+           
+            
           </div>
           <div class="card-image">
             <img *ngIf="teacherDetail.image" [src]="teacherDetail.image" alt="{{teacherDetail.last_name }}" class="img-fluid">
@@ -28,18 +33,23 @@
                   شما تا به حال رایی برای این مربی ثبت نکرده اید
                 </p>
               </div>
-              <div class="rating">
-                <i *ngFor="let star of stars; let i = index" [class.filled]="i < selectedRating" class="bi bi-star-fill mx-3"
-                (click)="rateTeacher(i + 1)"></i>
+              <div class="rating" *ngIf="loggedIn">
+                <i *ngFor="let star of stars; let i = index" 
+                   [class.filled]="i < selectedRating" 
+                   [class.hovered]="i <= hoveredRating" 
+                   (mouseover)="hoveredRating = i" 
+                   (mouseleave)="hoveredRating = -1" 
+                   (click)="rateTeacher(stars.length - i)"
+                   class="bi bi-star-fill mx-3"></i>
               </div>
             </div>
             
   
-            <button (click)="submitRating()" [disabled]="!loggedIn" class="btn btn-login w-100 fs-5 mt-3 fw-bold">
+            <button (click)="submitRating()" [disabled]="!loggedIn  " [ngClass]="{'mb-3' : userStatus =='teacher'}" class="btn btn-login w-100 fs-5 mt-2 fw-bold">
               ثبت رای
             </button>
 
-            <button (click)="requestPrivateClass()">درخواست کلاس خصوصی</button>
+            <button (click)="requestPrivateClass()"*ngIf="userStatus != 'teacher' "  class="btn btn-request w-100 fs-5 fw-bold mb-2">درخواست کلاس خصوصی</button>
           </div>
         </div>
       </div>

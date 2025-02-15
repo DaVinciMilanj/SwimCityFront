@@ -1,22 +1,62 @@
-<section class="mt-5">
-    <div class="container">
-        <div class="row justify-content-center" *ngFor="let class of privateClass ">
-            <div class="col-6" *ngIf="userStatus!='teacher'">
-                <h2>{{class.pool}}</h2>
-                <h3>{{class.teacher.first_name}} | {{class.teacher.last_name}}</h3>
-                <h5>{{class.price }}</h5>
-                <h6>{{class.paid | paid}}</h6>
-                <p>{{class.start_date}}</p>
-                <p>{{class.start_time}}</p>
-                <button class="btn btn-primary">پرداخت</button>
-
-            </div>
-
-            <div class="col-6" *ngIf="userStatus=='teacher'">
-                <h3>{{class.pool}}</h3>
-                <h2>{{class.user.first_name}}{{class.user.last_name}}</h2>
-
+<div class="container teacher-list">
+    <div class="row mb-0">
+        <!-- ردیف اول -->
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="title">  لیست کلاس های خصوصی</h2>
+                <div class="search">
+                    <div class="filter-box mb-4">
+                        <!-- <select class="sort-select">
+                                <option value=""> همه درخواست ها   </option>
+                                <option value="accepted">پذیرفته شده</option>
+                                <option value="unaccepted">در انتظار بررسی</option>
+                                <option value="rejected" *ngIf="userStatus === 'teacher'">رد شده </option>
+                            </select> -->
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</section>
+
+    <div class="row">
+        <!-- ردیف دوم (کارت‌ها) -->
+        <div class="col-lg-3 col-md-4 col-6 mb-4" *ngFor="let class of privateClass ">
+            <div class="e-card playing">
+                <div class="content">
+                    <div *ngIf="userStatus!='teacher'">
+                        <strong class="content-request "> محل برگزاری:</strong>
+                        <p class="fs-5 fw-bold">استخر&nbsp;{{class.pool}}&nbsp;</p>
+
+                        <strong class="content-request "> مربی:</strong>
+                        <p class="fs-5 fw-bold">{{class.teacher.first_name}} &nbsp; {{class.teacher.last_name}}</p>
+
+                        <strong class="content-request ">قیمت دوره :</strong>
+                        <p class="fs-5 fw-bold">{{class.price }}&nbsp;تومان</p>
+
+                        <strong class="content-request ">وضعیت پرداختی :</strong>
+                        <p class="fs-5 fw-bold">{{class.paid | paid}}</p>
+
+                        <strong class="content-request "> تاریخ شروع دوره :</strong>
+                        <p class="fs-5 fw-bold">{{class.start_date}}</p>
+
+                        <strong class="content-request "> ساعت شروع دوره :</strong>
+                        <p class="fs-5 fw-bold">{{class.start_time}}</p>
+
+                        <button class="btn btn-login">پرداخت</button>
+                    </div>
+
+                    <div *ngIf="userStatus=='teacher' ">
+                        <strong class="content-request "> محل برگزاری:</strong>
+                        <p class="fs-5 fw-bold">استخر&nbsp;{{class.pool}}&nbsp;</p>
+
+                        <strong class="content-request"> کاربر:</strong>
+                        <p class="fs-5 fw-bold">{{class.user.first_name}}&nbsp;{{class.user.last_name}}</p>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

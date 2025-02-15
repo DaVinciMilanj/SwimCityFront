@@ -1,61 +1,75 @@
-<div class="create-private-class-request">
-    <h2>Create Private Class Request</h2>
-  
-    <form [formGroup]="privateClassForm" (ngSubmit)="onSubmit()">
-      <div>
-        <label for="pool">Pool</label>
-        <select id="pool" formControlName="pool">
-          <option value="" disabled selected>Select a teacher</option>
-          <option *ngFor="let pool of poolsList" [value]="pool.id">
-            {{ pool.name }} {{ pool.gender | gender }}
-          </option>
-        </select>
-        <div *ngIf="privateClassForm.get('pool')?.invalid && privateClassForm.get('pool')?.touched">
-          Pool is required.
-        </div>
-      </div>
-  
-      <div *ngIf="!teacherId">
-        <label for="teacher">Teacher</label>
-        <select id="teacher" formControlName="teacher">
-          <option value="" disabled selected>Select a teacher</option>
-          <option *ngFor="let teacher of teachersList" [value]="teacher.id">
-            {{ teacher.first_name }} {{ teacher.last_name }}
-          </option>
-        </select>
-        <div *ngIf="privateClassForm.get('teacher')?.invalid && privateClassForm.get('teacher')?.touched">
-          Teacher is required.
-        </div>
-      </div>
-      
-      <div *ngIf="teacherId">
-        <label for="teacher">Teacher</label>
-        <select id="teacher" formControlName="teacher">
-          <option [value]="teacherId">
-            {{selectedTeacher.first_name}} {{selectedTeacher.last_name}}
-          </option>
+<section class="align-content-center align-items-center height">
+  <div class="container teacher-list">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="e-card playing">
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="card-content d-flex flex-column justify-content-center align-content-center  ">
+            <h2 class="fw-bold ">ثبت درخواست کلاس خصوصی</h2>
+
+            <form [formGroup]="privateClassForm" (ngSubmit)="onSubmit()">
+              <div>
+                <label for="pool" class="text-start fw-bold fs-5"> نام استخر:</label>
+                <select id="pool" formControlName="pool">
+                  <option value="" disabled selected>یه استخر انتخاب کن</option>
+                  <option *ngFor="let pool of poolsList" [value]="pool.id">
+                    {{ pool.name }} {{ pool.gender | gender }}
+                  </option>
+                </select>
+                <div *ngIf="privateClassForm.get('pool')?.invalid && privateClassForm.get('pool')?.touched" class="error">
+                  انتخاب استخر الزامی است
+                </div>
+              </div>
+
+              <div *ngIf="!teacherId">
+                <label for="teacher" >مربی:</label>
+                <select id="teacher" formControlName="teacher">
+                  <option value="" disabled selected>یه مربی انتخاب کن</option>
+                  <option *ngFor="let teacher of teachersList" [value]="teacher.id">
+                    {{ teacher.first_name }} {{ teacher.last_name }}
+                  </option>
+                </select>
+                <div *ngIf="privateClassForm.get('teacher')?.invalid && privateClassForm.get('teacher')?.touched" class="error">
+                  انتخاب مربی الزامی است
+                </div>
+              </div>
+
+              <div *ngIf="teacherId">
+                <label for="teacher" class="text-start fw-bold fs-5">نام مربی :</label>
+                <select id="teacher" formControlName="teacher">
+                  <option [value]="teacherId">
+                    {{selectedTeacher.first_name}} {{selectedTeacher.last_name}}
+                  </option>
 
 
-        </select>
+                </select>
 
-      </div>
-  
-      <div>
-        <label for="person">Number of People</label>
-        <input type="number" id="person" formControlName="person" />
-        <div *ngIf="privateClassForm.get('person')?.invalid && privateClassForm.get('person')?.touched">
-          Must be at least 1 person.
+              </div>
+
+              <div>
+                <label for="person" class="text-start fw-bold fs-5">تعداد افراد:</label>
+                <input type="number" id="person" formControlName="person" />
+                <div *ngIf="privateClassForm.get('person')?.invalid && privateClassForm.get('person')?.touched" class="error">
+                  تعداد نفرات حداقل باید 1 نفر باشد
+                </div>
+              </div>
+
+              <div>
+                <label for="massage" class="text-start fw-bold fs-5">توضیحات:</label>
+                <textarea id="massage" formControlName="massage"></textarea>
+                <div *ngIf="privateClassForm.get('massage')?.invalid && privateClassForm.get('massage')?.touched" class="error">
+                  پر کردن فیلد توضیحات الزامی است
+                </div>
+              </div>
+
+              <button type="submit" [disabled]="privateClassForm.invalid"
+              class="btn btn-login w-100 fs-5 mt-2 fw-bold">ثبت درخواست</button>
+            </form>
+          </div>
         </div>
       </div>
-  
-      <div>
-        <label for="massage">Message</label>
-        <textarea id="massage" formControlName="massage"></textarea>
-        <div *ngIf="privateClassForm.get('massage')?.invalid && privateClassForm.get('massage')?.touched">
-          Message is required.
-        </div>
-      </div>
-  
-      <button type="submit" [disabled]="privateClassForm.invalid">Submit</button>
-    </form>
+    </div>
   </div>
+</section>

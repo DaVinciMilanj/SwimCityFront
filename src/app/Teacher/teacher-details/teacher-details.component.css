@@ -1,5 +1,6 @@
 section {
   margin-top: 150px;
+  margin-bottom: 150px;
 }
 /* تنظیمات کارت */
 .e-card {
@@ -82,22 +83,29 @@ section {
 }
 
 
+.rating {
+  display: flex;
+  justify-content: flex-end; /* برای راست به چپ */
+  direction: rtl; /* ترتیب ستاره‌ها از راست */
+}
+
 .rating i {
   cursor: pointer;
+  font-size: 25px;
+  color: var(--white); /* رنگ پیش‌فرض */
   transition: color 0.3s ease;
-  font-size: 15px;
-  color: var(--white); 
-  z-index: 50;
-
 }
 
 .rating i.filled {
-  color: #ffc700;
+  color: #ffc700; /* رنگ ستاره‌های انتخاب شده */
 }
 
-.rating i:hover,
+.rating i.hovered {
+  color: #ffcc33; /* رنگ ستاره‌های هاور شده */
+}
+
 .rating i:hover ~ i {
-  color: #ffc700;
+  color: var(--white); /* ستاره‌های سمت چپ هاور نشده */
 }
 
 .rate {
@@ -117,7 +125,15 @@ section {
   border: none;
   color: var(--white);
 }
-
+.btn-request {
+  background-color: none;
+  border: 2px solid rgb(12 , 78 , 78) ;
+  color: var(--black);
+}
+.btn-request:hover {
+  background-color: rgba(12 , 78 , 78 , .4);
+  color: var(--white);
+}
 /**** responsive ****/
  
 /* === Small devices (landscape phones, less than 768px) */
@@ -135,3 +151,8 @@ section {
     
   }
  }
+
+ .size{
+  font-size: small !important;
+ }
+ 

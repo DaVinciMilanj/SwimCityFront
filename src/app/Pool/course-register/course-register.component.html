@@ -1,0 +1,69 @@
+<section class="course-register">
+    <div class="container h-100 w-100 justify-content-center d-flex flex-column mt-5">
+      <div class="row justify-content-center">
+        <!-- ردیف دوم (کارت‌ها) -->
+        <div class="col-lg-4 col-md-5 col-6 mb-4" >
+            <div class="e-card playing mt-6">
+                <div class="content text-start">
+                    <div>
+                        <strong class="content-request "> محل برگزاری:</strong>
+                        <p class="fs-5 fw-bold">استخر&nbsp;{{courseDetails.pool}}&nbsp;</p>
+
+                        <strong class="content-request "> مربی:</strong>
+                        <p class="fs-5 fw-bold">{{courseDetails.teacher}}</p>
+
+                        <strong class="content-request ">قیمت دوره :</strong>
+                        <p class="fs-5 fw-bold">{{courseDetails.price }}&nbsp;تومان</p>
+
+                        <strong class="content-request "> تاریخ شروع دوره :</strong>
+                        <p class="fs-5 fw-bold">{{courseDetails.start}}</p>
+                        <p class="fs-5 fw-bold">{{courseDetails.end}}</p>
+
+                        <strong class="content-request "> ساعت شروع دوره :</strong>
+                        <p class="fs-5 fw-bold">{{courseDetails.start_clock}}</p>
+                        <p class="fs-5 fw-bold">{{courseDetails.end_clock}}</p>
+
+                        <div>
+                          <label  for="coupon" class="form-label fs-5 fw-bold">کد تخفیف:</label>
+                          <input type="text" class="form-control" id="coupon" [(ngModel)]="couponCode" />
+                          <button class="btn btn-paid mt-3 my-5" (click)="applyCoupon()">اعمال کوپن</button>
+                        </div>
+
+
+                        <button class="btn btn-login">پرداخت</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+  <!-- <div class="row">
+        <h1>استخر: {{ poolId }} | دوره: {{ courseId }}</h1>
+      </div>
+      <div class="row">
+        <div>
+          <label for="coupon">کد تخفیف:</label>
+          <input type="text" id="coupon" [(ngModel)]="couponCode" />
+          <button (click)="applyCoupon()">اعمال کوپن</button>
+        </div>
+  
+        <div *ngIf="errorMessage" class="error">
+          <p style="color: red">{{ errorMessage }}</p>
+        </div>
+  
+        <div *ngIf="discount !== null">
+          <p>مقدار تخفیف: {{ discount }} تومان</p>
+          <p>قیمت نهایی: {{ finalPrice }} تومان</p>
+        </div>
+      </div> -->

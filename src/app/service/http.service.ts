@@ -39,6 +39,10 @@ export class HttpService {
 
   }
 
+  getCourseDetails( poolId:number , courseId:number):Observable<courseEntity>{
+    return this.http.get<courseEntity>(`${this.apiBase}pools/pool/${poolId}/course/${courseId}`);
+  }
+
 
   
   private getAuthHeaders(): HttpHeaders {
@@ -130,6 +134,11 @@ export class HttpService {
   showUserPrivateClass(): Observable<PrivateClass[]> {
     const headers = this.getAuthHeaders();
     return this.http.get<PrivateClass[]>(`${this.apiBase}pools/create-private-class/` ,{headers})
+  }
+
+  checkCoupon(couponCode: string , courseId: number,  poolId:number): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.post(`${this.apiBase}pools/pool/${poolId}/course/${courseId}/check_coupon/`, { coupon_code: couponCode }, { headers });
   }
 
 }
