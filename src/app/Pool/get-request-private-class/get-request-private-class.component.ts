@@ -5,17 +5,20 @@ import { poolsEntity } from '../../model/pool-model/pools.model';
 import { privateClassRequestEntity } from '../../model/pool-model/private-class-request.model';
 import { profile } from 'console';
 import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { FilterRequestStatusPipe } from '../../pip/filter-request-status.pipe';
 
 @Component({
   selector: 'app-get-request-private-class',
   standalone: true,
-  imports: [CommonModule , RouterLink],
+  imports: [CommonModule , RouterLink , FormsModule , FilterRequestStatusPipe],
   templateUrl: './get-request-private-class.component.html',
   styleUrl: './get-request-private-class.component.css'
 })
 export class GetRequestPrivateClassComponent implements OnInit {
   allRequests:privateClassRequestEntity[];
   userStatus:any;
+  filterStatus:string = '' ;
   
   
   constructor(private _service:HttpService){}

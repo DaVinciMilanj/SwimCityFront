@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../service/http.service';
 import { privateClassRequestEntity } from '../../model/pool-model/private-class-request.model';
-import { ActivatedRoute, Router,  } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterModule,  } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-request-private-class',
   standalone: true,
-  imports: [CommonModule   ],
+  imports: [CommonModule , RouterLink , RouterModule],
   templateUrl: './request-private-class.component.html',
   styleUrl: './request-private-class.component.css'
 })
@@ -84,7 +84,7 @@ deleteRequest(requestId: number): void {
 
 
 creatClass(requestId:number):void{
-  this.router.navigate(['creat-private-class' ,requestId] , {
+  this.router.navigate(['create-private-class' ,requestId] , {
     state:{
       userId : this.requestDetails.user.id 
     }

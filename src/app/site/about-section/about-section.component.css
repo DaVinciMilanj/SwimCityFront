@@ -1,0 +1,203 @@
+.about-container {
+    background: linear-gradient(135deg, var(--dark-blue), var(--blue-main-navbar));
+    border-radius: 50px;
+    padding: 70px 50px;
+    margin: 120px auto;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    color: white;
+    max-width: 1100px;
+  }
+  
+  .about-image img {
+    width: 100%;
+    max-width: 450px;
+    height: 400px;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 50% 0 50% 0;
+  }
+  
+  .about-image img:hover {
+    transform: scale(1.07);
+  }
+  
+  .section-title {
+    color: var(--white); /* زرد ملایم برای تاکید */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* سایه برای وضوح بیشتر */
+    margin-bottom: 30px;
+    font-size: 5rem;
+}
+
+.section-subtitle {
+    color: var(--black); /* زرد-نارنجی برای زیبایی */
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.section-text {
+    font-size: 1.8rem;
+    line-height: 2.5;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+  
+  /* استایل دکمه بیشتر بدانید */
+ .blob-btn {
+    z-index: 1;
+    position: relative;
+    padding: 10px 30px;
+    margin-bottom: 0;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--dark-blue);
+    font-size: 16px;
+    font-weight: bold;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    transition: color 0.5s;
+    cursor: pointer;
+    border-radius: 30px;
+  }
+  
+   .blob-btn:before,  .blob-btn:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+  }
+  
+   .blob-btn:before {
+    z-index: 1;
+    left: 0;
+    top: 0;
+    border: 2px solid var(--dark-blue);
+  }
+  
+   .blob-btn:after {
+    z-index: -2;
+    left: 3px;
+    top: 3px;
+    transition: all 0.3s 0.2s;
+  }
+  
+   .blob-btn:hover {
+    color: var(--white);
+  }
+  
+   .blob-btn:hover:after {
+    left: 0;
+    top: 0;
+  }
+  
+   .blob-btn__inner {
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    background: var(--white);
+  }
+  
+   .blob-btn__blobs {
+    position: relative;
+    display: block;
+    height: 100%;
+    filter: url('#goo');
+  }
+  
+   .blob-btn__blob {
+    position: absolute;
+    top: 2px;
+    width: 25%;
+    height: 100%;
+    background: var(--dark-blue);
+    border-radius: 100%;
+    transform: translate3d(0, 150%, 0) scale(1.4);
+    transition: transform 0.45s;
+  }
+  
+   .blob-btn:hover .blob-btn__blob {
+    transform: translateZ(0) scale(1.4);
+  }
+  
+   .blob-btn__blob:nth-child(1) {
+    left: 0;
+    transition-delay: 0s;
+  }
+  
+   .blob-btn__blob:nth-child(2) {
+    left: 25%;
+    transition-delay: 0.08s;
+  }
+  
+   .blob-btn__blob:nth-child(3) {
+    left: 50%;
+    transition-delay: 0.16s;
+  }
+  
+   .blob-btn__blob:nth-child(4) {
+    left: 75%;
+    transition-delay: 0.24s;
+  }
+  /** Responsive **/
+  /* --- Medium devices (tablets, less than 992px) */
+  @media (min-width: 768px) and (max-width: 991.98px) { 
+    .about-container {
+      width: 80%;
+      padding: 50px 40px;
+      margin: 100px auto;
+    }
+    .section-title {
+      font-size: 2.5rem;
+    }
+    .section-subtitle {
+      font-size: 1.6rem;
+    }
+    .section-text {
+      font-size: 1.3rem;
+      line-height: 2;
+    }
+    .about-image img {
+      max-width: 300px;
+      height: 280px;
+    }
+  }
+  
+  /* === Small devices (landscape phones, less than 768px) */
+  @media (max-width: 767.98px) { 
+    .about-container {
+      width: 80%;
+      padding: 40px 30px;
+      margin: 80px auto;
+    }
+    .section-title {
+      font-size: 2.2rem;
+    }
+    .section-subtitle {
+      font-size: 1.4rem;
+    }
+    .section-text {
+      font-size: 1.2rem;
+      line-height: 1.9;
+    }
+    .about-image img {
+      max-width: 280px;
+      height: 200px;
+    }
+    .custom-btn {
+      padding: 12px 25px;
+      font-size: 1.2rem;
+    }
+  }
+  @media (min-width: 950px) and (max-width: 1400px) { 
+    .about-container {
+        width: 80%;
+        
+      }
+}

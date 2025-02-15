@@ -1,0 +1,152 @@
+.about-container {
+  background: linear-gradient(135deg, var(--dark-blue), var(--blue-main-navbar));
+  border-radius: 30px;
+  padding: 60px 40px;
+  margin: 100px auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  color: white;
+  max-width: 1100px;
+}
+
+section {
+  margin-top: 150px;
+  margin-bottom: 120px;
+}
+
+/* تصویر */
+.about-image img {
+  width: 100%;
+  max-width: 380px;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 20% 0 20% 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  height: 450px;
+  object-fit: cover;
+}
+
+.about-image img:hover {
+  transform: scale(1.05);
+}
+
+/* متن‌ها */
+.section-title {
+  color: var(--white);
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  font-size: 3.8rem;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  color: var(--black);
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.section-text {
+  font-size: 1.6rem;
+  line-height: 2.2;
+  letter-spacing: 0.4px;
+  margin-bottom: 20px;
+  text-align: justify;
+  font-weight: bold;
+}
+
+/* دکمه */
+.custom-btn {
+  background: var(--yellow-main);
+  color: var(--dark-blue);
+  padding: 12px 28px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 25px;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-btn:hover {
+  background: var(--yellow-dark);
+  transform: scale(1.05);
+}
+
+/* واکنش‌گرایی */
+
+/* Medium devices (Tablets: 768px - 991px) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+  .about-container {
+    width: 85%;
+    padding: 50px 35px;
+    margin: 90px auto;
+  }
+  .section-title {
+    font-size: 3rem;
+  }
+  .section-subtitle {
+    font-size: 1.7rem;
+  }
+  .section-text {
+    font-size: 1.3rem;
+    line-height: 2.1;
+  }
+  
+  section {
+    margin-top: 200px;
+    margin-bottom: 120px;
+  }
+  
+}
+
+/* Small devices (Mobile: less than 768px) */
+@media (max-width: 767.98px) { 
+  .about-container {
+    width: 90%;
+    padding: 40px 25px;
+    margin: 70px auto;
+    text-align: center;
+  }
+  
+  .about-image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  .about-image img {
+    height: 300px;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+  .section-subtitle {
+    font-size: 1.5rem;
+  }
+  .section-text {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    text-align: justify;
+    
+  }
+  .custom-btn {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+  }
+  section {
+    margin-top: 200px;
+    margin-bottom: 120px;
+  }
+  
+  
+}
+
+/* Large screens (950px - 1400px) */
+@media (min-width: 950px) and (max-width: 1400px) { 
+  .about-container {
+    width: 85%;
+  }
+  section {
+    margin-top: 200px;
+    margin-bottom: 120px;
+  }
+  
+}

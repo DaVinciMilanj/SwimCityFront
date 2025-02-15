@@ -1,5 +1,9 @@
+section{
+  margin-bottom: 150px;
+}
 .teacher-list {
   margin-top: 200px;
+ 
 }
 
 /* تنظیمات کارت */
@@ -128,7 +132,7 @@ table th {
 
 /**** Search Section ***/
 .search {
-  margin: 20px;
+  margin: 15px;
 }
 
 .search > h3 {
@@ -187,9 +191,21 @@ table th {
 .title {
   font-size: 2.7rem;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 5px;
   color: rgba(12 , 78 , 78 , .8);
 }
+/********** select ***********/
+.sort-select {
+  margin: 20px;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 25px;
+  border: solid 3px rgb(12 , 78 , 78);
+  background: transparent;
+  color: rgb(12 , 78 , 78);
+  transition: all 0.3s ease;
+}
+
 
 /**** responsive ****/
 
@@ -297,6 +313,12 @@ table th {
  
 
  }
+
+ @media (min-width: 900px) and (max-width: 1200px) { 
+  .teacher-list {
+    margin-top: 150px;
+  }
+}
 
 
 

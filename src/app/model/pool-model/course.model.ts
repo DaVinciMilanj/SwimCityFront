@@ -8,6 +8,8 @@ export interface courseEntity{
     end_clock:string,
     price:number,
     discount:number,
-    total_price:number
+    total_price:number,
+    limit_register : number,
+    register_count : number
 
 }

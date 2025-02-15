@@ -35,3 +35,55 @@
 }
 
  */
+
+ .header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  border-radius: 0 0 20% 20%;
+}
+/* .header-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--light-blue);
+  z-index: 0;
+}
+
+ */
+
+/**** responsive ****/
+ /* --- Medium devices (tablets, less than 992px) */
+ @media (min-width: 768px) and (max-width: 991.98px) { 
+  .header {
+    height: 65vh;
+  }
+ }
+/* === Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) { 
+  .header {
+    height: 65vh;
+  }
+ }

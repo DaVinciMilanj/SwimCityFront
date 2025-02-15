@@ -1,0 +1,154 @@
+section {
+    margin-top: 170px;
+    margin-bottom: 150px;
+  }
+  /* تنظیمات کارت */
+  .e-card {
+    margin: auto;
+    background: transparent;
+    box-shadow: 0px 8px 28px -9px var(--black);
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    height: 550px;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-around;
+    align-items: center;
+    border: 5px solid rgb(12, 78, 78);
+   
+  }
+  
+  .wave {
+    position: absolute;
+    width: 540px;
+    height: 700px;
+    opacity: 0.6;
+    right: 0;
+    top: 0;
+    margin-right: 10%;
+    margin-top: -60%;
+    background: linear-gradient(744deg, var(--blue-main-navbar), var(--white) 60%, var(--dark-blue));
+    border-radius: 40%;
+    animation: wave 55s infinite linear;
+    z-index: 1;
+    border: 2px solid rgb(1, 1, 56);
+  }
+  
+  .playing .wave:nth-child(2) {
+    animation-duration: 4000ms;
+  }
+  
+  .wave:nth-child(2) {
+    animation-duration: 50s;
+  }
+  
+  .playing .wave:nth-child(3) {
+    animation-duration: 5000ms;
+  }
+  
+  .wave:nth-child(3) {
+    animation-duration: 45s;
+  }
+  
+  @keyframes wave {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  
+  /* تنظیمات محتوا */
+  
+  .card-content {
+    z-index: 50;
+    text-align: center;
+    padding: 20px 10px;
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card-content h2 {
+    color: rgb(12, 78, 78);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgb(12, 78, 78);
+    margin-bottom: 6px;
+    text-align: left;
+    display: block;
+  }
+  
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.95rem;
+    border: 2px solid rgb(12, 78, 78);
+    border-radius: 8px;
+    background-color: var(--white);
+  }
+  
+  textarea {
+    resize: none;
+    height: 100px;
+  }
+  
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: rgb(1, 1, 56);
+    box-shadow: 0px 0px 8px -2px rgb(1, 1, 56);
+  }
+  
+  button[type="submit"] {
+    background-color: rgb(12, 78, 78);
+    border: none;
+    color: var(--white);
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* error styles*/
+  .error {
+    color: darkred;
+    text-align: right;
+    
+  }
+ 
+  /**** responsive ****/
+   
+  /* === Small devices (landscape phones, less than 768px) */
+  @media (max-width: 767.98px) { 
+    .e-card {
+      flex-direction: column; /* تغییر جهت چیدمان کارت */
+      height: auto; /* ارتفاع کارت برای موبایل خودکار باشد */
+      padding: 20px; /* کاهش padding برای موبایل */
+      width: 80%;
+      
+    }
+   
+   }

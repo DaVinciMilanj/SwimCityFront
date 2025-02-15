@@ -9,11 +9,12 @@ import { FormsModule } from '@angular/forms';
 import { FilterPoolsPipe } from '../../pip/filter-pools.pipe';
 
 
+
 @Component({
   selector: 'app-pool',
   standalone: true,
-  imports: [CommonModule , RouterLink  , RouterModule , FormsModule , FilterPoolsPipe],
-  templateUrl: './pool.component.html',
+  imports: [CommonModule , RouterLink  , RouterModule , FormsModule ,FilterPoolsPipe],
+  templateUrl: './pool.component.html',  
   styleUrl: './pool.component.css'
 })
 export class PoolComponent implements OnInit {

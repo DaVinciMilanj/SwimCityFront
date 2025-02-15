@@ -1,26 +1,64 @@
-<section>
-    <div class="container">
-      <div class="row">
-        <div class="col-6" *ngFor="let request of allRequests">
-
-          <div *ngIf="userStatus === 'teacher'">
-            <strong>User:</strong> {{ request.user.first_name }} {{request.user.last_name}}<br>
-            <strong>Id:{{request.id}}</strong><br>
-            <strong>pool : {{request.pool.name}}</strong><br>
-            <strong>Request massage:</strong> {{ request.massage }}<br>
-            <button [routerLink]="['/private-class' ,request.id]"  >more</button>
+<div class="container teacher-list">
+  <div class="row mb-0">
+    <!-- ردیف اول -->
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="title">لیست درخواست ها</h2>
+        <div class="search">
+          <div class="filter-box mb-4">
+            <select class="sort-select" [(ngModel)]="filterStatus">
+              <option value=""> همه درخواست ها   </option>
+              <option value="accepted">پذیرفته شده</option>
+              <option value="unaccepted">در انتظار بررسی</option>
+              <option value="rejected" *ngIf="userStatus === 'teacher'">رد شده </option>
+            </select>
           </div>
-  
-
-          <div *ngIf="userStatus !== 'teacher'">
-            <strong>Request ID:</strong> {{ request.id }}<br>
-            <strong>Teacher:</strong> {{ request.teacher.first_name }} {{request.teacher.last_name}}<br>
-            <strong>Pool:</strong> {{ request.pool.name }}<br>
-            <button [routerLink]="['/private-class' , request.id]">more</button>
-          </div>
-
-          
         </div>
       </div>
     </div>
-  </section>
+  </div>  
+
+  <div class="row">
+    <!-- ردیف دوم (کارت‌ها) -->
+    <div class="col-lg-3 col-md-4 col-6 mb-4" *ngFor="let request of allRequests | filterRequestStatus: filterStatus">
+      <div class="e-card playing">
+        <div class="content">
+          <div *ngIf="userStatus === 'teacher'">
+            <strong class="content-request ">نام کاربر:</strong>
+            <p class="fs-5 fw-bold">{{ request.user.first_name }} {{ request.user.last_name }}</p>
+
+            <strong class="content-request ">شماره درخواست:</strong>
+            <p class="fs-5 fw-bold">{{ request.id }}</p>
+
+            <strong class="content-request ">نام استخر:</strong>
+            <p class="fs-5 fw-bold">{{ request.pool.name }}</p>
+
+            <strong class="content-request ">متن درخواست:</strong>
+            <p class="fs-5 fw-bold">{{ request.massage }}</p>
+
+            <button [routerLink]="['/private-class', request.id]" class="btn btn-login">بیشتر</button>
+          </div>
+
+          <div *ngIf="userStatus !== 'teacher'">
+            <strong class="content-request">شماره درخواست:</strong>
+            <p>{{ request.id }}</p>
+
+            <strong class="content-request">نام مربی:</strong>
+            <p>{{ request.teacher.first_name }} {{ request.teacher.last_name }}</p>
+
+            <strong class="content-request">نام استخر:</strong>
+            <p>{{ request.pool.name }}</p>
+
+            <p class="content-request">وضعیت پذیرش:
+              <span *ngIf="request.acceptation === true" class="text-success">پذیرفته شده</span>
+              <span *ngIf="request.acceptation === false" class="text-danger">رد شده</span>
+              <span *ngIf="request.acceptation === null" class="text-warning">در انتظار بررسی</span>
+            </p>
+
+            <button [routerLink]="['/private-class', request.id]" class="btn btn-login">بیشتر</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

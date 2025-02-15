@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { ForgetPasswordService } from './forget-password.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router, RouterLink, RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-forget-password',
   standalone: true,
-  imports: [CommonModule , FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule, RouterLink],
   templateUrl: './forget-password.component.html',
   styleUrl: './forget-password.component.css'
 })
@@ -14,17 +16,15 @@ export class ForgetPasswordComponent {
   phone: string = '';
   recoveryCode: string = '';
   newPassword: string = '';
-  step: number = 1; // مرحله فعلی (1: ارسال کد، 2: تایید کد، 3: تنظیم رمز)
+  step: number = 1;
 
-  constructor(private forgotPasswordService: ForgetPasswordService) {}
+  constructor(private forgotPasswordService: ForgetPasswordService , private router: Router) {}
 
-  // ارسال کد بازیابی
   sendRecoveryCode() {
     this.forgotPasswordService.sendRecoveryCode(this.phone).subscribe({
-      next: (response) => {
-        console.log(response);
+      next: () => {
         alert('کد بازیابی ارسال شد!');
-        this.step = 2; // به مرحله بعد بروید
+        this.step = 2;
       },
       error: (error) => {
         console.error(error);
@@ -33,34 +33,28 @@ export class ForgetPasswordComponent {
     });
   }
 
-  // تایید کد بازیابی
   verifyRecoveryCode() {
-    this.forgotPasswordService.verifyRecoveryCode(this.phone, this.recoveryCode).subscribe({
-      next: (response) => {
-        console.log(response);
+    console.log('Sending Recovery Code:', this.recoveryCode.trim()); // چاپ مقدار ارسالی برای بررسی
+    this.forgotPasswordService.verifyRecoveryCode(this.phone, this.recoveryCode.trim()).subscribe({
+      next: () => {
         alert('کد تایید شد!');
-        this.step = 3; // به مرحله تنظیم رمز بروید
+        this.step = 3;
       },
-      error: (error) => {
-        console.error(error);
+      error: () => {
         alert('کد بازیابی نامعتبر است');
       }
     });
   }
 
-  // تنظیم رمز عبور جدید
   resetPassword() {
-    this.forgotPasswordService.resetPassword(this.phone, this.recoveryCode, this.newPassword).subscribe({
-      next: (response ) => {
-        console.log(response);
+    this.forgotPasswordService.resetPassword(this.phone, this.recoveryCode.trim(), this.newPassword).subscribe({
+      next: () => {
         alert('رمز عبور با موفقیت تغییر کرد!');
-        this.step = 1; // بازگشت به مرحله اول
+        this.router.navigate(['/login']);
       },
-      error: (error) => {
-        console.error(error);
+      error: () => {
         alert('خطا در تنظیم رمز عبور جدید');
       }
     });
   }
-
 }

@@ -1,0 +1,115 @@
+@keyframes glowing {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 223, 0, 0.8), 0 0 10px rgba(255, 223, 0, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(255, 223, 0, 1), 0 0 30px rgba(255, 223, 0, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(255, 223, 0, 0.8), 0 0 10px rgba(255, 223, 0, 0.6);
+    }
+}
+/* استایل پس‌زمینه */
+.bg-overlay {
+    background: url(../../../assets/images/background/470318.jpg);
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* نوارهای زرد ضربدری */
+.police-tape-container {
+    top: 350px;
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.police-tape {
+    background-color: gold;
+    padding: 15px;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    left: -1%;
+    right: -1%;
+    white-space: nowrap;
+    animation: glowing 1.5s infinite alternate; /* اجرای مداوم افکت */
+}
+
+.police-tape-1 {
+    transform: rotate(12deg);
+    top: 45%;
+}
+
+.police-tape-2 {
+    transform: rotate(-10deg);
+    top: 55%;
+}
+
+/* دکمه بازگشت */
+.error__nav {
+    position: absolute;
+    top: 30vh;
+    right: 40%;
+}
+
+.e-nav__link {
+    height: 45px;
+    line-height: 45px;
+    width: 170px;
+    display: inline-block;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: .1rem;
+    text-align: center;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.e-nav__link:hover {
+    transform: scale(1.05);
+}
+
+
+/**** responsive ****/
+ /* --- Medium devices (tablets, less than 992px) */
+ @media (min-width: 768px) and (max-width: 991.98px) { 
+    .police-tape {
+        font-size: 1.5em;
+        padding: 10px;
+    }
+    
+    .error__nav {
+        top: 20vh;
+        
+    }
+    .e-nav__link {
+        width: 140px;
+        height: 45;
+    }
+   }
+  /* === Small devices (landscape phones, less than 768px) */
+  @media (max-width: 767.98px) { 
+    .police-tape {
+        font-size: 1.2em;
+        padding: 8px;
+    }
+
+    .error__nav {
+        top: 120px;
+        right: 20%;
+    }
+   }
+  

@@ -9,10 +9,11 @@ import { FormsModule } from '@angular/forms';
 import { FilterTeacherPipe } from '../../pip/filter-teacher.pipe';
 
 
+
 @Component({
   selector: 'app-teacher-list',
   standalone: true,
-  imports: [CommonModule, RouterLink , FormsModule  ,FilterTeacherPipe],
+  imports: [CommonModule, RouterLink, FormsModule , NavbarComponent ,FilterTeacherPipe],
   templateUrl: './teacher-list.component.html',
   styleUrl: './teacher-list.component.css'
 })

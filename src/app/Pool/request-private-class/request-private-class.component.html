@@ -1,42 +1,53 @@
-<section>
-    <div class="container">
-      <div class="row">
-        <div class="card">
-          <h1>{{ requestDetails.pool.name }}</h1>
-          <img
-            [src]="requestDetails.pool.image"
-            [alt]="requestDetails.pool.name"
-            class="img-fluid"
-          />
-          <p>توضیحات: {{ requestDetails.massage }}</p>
-          <p>تعداد افراد: {{ requestDetails.person }}</p>
-          <p>وضعیت پذیرش: 
-            <span *ngIf="requestDetails?.acceptation === true">پذیرفته شده</span>
-            <span *ngIf="requestDetails?.acceptation === false">رد شده</span>
-            <span *ngIf="requestDetails?.acceptation === null">در انتظار بررسی</span>
-          </p>
-  
-         
-          <div *ngIf="userStatus === 'teacher'">
-            <button class="btn btn-success" (click)="acceptRequest(requestDetails.id)" [disabled]="requestDetails.acceptation !== null">Accept</button>
-            <button class="btn btn-danger" (click)="rejectRequest(requestDetails.id)" [disabled]="requestDetails.acceptation !== null">Reject</button>
-            <button class="btn btn-primary" *ngIf="requestDetails.acceptation !== null" (click)="creatClass(requestDetails.id)" >CreatClass</button>
+<section class="align-content-center align-items-center height">
+  <div class="container teacher-list">
+    <div class="row justify-content-center">
+      <div class="col-lg-12 d-flex justify-content-center">
+        <div class="e-card playing">
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+
+          <h2 class="fw-bold my-5 title-request ">استخر {{ requestDetails.pool.name }}</h2>
+
+          <div class="card-image">
+            <img [src]="requestDetails.pool.image" [alt]="requestDetails.pool.name" class="img-fluid" />
           </div>
 
+          <div class="card-content">
+            <strong class=" content-request ">توضیحات:</strong><p class="info-request"> {{ requestDetails.massage }}</p>
+            <p><strong class=" content-request">تعداد افراد:</strong> {{ requestDetails.person }}</p>
+            <p>
+              <strong class=" content-request">وضعیت پذیرش:</strong>
+              <span *ngIf="requestDetails?.acceptation === true" class="text-success fw-bold">پذیرفته شده</span>
+              <span *ngIf="requestDetails?.acceptation === false" class="text-danger fw-bold">رد شده</span>
+              <span *ngIf="requestDetails?.acceptation === null" class="text-warning fw-bold">در انتظار بررسی</span>
+            </p>
 
+            <div *ngIf="userStatus === 'teacher'" class="d-flex gap-2 mt-3 justify-content-center align-content-center">
+              <button class="btn btn-green fw-bold fs-5" (click)="acceptRequest(requestDetails.id)"
+                [disabled]="requestDetails.acceptation !== null">
+                قبول درخواست
+              </button>
+              <button class="btn btn-red fw-bold fs-5" (click)="rejectRequest(requestDetails.id)"
+                [disabled]="requestDetails.acceptation !== null">
+                رد درخواست
+              </button>
+              <a class="btn btn-primary fw-bold fs-5" *ngIf="requestDetails.acceptation !== null"
+                (click)="creatClass(requestDetails.id)" [routerLink]="['/create-private-class:/', requestDetails.id]">
+                ایجاد کلاس
+              </a>
+            </div>
 
-          <div *ngIf="userStatus !== 'teacher'  " >
-            <button (click)="deleteRequest(requestDetails.id)">Delete</button>
+            <div *ngIf="userStatus !== 'teacher'" class="my-3">
+              <button class="btn btn-red fw-bold fs-5" (click)="deleteRequest(requestDetails.id)">حذف درخواست</button>
+            </div>
+
+            <div *ngIf="!requestDetails" class="mt-3">
+              <p class="error">درخواستی موجود نیست.</p>
+            </div>
           </div>
-          
-          
-          
-          <div *ngIf="!requestDetails">
-            <p>No request details available.</p>
-          </div>
-        
         </div>
       </div>
     </div>
-  </section>
-  
+  </div>
+</section>

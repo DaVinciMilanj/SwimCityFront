@@ -3,7 +3,7 @@
   background-color: rgba(26 , 223 , 223 , .5);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  z-index: 10; /* برای نمایش بالاتر از ویدیو */
+  z-index: 5000; /* برای نمایش بالاتر از ویدیو */
   height: 18vh;
 }
 
@@ -16,19 +16,25 @@
 
 .navbar-brand {
   font-weight: bold;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .navbar-toggler {
   border-color: var(--white);
 }
 
-ul li {
-  padding: 0 .5em .25em;
+ul li.nav-item {
+  padding-left: 30px;
+  padding-right: 30px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   transition: .3s;
+  font-size: 1.7rem;
+
 }
+
 
 /* hover */
 .nav-item::before {  
@@ -158,6 +164,7 @@ ul li {
   left: 75%;
   transition-delay: 0.24s;
 }
+/* استایل دکمه منو همبرگری */
 .responsive-btn {
   background-color: var(--white);
   outline: none;
@@ -171,13 +178,13 @@ ul li {
   justify-content: center;
   color: var(--dark-blue);
 }
-
+/* منو سایز موبایل و تبلت */
 .custom-sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  height: 30vh; /* ارتفاع کامل */
-  width: 100%; /* عرض کامل */
+  height: 30vh; 
+  width: 100%;
   background-color: rgba(26 , 223 , 223 , .5);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -236,11 +243,11 @@ ul li {
 }
 
 .custom-sidebar .close-btn:hover {
-  transform: scale(1.1); /* تغییر اندازه هنگام هاور */
+  transform: scale(1.1); 
 }
 
 .custom-sidebar.active {
-  transform: translateY(0); /* نمایش Sidebar */
+  transform: translateY(0); 
 }
 
 .open-btn {
@@ -254,16 +261,34 @@ ul li {
   cursor: pointer;
   font-size: 16px;
 }
-
+/*  custom-sidebar ضربدر منو */
 .close-btn {
   margin-right: 30px;
+}
+/* dropDownMenu */
+.dropdown-item:hover {
+  background-color: rgba(26 , 223 , 223 , .5);
+  
+  
+}
+.btn-toggle {
+  font-size: 1.7rem;
+  color: var(--white); 
+  border: none;
+  font-weight: bold;
+ 
+  
+}
+.btn-toggle:active ,  .btn-toggle:focus{
+  color: var(--white); 
+  
 }
 
 /**** responsive ****/
  /* --- Medium devices (tablets, less than 992px) */
-@media (min-width: 768px) and (max-width: 991.98px) { 
+ @media (min-width: 768px) and (max-width: 991.98px) { 
   .custom-sidebar{
-    height: 45vh;
+    height: 55vh;
   }
   .navbar {
     height: 13vh;
@@ -275,7 +300,7 @@ ul li {
 /* === Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) { 
   .custom-sidebar{
-    height: 45vh;
+    height: 70vh;
   }
   .navbar {
     height: 13vh;
@@ -289,3 +314,61 @@ ul li {
     font-size: 12px; 
   }
  }
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1200px) { 
+  .custom-sidebar{
+    height: 55vh;
+  }
+  ul li {
+    padding: 0 .1em .3em;
+  }
+ 
+  .navbar .blob-btn {
+    padding: 8px 20px;
+    font-size: 16px;
+  }
+  
+  ul li.nav-item {
+    padding-left: 1px;
+    padding-right: 1px;
+    font-size: 1.4rem;
+    margin-left: 2px;
+    margin-right: 2px;
+   
+  
+  }
+  .btn-toggle {
+    font-weight: normal;
+   
+    
+  }
+  
+}
+@media (min-width: 1200px) and (max-width: 1400px) { 
+  .custom-sidebar{
+    height: 55vh;
+  }
+  ul li {
+    padding: 0 .2em .2em;
+  }
+ 
+  .navbar .blob-btn {
+    padding: 8px 25px;
+    font-size: 17px;
+  }
+  
+  ul li.nav-item {
+    padding-left: 12px;
+    padding-right: 12px;
+    font-size: 1.4rem;
+    
+  }
+  .btn-toggle {
+    font-weight: normal;
+   
+    
+  }
+  
+  
+}

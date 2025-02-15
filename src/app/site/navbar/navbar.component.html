@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top">
   <div class="container justify-content-lg-between align-items-center">
-    <button class="blob-btn me-5" routerLink="auth/login" *ngIf="!isLoggedIn">
+    <button class="blob-btn me-1" routerLink="auth/login" *ngIf="!isLoggedIn">
       ورود/ثبت نام
       <span class="blob-btn__inner">
         <span class="blob-btn__blobs">
@@ -11,7 +11,7 @@
         </span>
       </span>
     </button>
-    <button class="blob-btn me-5" routerLink="profile" *ngIf="isLoggedIn">
+    <button class="blob-btn me-1" routerLink="profile" *ngIf="isLoggedIn">
         مشاهده پروفایل 
       <span class="blob-btn__inner">
         <span class="blob-btn__blobs">
@@ -23,41 +23,49 @@
       </span>
     </button>
 
-    <button class="blob-btn me-5" (click)="onLogout()" *ngIf="isLoggedIn">
-      خروج
-      <span class="blob-btn__inner">
-      <span class="blob-btn__blobs">
-        <span class="blob-btn__blob"></span>
-        <span class="blob-btn__blob"></span>
-        <span class="blob-btn__blob"></span>
-        <span class="blob-btn__blob"></span>
-      </span>
-    </span>
-  </button>
     <div class="header-main__wrapper special-background d-none d-lg-block ">
       <ul class="nav justify-content-center align-items-center me-auto mb-2 mb-lg-0">
-        <li class="nav-item px-5 fs-3 hover-4">
-          <a class="nav-link" href="#">مربیان</a>
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/">صفحه اصلی </a>
         </li>
-        <li class="nav-item px-5 fs-3 hover-4">
-          <a class="nav-link" href="#">استخر ها</a>
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/teacher">مربیان</a>
         </li>
-        <li class="nav-item px-5 fs-3 hover-4">
-          <a class="nav-link" href="#">دوره ها</a>
+        <li class="nav-item" *ngIf="!isLoggedIn" >
+          <a class="nav-link" routerLink="/pools"> استخر ها</a>
         </li>
-        <li class="nav-item px-5 fs-3 hover-4">
-          <a class="nav-link" href="#">درباره ما</a>
+        <div class="btn-group" *ngIf="isLoggedIn" >
+          <button type="button" class="btn btn-toggle dropdown-toggle px-lg-5 py-2 " data-bs-toggle="dropdown" aria-expanded="false">
+            دوره ها
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end w-150 ">
+            <li><a class="dropdown-item py-3 fs-5 fw-bold" routerLink="/request-class">درخواست کلاس خصوصی</a></li>
+            <li><a class="dropdown-item py-3 fs-5 fw-bold" routerLink="/pools"> استخر ها</a></li>
+          </ul>
+        </div>
+        <li class="nav-item" *ngIf=" userStatus !='teacher' ">
+          <a class="nav-link" routerLink="/teacher-form">فرم همکاری</a>
         </li>
-        <li class="nav-item px-5 fs-3 hover-4">
-          <a class="nav-link" href="#">ارتباط با ما</a>
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/FAQ"> سوالات متداول</a>
         </li>
-        <li class="nav-item px-5 fs-3 hover-4">
-          <a class="nav-link" href="#">سوالات متداول</a>
+        <div class="btn-group" *ngIf="isLoggedIn" >
+          <button type="button" class="btn btn-toggle dropdown-toggle px-lg-5 py-2 " data-bs-toggle="dropdown" aria-expanded="false">
+              کلاس های من
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end w-100 ">
+            <li><a class="dropdown-item py-3 fs-5 fw-bold" routerLink="/private-class">لیست درخواست ها</a></li>
+            <li><a class="dropdown-item py-3 fs-5 fw-bold" routerLink="/my-private-class">کلاس های خصوصی من</a></li>
+          </ul>
+        </div>
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/about-us" *ngIf="!isLoggedIn">درباره ما </a>
         </li>
+        
       </ul>
     </div>
     <a class="navbar-brand fw-bold fs-1 text-white" href="#">LOGO</a> 
-    
+    <!-- <a (click)="onLogout()" routerLink="auth/login">lkjj</a> -->
     <div class="d-lg-none">
       <button class="responsive-btn" type="button" (click)="openSidebar()">
         <i class="bi bi-list"></i>
@@ -70,11 +78,13 @@
 <div class="custom-sidebar" id="sidebar">
   <button class="close-btn" (click)="closeSidebar()" >×</button>
   <ul class="mt-5">
-    <li><a href="#" class="text-dark">مربیان</a></li>
-    <li><a href="#" class="text-dark">استخر ها</a></li>
-    <li><a href="#" class="text-dark">دوره ها</a></li>
-    <li><a href="#" class="text-dark">درباره ما</a></li>
-    <li><a href="#" class="text-dark">ارتباط با ما</a></li>
-    <li><a href="#" class="text-dark">سوالات متداول</a></li>
+    <li><a routerLink="/" class="text-dark">صفحه اصلی</a></li>
+    <li><a routerLink="/teacher" class="text-dark"> مربیان</a></li>
+    <li><a routerLink="/teacher-form" class="text-dark"> فرم همکاری</a></li>
+    <li><a routerLink="/pools" class="text-dark">استخر ها</a></li>
+    <li *ngIf="!isLoggedIn"><a href="/about-us" class="text-dark" >درباره ما</a></li>
+    <li><a routerLink="/FAQ" class="text-dark"> سوالات متداول</a></li>
+    <li *ngIf="isLoggedIn"><a class="text-dark fw-bold" routerLink="/private-class" >  درخواست کلاس خصوصی</a></li>
+    <li *ngIf="isLoggedIn"><a class="text-dark" routerLink="/my-private-class" >   لیست درخواست ها</a></li>
   </ul>
-</div> 
+</div>

@@ -8,13 +8,13 @@ import { FooterComponent } from "../footer/footer.component";
 import { AboutComponent } from "../about/about.component";
 import { TeachersComponent } from "../teachers/teachers.component";
 import { PoolSectionComponent } from "../pool-section/pool-section.component";
-import { CourseSectionComponent } from "../course-section/course-section.component";
+import { AboutSectionComponent } from "../about-section/about-section.component";
 
 
 @Component({
   selector: 'app-welcome',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, FooterComponent, AboutComponent, TeachersComponent, NavbarComponent, PoolSectionComponent, CourseSectionComponent],
+  imports: [CommonModule, HeaderComponent, AboutComponent, TeachersComponent, PoolSectionComponent, AboutSectionComponent],
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.css'
 })
