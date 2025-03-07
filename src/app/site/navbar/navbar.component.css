@@ -1,6 +1,6 @@
 /* navbar */
 .navbar {
-  background-color: rgba(26 , 223 , 223 , .5);
+  background-color: #1adfdf80;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   z-index: 5000; /* برای نمایش بالاتر از ویدیو */
@@ -65,7 +65,7 @@ ul li.nav-item {
 .navbar .blob-btn {
   z-index: 1;
   position: relative;
-  padding: 10px 30px;
+  padding: 8px 25px;
   margin-bottom: 0;
   text-align: center;
   text-transform: uppercase;
@@ -183,7 +183,7 @@ ul li.nav-item {
   position: fixed;
   top: 0;
   left: 0;
-  height: 30vh; 
+  height: 25vh; 
   width: 100%;
   background-color: rgba(26 , 223 , 223 , .5);
   -webkit-backdrop-filter: blur(10px);
@@ -193,7 +193,8 @@ ul li.nav-item {
   transition: transform 0.4s ease-in-out; /* انیمیشن برای باز شدن */
   overflow-y: auto; /* برای اسکرول اگر محتوا زیاد باشد */
   text-align: right; /* راست‌چین کردن متن */
-  padding: 25px 45px; /* فاصله داخلی */
+  padding: 150px 45px; /* فاصله داخلی */
+ 
 }
 
 .custom-sidebar ul {
@@ -233,13 +234,15 @@ ul li.nav-item {
   position: absolute;
   top: 10px;
   right: 20px;
-  font-size: 24px; 
+  font-size: 50px; 
   font-weight: bold; 
   background: none; 
   border: none; 
   color: var(--white); 
   cursor: pointer;
   transition: transform 0.3s ease;
+  margin-right: 30px;
+  margin-top: 140px;
 }
 
 .custom-sidebar .close-btn:hover {
@@ -261,10 +264,7 @@ ul li.nav-item {
   cursor: pointer;
   font-size: 16px;
 }
-/*  custom-sidebar ضربدر منو */
-.close-btn {
-  margin-right: 30px;
-}
+
 /* dropDownMenu */
 .dropdown-item:hover {
   background-color: rgba(26 , 223 , 223 , .5);
@@ -288,7 +288,9 @@ ul li.nav-item {
  /* --- Medium devices (tablets, less than 992px) */
  @media (min-width: 768px) and (max-width: 991.98px) { 
   .custom-sidebar{
-    height: 55vh;
+    height: 65vh;
+    padding: 135px 45px; /* فاصله داخلی */
+
   }
   .navbar {
     height: 13vh;
@@ -296,14 +298,19 @@ ul li.nav-item {
   .responsive-btn{
     margin-right: 50px;
   }
+  .custom-sidebar .close-btn {
+    margin-top: 115px;
+  }
  }
 /* === Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) { 
   .custom-sidebar{
-    height: 70vh;
+    height: 75vh;
+    padding: 80px 45px; /* فاصله داخلی */
+
   }
   .navbar {
-    height: 13vh;
+    height: 11vh;
   }
   .responsive-btn{
     font-size: 2rem;
@@ -313,12 +320,18 @@ ul li.nav-item {
   .navbar .blob-btn {  
     font-size: 12px; 
   }
+  .custom-sidebar .close-btn {
+    margin-top: 70px;
+  }
  }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1200px) { 
+  .navbar {
+    height: 11vh;
+  }
   .custom-sidebar{
-    height: 55vh;
+    height: 35vh;
   }
   ul li {
     padding: 0 .1em .3em;
@@ -343,9 +356,14 @@ ul li.nav-item {
    
     
   }
+
+  
   
 }
 @media (min-width: 1200px) and (max-width: 1400px) { 
+  .navbar {
+    height: 11vh;
+  }
   .custom-sidebar{
     height: 55vh;
   }
@@ -371,4 +389,7 @@ ul li.nav-item {
   }
   
   
+} 
+.logo{
+  width: 18rem;
 }

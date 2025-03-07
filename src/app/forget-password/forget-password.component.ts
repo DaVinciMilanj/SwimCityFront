@@ -50,11 +50,16 @@ export class ForgetPasswordComponent {
     this.forgotPasswordService.resetPassword(this.phone, this.recoveryCode.trim(), this.newPassword).subscribe({
       next: () => {
         alert('رمز عبور با موفقیت تغییر کرد!');
-        this.router.navigate(['/login']);
+        this.router.navigate(['auth/login']);
       },
       error: () => {
         alert('خطا در تنظیم رمز عبور جدید');
       }
     });
+  }
+
+
+  backStep(){
+    this.step == 1
   }
 }

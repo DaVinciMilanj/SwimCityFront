@@ -42,7 +42,7 @@
                         <strong class="content-request "> ساعت شروع دوره :</strong>
                         <p class="fs-5 fw-bold">{{class.start_time}}</p>
 
-                        <button class="btn btn-login">پرداخت</button>
+                        <button class="btn btn-login" *ngIf="class.paid == false">پرداخت</button>
                     </div>
 
                     <div *ngIf="userStatus=='teacher' ">
@@ -51,6 +51,14 @@
 
                         <strong class="content-request"> کاربر:</strong>
                         <p class="fs-5 fw-bold">{{class.user.first_name}}&nbsp;{{class.user.last_name}}</p>
+                        <strong class="content-request ">وضعیت پرداختی :</strong>
+                        <p class="fs-5 fw-bold">{{class.paid | paid}}</p>
+
+                        <strong class="content-request "> تاریخ شروع دوره :</strong>
+                        <p class="fs-5 fw-bold">{{class.start_date}}</p>
+
+                        <strong class="content-request "> ساعت شروع دوره :</strong>
+                        <p class="fs-5 fw-bold">{{class.start_time}}</p>
 
 
 
@@ -58,5 +66,63 @@
                 </div>
             </div>
         </div>
+        <br>
+        <div class="col-lg-3 col-md-4 col-6 mb-4" *ngFor="let course of myCourse ">
+            <div class="e-card playing">
+                <!-- <!-- <div class="content"> -->
+                    <div *ngIf="userStatus!='teacher'">
+                        <strong class="content-request "> کد دوره:</strong>
+                        <p class="fs-5 fw-bold">استخر&nbsp;{{course.course.code}}&nbsp;</p>
+
+                        <strong class="content-request "> مربی:</strong>
+                        <p class="fs-5 fw-bold">{{course.course.teacher}}</p>
+                        
+                        <strong class="content-request ">محل برگذاری :</strong>
+                        <p class="fs-5 fw-bold">{{course.course.pool}}</p>
+                        
+                        <strong class="content-request ">قیمت دوره :</strong>
+                        <p class="fs-5 fw-bold">{{course.course.price }}&nbsp;تومان</p>
+
+                        
+
+                        <strong class="content-request "> تاریخ شروع و پایان دوره :</strong>
+                        <p class="fs-5 fw-bold">{{course.course.start}}</p>
+                        <p class="fs-5 fw-bold">{{course.course.end}}</p>
+                        
+
+
+                        <strong class="content-request "> ساعت شروع و پایان :</strong>
+                        <p class="fs-5 fw-bold">{{course.course.start_clock}}</p>
+                        <p class="fs-5 fw-bold">{{course.course.end_clock}}</p>
+
+                    </div>
+
+                    <!-- <div *ngIf="userStatus=='teacher' ">
+                        <strong class="content-request "> محل برگزاری:</strong>
+                        <p class="fs-5 fw-bold">استخر&nbsp;{{class.pool}}&nbsp;</p>
+
+                        <strong class="content-request"> کاربر:</strong>
+                        <p class="fs-5 fw-bold">{{class.user.first_name}}&nbsp;{{class.user.last_name}}</p>
+                        <strong class="content-request ">وضعیت پرداختی :</strong>
+                        <p class="fs-5 fw-bold">{{class.paid | paid}}</p>
+
+                        <strong class="content-request "> تاریخ شروع دوره :</strong>
+                        <p class="fs-5 fw-bold">{{class.start_date}}</p>
+
+                        <strong class="content-request "> ساعت شروع دوره :</strong>
+                        <p class="fs-5 fw-bold">{{class.start_time}}</p>
+
+
+
+                    </div> -->
+                </div> -->
+            </div>
+        </div>
+        
     </div>
-</div>
+
+    <div *ngIf="!privateClass || !myCourse" class="row">
+        <p class="error">کلاس موجود نیست.</p>
+      </div>
+
+    

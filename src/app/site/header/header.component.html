@@ -3,12 +3,46 @@
     <source src="../../../assets/videos/Swim School  Swim Lessons  Goldfish Swim School.mov" type="video/mp4" />
     مرورگر شما از ویدیو پشتیبانی نمی‌کند.
   </video>
-  <nav class="navbar navbar-expand-lg color h-100">
-    <!-- محتوای نوبار -->
-  </nav>
-  <!-- <div class="header-content text-center text-white">
-    <div class="btn draw-border">
-      
+
+  <div class="content">
+    <div *ngIf="!isLoggedIn">
+      <h1 class="p-3 pt-5 mb-3 text-white fw-bold">
+        قهرمان امروز , جایی که رویاها به حرکت درمی‌آیند
+      </h1>
+      <p class=" pb-3 pt-2">
+        ما در قلب مشهد، جایی که عزم و اراده با تلاش و تمرین گره می‌خورد، با مربیان مجرب و امکانات حرفه‌ای، مسیر قهرمانی را هموار می‌کنیم. اینجا، هر حرکت یک قدم به سوی افتخار است،هر تمرین پلی برای رسیدن به اوج، و هر نفس، یادآور این است که شما قهرمان امروزید.
+      </p>
+      <button class="blob-btn mb-5" routerLink="auth/signup">
+        به ما بپیوندید
+        <span class="blob-btn__inner">
+          <span class="blob-btn__blobs">
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+          </span>
+        </span>
+      </button>
     </div>
-  </div> -->
+    <div *ngIf="isLoggedIn">
+      <h1 class="p-3 pt-5 mb-3 text-white fw-bold">
+        قهرمان امروز تویی , {{firstName}} {{lastName}}
+      </h1>
+      <p class=" pb-3 pt-2">
+        ما در قلب مشهد، جایی که عزم و اراده با تلاش و تمرین گره می‌خورد، با مربیان مجرب و امکانات حرفه‌ای، مسیر قهرمانی را هموار می‌کنیم. اینجا، هر حرکت یک قدم به سوی افتخار است،هر تمرین پلی برای رسیدن به اوج، و هر نفس، یادآور این است که شما قهرمان امروزید.
+      </p>
+      <button class="blob-btn mb-5" routerLink="/profile">
+        پروفایل
+        <span class="blob-btn__inner">
+          <span class="blob-btn__blobs">
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+          </span>
+        </span>
+      </button>
+
+    </div>
+  </div>
 </div>

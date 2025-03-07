@@ -12,8 +12,20 @@
                         <strong class="content-request "> مربی:</strong>
                         <p class="fs-5 fw-bold">{{courseDetails.teacher}}</p>
 
-                        <strong class="content-request ">قیمت دوره :</strong>
-                        <p class="fs-5 fw-bold">{{courseDetails.price }}&nbsp;تومان</p>
+                        <div *ngIf="discount == null">
+                          <strong class="content-request ">قیمت دوره :</strong>
+                          <p *ngIf="discount == null" class="fs-5 fw-bold">{{courseDetails.total_price }}&nbsp;تومان</p>
+                          <p *ngIf="discount != null" class="fs-5 fw-bold">{{courseDetails.price }}&nbsp;تومان</p>
+                        </div>
+
+                        <div *ngIf="discount != null">
+                          <strong class="content-request ">قیمت دوره :</strong>
+                          <p class="fs-5 fw-bold text-decoration-line-through">{{courseDetails.price }}&nbsp;تومان</p>
+                          <p class="fs-5 fw-bold">{{ finalPrice }}&nbsp;تومان</p>
+
+                          
+                        </div>
+                          
 
                         <strong class="content-request "> تاریخ شروع دوره :</strong>
                         <p class="fs-5 fw-bold">{{courseDetails.start}}</p>
@@ -30,7 +42,7 @@
                         </div>
 
 
-                        <button class="btn btn-login">پرداخت</button>
+                        <button class="btn btn-login" (click)="paidCouse()">ثبت نام</button>
                     </div>
                 </div>
             </div>

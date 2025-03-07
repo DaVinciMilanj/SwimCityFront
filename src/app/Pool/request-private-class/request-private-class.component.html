@@ -7,13 +7,15 @@
           <div class="wave"></div>
           <div class="wave"></div>
 
-          <h2 class="fw-bold my-5 title-request ">استخر {{ requestDetails.pool.name }}</h2>
+          <h2 class="fw-bold my-5 title-request ">{{ requestDetails.pool.name }}</h2>
+          
 
           <div class="card-image">
             <img [src]="requestDetails.pool.image" [alt]="requestDetails.pool.name" class="img-fluid" />
           </div>
 
           <div class="card-content">
+            <strong class="content-request">کاربر</strong><p class="info-request">{{ requestDetails.user.first_name }} {{ requestDetails.user.last_name}}</p>
             <strong class=" content-request ">توضیحات:</strong><p class="info-request"> {{ requestDetails.massage }}</p>
             <p><strong class=" content-request">تعداد افراد:</strong> {{ requestDetails.person }}</p>
             <p>

@@ -20,7 +20,7 @@ export const onlyTeacherGuard: CanActivateFn = (route, state) => {
       },
       (error) => {
         console.error('Error fetching profile:', error);
-        router.navigate(['/login']); // هدایت به صفحه ورود در صورت بروز خطا
+        router.navigate(['auth/login']); 
         resolve(false);
       }
     );

@@ -15,7 +15,7 @@
           <div class="card-content d-flex flex-column justify-content-center">
             <h3 class="fw-bold mb-lg-5 fs-1 pool-name mt-5 mt-lg-0">استخر&nbsp;{{pool.name}}</h3>
             <p class="text py-3 fs-4 w-50"><strong class="pool-info">آدرس :</strong> {{pool.address}}</p>
-            <p class="text py-3 fs-4"><strong class="pool-info">جنسیت :</strong>
+            <p class="text py-3 fs-4"><strong class="pool-info">شیفت :</strong>
               <span *ngIf="pool.gender === 'male'">
                 مردانه
               </span>
@@ -76,8 +76,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let course of displayedCourses | searchTable : searchText | filterCoursePrice : sortOrder">
-              <td>{{ course.id }}</td>
-              <td>{{ course.teacher }}</td>
+              <td>{{ course.code }}</td>
+              <td>{{ course.teacher.first_name }} {{course.teacher.last_name}}</td>
               <td>{{ course.start_clock }}</td>
               <td>{{ course.end_clock }}</td>
               <td>{{ course.start }}</td>
@@ -86,7 +86,7 @@
               <td>{{ course.discount }}</td>
               <td>{{ course.total_price }}</td>
               <td>{{course.register_count}}/{{course.limit_register}}</td>
-              <td><button (click)="courseDetail(course.id)" class="btn btn-primary">ثبت نام </button></td>
+              <td><button [disabled]="myID == course.id" (click)="courseDetail(course.id)" class="btn btn-primary">ثبت نام </button></td>
             </tr>
           </tbody>
         </table>

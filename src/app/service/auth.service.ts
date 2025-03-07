@@ -54,12 +54,11 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.clear();  
+    localStorage.removeItem('authToken');
     sessionStorage.clear(); 
-    this.router.navigate(['auth/login']).then(() => {
-      window.location.reload(); // Optional: to fully reset the app state
-    });
-  }
+    this.router.navigate(['/auth/login']);
+}
+
 
   isLoggedIn(): boolean {
     return this.getToken() !== null;
