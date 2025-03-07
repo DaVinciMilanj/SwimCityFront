@@ -14,8 +14,8 @@ interface LoginResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl: string = 'http://127.0.0.1:8000/accounts/login/';
-  private signupUrl: string = 'http://127.0.0.1:8000/accounts/signup/';
+  private loginUrl: string = 'http://0.0.0.0:8000/accounts/login/';
+  private signupUrl: string = 'http://0.0.0.0:8000/accounts/signup/';
 
   constructor(private http: HttpClient, private router: Router) {}
 
