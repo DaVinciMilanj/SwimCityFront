@@ -40,14 +40,16 @@ export class TeacherDetailsComponent implements OnInit {
 
 
 
-    this._service.getProfile().subscribe((response)=>{
-      console.log(response[0].status);
-      this.userStatus = response[0].status;
-      
-      
-     
-      
-    })
+    if(this.loggedIn){
+      this._service.getProfile().subscribe((response)=>{
+        console.log(response[0].status);
+        this.userStatus = response[0].status;
+        
+        
+       
+        
+      })
+    }
     
     this._service.getTeacherDetails(this.teacherId).subscribe(
       (data: Teacher) => {

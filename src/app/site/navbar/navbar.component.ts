@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
   }
   openSidebar() {
     const sidebar = document.getElementById('sidebar');
-    sidebar?.classList.add('active');
+    sidebar?.classList.toggle('active');
   }
 
   closeSidebar() {
@@ -47,14 +47,16 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn(); 
    
-    this._service.getProfile().subscribe((response)=>{
-      console.log(response[0].status);
-      this.userStatus = response[0].status;
-      
-      
-     
-      
-    })
+    if(this.isLoggedIn){
+      this._service.getProfile().subscribe((response)=>{
+        console.log(response[0].status);
+        this.userStatus = response[0].status;
+        
+        
+       
+        
+      })
+    }
   }
   onLogout(): void {
     this.authService.logout();

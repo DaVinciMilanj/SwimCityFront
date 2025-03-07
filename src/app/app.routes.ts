@@ -26,7 +26,7 @@ import { FAQComponent } from './FAQ/faq/faq.component';
 import { AboutUsComponent } from './aboutUs/about-us/about-us.component';
 
 export const routes: Routes = [
-    {path : '' , component:WelcomeComponent},
+    {path :'', component:WelcomeComponent},
     {path:'about-us' , component : AboutUsComponent} , 
     {path:'FAQ' , component : FAQComponent} ,
     {path : 'auth' , component:AuthComponent , children:[

@@ -7,7 +7,7 @@ import { HttpService } from '../../service/http.service';
 @Component({
   selector: 'app-create-private-class',
   standalone: true,
-  imports: [FormsModule , RouterModule , RouterLink],
+  imports: [FormsModule , RouterModule ],
   templateUrl: './create-private-class.component.html',
   styleUrl: './create-private-class.component.css'
 })

@@ -1,7 +1,10 @@
+import { Teacher } from "../users/teacher.model";
+
 export interface courseEntity{
     id:number ,
+    code : any ,
     pool:string,
-    teacher:string,
+    teacher:Teacher,
     start:string,
     end:string,
     start_clock:string,

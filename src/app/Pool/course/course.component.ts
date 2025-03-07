@@ -8,6 +8,8 @@ import { poolsEntity } from '../../model/pool-model/pools.model';
 import { SearchTablePipe } from '../../pip/search-table.pipe';
 import { FormsModule } from '@angular/forms';
 import { FilterCoursePricePipe } from '../../pip/filter-course-price.pipe';
+import { MyCourse } from '../../model/pool-model/my-course.model';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-course',
@@ -23,20 +25,22 @@ export class CourseComponent implements OnInit {
   poolId: number ;
   searchText: string = '';
   sortOrder : string = '' ;
-
+  myCourse : MyCourse[];
+  loggedIn : boolean;
+  myID : number;
   // Pagination variables
   displayedCourses: courseEntity[];
   currentPage: number = 0;
   pageSize: number = 4; // تعداد سطرها در هر صفحه
   totalPages: number = 0;
 
-  constructor(private http: HttpService, private route: ActivatedRoute ,private router : Router) {}
+  constructor(private http: HttpService, private authService : AuthService ,private route: ActivatedRoute ,private router : Router) {}
 
   ngOnInit() {
     this.poolId = Number(this.route.snapshot.paramMap.get('poolId'));
-
+    this.loggedIn = this.authService.isLoggedIn()
     if (this.poolId) {
-      // دریافت داده‌ها
+      
       this.http.getCourse(this.poolId).subscribe((data: courseEntity[]) => {
         this.courses = data;
         
@@ -49,10 +53,36 @@ export class CourseComponent implements OnInit {
         this.pool = res;
         
       });
+      
+    }
+      if (this.loggedIn) {
+       this.http.myCourse().subscribe((response) => {
+          this.myCourse = response;
+          console.log(this.myCourse);
+
+          // انجام مقایسه پس از دریافت داده‌ها
+          this.updateMyCourses();
+      });
+  }
+
+    
+    
+  }
+
+  updateMyCourses() {
+    if (this.myCourse && this.courses) {
+        this.myCourse.forEach((course) => {
+            const matchedCourse = this.courses.find(cls => cls.id === course.course.id);
+            if (matchedCourse) {
+                this.myID = matchedCourse.id;
+                console.log(course.course.id);
+            }
+        });
     }
   }
 
-  // به‌روزرسانی سطرهای جدول برای صفحه‌بندی
+  
+
   updateDisplayedCourses() {
     const startIndex = this.currentPage * this.pageSize;
     const endIndex = startIndex + this.pageSize;
@@ -69,7 +99,7 @@ export class CourseComponent implements OnInit {
   onSearch() {
     const searchLowerCase = this.searchText.toLowerCase();
     this.filteredCourses = this.courses.filter(course =>
-      course.teacher.toLowerCase().includes(searchLowerCase) || 
+      course.teacher.last_name.toLowerCase().includes(searchLowerCase) || 
       course.id.toString().includes(this.searchText)
     );
     this.currentPage = 0; // بازگشت به صفحه اول

@@ -4,6 +4,7 @@ import { PrivateClass } from '../../model/pool-model/private-class.model';
 import { CommonModule } from '@angular/common';
 import { PaidPipe } from '../../pip/paid.pipe';
 import { RouterLink, RouterModule } from '@angular/router';
+import { MyCourse } from '../../model/pool-model/my-course.model';
 
 @Component({
   selector: 'app-user-private-classes',
@@ -15,6 +16,7 @@ import { RouterLink, RouterModule } from '@angular/router';
 export class UserPrivateClassesComponent implements OnInit {
 
   privateClass : PrivateClass[];
+  myCourse : MyCourse[];
 
   userStatus : any ;
   
@@ -25,6 +27,12 @@ export class UserPrivateClassesComponent implements OnInit {
   ngOnInit(): void {
     this._service.showUserPrivateClass().subscribe((response:PrivateClass[])=>{
       this.privateClass = response
+      
+    })
+
+    this._service.myCourse().subscribe((response)=>{
+      this.myCourse = response
+      console.log(this.myCourse);
       
     })
 

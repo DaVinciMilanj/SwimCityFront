@@ -53,4 +53,21 @@ export class CourseRegisterComponent implements OnInit {
     );
   }
 
+  paidCouse(){
+    if(this.finalPrice){
+      this._sevice.paidCourseWithPrice(this.courseId , this.poolId , this.finalPrice).subscribe((response)=>{
+        console.log(response);
+       
+      })
+
+    }
+    this._sevice.paidCourse(this.courseId , this.poolId).subscribe((response)=>{
+      console.log(response);
+      
+
+      
+    })
+
+  }
+
 }

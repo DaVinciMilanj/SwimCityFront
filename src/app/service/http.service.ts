@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { privateClassRequestEntity } from '../model/pool-model/private-class-request.model';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { PrivateClass } from '../model/pool-model/private-class.model';
+import { MyCourse } from '../model/pool-model/my-course.model';
 
 
 @Injectable({
@@ -49,7 +50,7 @@ export class HttpService {
     const token = localStorage.getItem('authToken');
     if (!token) {
       console.error('No token found, redirecting to login...');
-      this.router.navigate(['/login']); 
+      this.router.navigate(['auth/login']); 
       return new HttpHeaders(); // بازگشت یک هدر خالی
     }
     return new HttpHeaders({
@@ -70,13 +71,13 @@ export class HttpService {
   
 
   getTeacher(): Observable<Teacher[]> {
-    const headers = this.getAuthHeaders();
-    return this.http.get<Teacher[]>(`${this.apiBase}accounts/teacher/` , {headers});
+    // const headers = this.getAuthHeaders();
+    return this.http.get<Teacher[]>(`${this.apiBase}accounts/teacher/`);
   }
 
   getTeacherDetails(id: number): Observable<Teacher> {
-    const headers = this.getAuthHeaders();
-    return this.http.get<Teacher>(`${this.apiBase}accounts/teacher/${id}/` , {headers});
+    // const headers = this.getAuthHeaders();
+    return this.http.get<Teacher>(`${this.apiBase}accounts/teacher/${id}/` );
   }
   rateTeacher(id: number, rate: number): Observable<any> {
     const headers = this.getAuthHeaders(); 
@@ -139,6 +140,20 @@ export class HttpService {
   checkCoupon(couponCode: string , courseId: number,  poolId:number): Observable<any> {
     const headers = this.getAuthHeaders();
     return this.http.post(`${this.apiBase}pools/pool/${poolId}/course/${courseId}/check_coupon/`, { coupon_code: couponCode }, { headers });
+  }
+
+  paidCourse(poolId:number , couseId:number):Observable<any>{
+    const headers = this.getAuthHeaders();
+    return this.http.post(`${this.apiBase}/pools/pool/1/course/1/paid/`,{},{ headers });
+  }
+  paidCourseWithPrice(poolId:number , couseId:number , price:number):Observable<any>{
+    const headers = this.getAuthHeaders();
+    return this.http.post(`${this.apiBase}/pools/pool/${poolId}/course/${couseId}/paid/`,{price} ,{ headers } );
+  }
+
+  myCourse():Observable<MyCourse[]>{
+    const headers = this.getAuthHeaders();
+    return this.http.get<MyCourse[]>(`${this.apiBase}/pools/my-course/`,{headers})
   }
 
 }

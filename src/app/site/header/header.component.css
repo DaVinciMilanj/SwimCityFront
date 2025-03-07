@@ -3,6 +3,9 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  justify-content: center;  
+  align-items: center;    
 }
 
 .background-video {
@@ -15,75 +18,176 @@
   z-index: 1;
   border-radius: 0 0 20% 20%;
 }
-/* .header-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-}
 
-.header::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--light-blue);
-  z-index: 0;
-}
-
- */
-
- .header {
+.content {
+  text-align: center;
+  background-color: rgba(0, 189, 214, 0.7);
+  z-index: 10;
+  border-radius: 1.3rem;
+  padding: 20px;
   position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  max-width: 100%;
+  width: 50%;
+  box-sizing: border-box;
+}
+.content p {
+  font-size: 1.7rem; 
 }
 
-.background-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-  border-radius: 0 0 20% 20%;
-}
-/* .header-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
+h1 {
+  font-size: 2.3rem; 
 }
 
-.header::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--light-blue);
-  z-index: 0;
+button.blob-btn {
+  font-size: 20px; 
 }
-
- */
-
-/**** responsive ****/
- /* --- Medium devices (tablets, less than 992px) */
- @media (min-width: 768px) and (max-width: 991.98px) { 
+@media (min-width: 768px) and (max-width: 991.98px) { 
   .header {
-    height: 65vh;
+    height: 60vh; 
   }
- }
-/* === Small devices (landscape phones, less than 768px) */
+
+  .content {
+    width: 70%; 
+    padding: 20px;
+  }
+
+  .content p {
+    font-size: 1.4rem; 
+  }
+
+  h1 {
+    font-size: 2.3rem; 
+  }
+  
+  button.blob-btn {
+    font-size: 14px; 
+  }
+}
+
 @media (max-width: 767.98px) { 
   .header {
-    height: 65vh;
+    height: 75vh; 
   }
- }
+
+  .content {
+    margin-top: 10vh;
+    padding: 10px;
+    height: 50%; 
+    width: 80%;
+  }
+
+  .content p {
+    font-size: 1.4rem; 
+  }
+
+  h1 {
+    font-size: 2.3rem; 
+  }
+  
+  button.blob-btn {
+    font-size: 14px; 
+  }
+}
+
+.blob-btn {
+  z-index: 1;
+  position: relative;
+  padding: 10px 30px;
+  margin-bottom: 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--dark-blue);
+  font-size: 16px;
+  font-weight: bold;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  transition: color 0.5s;
+  cursor: pointer;
+  border-radius: 30px;
+}
+
+.blob-btn:before, .navbar .blob-btn:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+}
+
+.blob-btn:before {
+  z-index: 1;
+  left: 0;
+  top: 0;
+  border: 2px solid var(--dark-blue);
+}
+
+.blob-btn:after {
+  z-index: -2;
+  left: 3px;
+  top: 3px;
+  transition: all 0.3s 0.2s;
+}
+
+.blob-btn:hover {
+  color: var(--white);
+}
+
+.blob-btn:hover:after {
+  left: 0;
+  top: 0;
+}
+
+.blob-btn__inner {
+  z-index: -1;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  background: var(--white);
+}
+
+.blob-btn__blobs {
+  position: relative;
+  display: block;
+  height: 100%;
+  filter: url('#goo');
+}
+
+.blob-btn__blob {
+  position: absolute;
+  top: 2px;
+  width: 25%;
+  height: 100%;
+  background: var(--dark-blue);
+  border-radius: 100%;
+  transform: translate3d(0, 150%, 0) scale(1.4);
+  transition: transform 0.45s;
+}
+
+.blob-btn:hover .blob-btn__blob {
+  transform: translateZ(0) scale(1.4);
+}
+
+.blob-btn__blob:nth-child(1) {
+  left: 0;
+  transition-delay: 0s;
+}
+
+.blob-btn__blob:nth-child(2) {
+  left: 25%;
+  transition-delay: 0.08s;
+}
+
+.blob-btn__blob:nth-child(3) {
+  left: 50%;
+  transition-delay: 0.16s;
+}
+
+.blob-btn__blob:nth-child(4) {
+  left: 75%;
+  transition-delay: 0.24s;
+}
