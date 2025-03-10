@@ -20,9 +20,9 @@ export class HttpService {
  
 
   constructor(private http : HttpClient , private router : Router) { }
-  apiBase : string = 'https://qahramananemrooz.com/'
+  apiBase : string = 'https://qahramananemrooz.com/api/'
 
-  profileUrl : string = 'https://qahramananemrooz.com/accounts/profile/';
+  profileUrl : string = 'https://qahramananemrooz.com/api/accounts/profile/';
 
 
   getPools(): Observable<poolsEntity[]> {
