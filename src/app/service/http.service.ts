@@ -20,9 +20,9 @@ export class HttpService {
  
 
   constructor(private http : HttpClient , private router : Router) { }
-  apiBase : string = 'http://0.0.0.0:8000/'
+  apiBase : string = 'http://127.0.0.1:8000/'
 
-  profileUrl : string = 'http://0.0.0.0:8000/accounts/profile/';
+  profileUrl : string = 'http://127.0.0.1:8000/accounts/profile/';
 
 
   getPools(): Observable<poolsEntity[]> {
