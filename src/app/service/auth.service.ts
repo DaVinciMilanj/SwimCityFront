@@ -14,8 +14,8 @@ interface LoginResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl: string = 'https://api.qahramananemrooz.com/accounts/login/';
-  private signupUrl: string = 'https://api.qahramananemrooz.com/accounts/signup/';
+  private loginUrl: string = 'https://qahramananemrooz.com/api/accounts/login/';
+  private signupUrl: string = 'https://qahramananemrooz.com/api/accounts/signup/';
 
   constructor(private http: HttpClient, private router: Router) {}
 
