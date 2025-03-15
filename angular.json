@@ -31,9 +31,11 @@
               "outputHashing": "all"
             },
             "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true,
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true,
+              "aot": true,
+              "buildOptimizer": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
