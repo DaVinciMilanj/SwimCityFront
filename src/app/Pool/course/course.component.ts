@@ -33,6 +33,7 @@ export class CourseComponent implements OnInit {
   currentPage: number = 0;
   pageSize: number = 4; // تعداد سطرها در هر صفحه
   totalPages: number = 0;
+  userStatus : any ;
 
   constructor(private http: HttpService, private authService : AuthService ,private route: ActivatedRoute ,private router : Router) {}
 
@@ -56,14 +57,23 @@ export class CourseComponent implements OnInit {
       
     }
       if (this.loggedIn) {
-       this.http.myCourse().subscribe((response) => {
-          this.myCourse = response;
-          console.log(this.myCourse);
+      this.http.getProfile().subscribe((response)=>{
+        console.log(response[0].status);
+        this.userStatus = response[0].status;
+        
+        
+       
+        
+      })  
+    }
 
-          // انجام مقایسه پس از دریافت داده‌ها
-          this.updateMyCourses();
-      });
-  }
+    if (this.userStatus != 'teacher'){
+      this.http.myCourse().subscribe((response) => {
+        this.myCourse = response;
+        console.log(this.myCourse);
+        this.updateMyCourses();
+    });
+    }
 
     
     
