@@ -50,7 +50,7 @@
             <p>{{ request.id }}</p>
 
             <strong class="content-request">نام مربی:</strong>
-            <p>{{ request.teacher.first_name }} {{ request.teacher.last_name }}</p>
+            <p>{{ request.teacher.first_name }} {{ request.teacher.last_name }} -- <span *ngIf="request.acceptation === true" >{{request.teacher.phone}}</span></p>
 
             <strong class="content-request">نام استخر:</strong>
             <p>{{ request.pool.name }}</p>
