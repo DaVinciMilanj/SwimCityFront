@@ -10,7 +10,7 @@
                         <p class="fs-5 fw-bold">استخر&nbsp;{{courseDetails.pool}}&nbsp;</p>
 
                         <strong class="content-request "> مربی:</strong>
-                        <p class="fs-5 fw-bold">{{courseDetails.teacher}}</p>
+                        <p class="fs-5 fw-bold">{{courseDetails.teacher.first_name}} {{ courseDetails.teacher.last_name }}</p>
 
                         <div *ngIf="discount == null">
                           <strong class="content-request ">قیمت دوره :</strong>
@@ -25,6 +25,8 @@
 
                           
                         </div>
+                        
+                        <strong class="content-request">{{courseDetails.title}}</strong>
                           
 
                         <strong class="content-request "> تاریخ شروع دوره :</strong>

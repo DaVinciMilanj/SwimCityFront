@@ -3,11 +3,12 @@ import { HttpService } from '../../service/http.service';
 import { poolsEntity } from '../../model/pool-model/pools.model';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { GenderPipe } from '../../pip/gender.pipe';
 
 @Component({
   selector: 'app-pool-section',
   standalone: true,
-  imports: [CommonModule , RouterLink],
+  imports: [CommonModule , RouterLink , GenderPipe],
   templateUrl: './pool-section.component.html',
   styleUrl: './pool-section.component.css'
 })

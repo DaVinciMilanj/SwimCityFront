@@ -1,0 +1,44 @@
+<section>
+    <div class="container justify-content-center align-items-center">
+        <!-- عنوان -->
+        <div class="row mb-4">
+            <div class="col-12 text-start title">
+                <h2>استخر های تفریحی</h2>
+            </div>
+        </div>
+
+        <!-- کارت‌های استخر -->
+        <div class="row ms-lg-0 ms-md-5">
+            <div class="col-md-6 col-lg-3 col-6" *ngFor="let pool of allPools">
+                <div class="hover-card">
+                    <img class="img-fluid" [src]="pool.image" alt="{{ pool.name }}">
+                    <div class="hover-overlay">
+                        <div class="hover-content">
+                            <h5 class="fw-bold fs-3">استخر {{ pool.name }}</h5>
+                            <small class="my-2">{{ pool.gender | gender }}</small>
+                            <p class="fw-bold fs-3 text-dark">{{ pool.address }}</p>
+                            <a  class="btn btn-readmore" [routerLink]="['/public-pools', pool.id, 'tickets']" routerLinkActive="router-link-active" >اطلاعات بیشتر</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- دکمه نمایش بیشتر -->
+        <div class="row mt-4">
+            <div class="col-12 text-end">
+                <button class="blob-btn me-5" [routerLink]="['/public-pools']">
+                    دیدن استخر های بیشتر
+                    <span class="blob-btn__inner">
+                        <span class="blob-btn__blobs">
+                            <span class="blob-btn__blob"></span>
+                            <span class="blob-btn__blob"></span>
+                            <span class="blob-btn__blob"></span>
+                            <span class="blob-btn__blob"></span>
+                        </span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

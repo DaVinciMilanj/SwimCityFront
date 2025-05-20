@@ -1,0 +1,23 @@
+<section class="hight  justify-content-center align-items-center align-content-center mt-5">
+    <div class="row justify-content-center align-items-center align-content-center">
+        <div class="container d-flex justify-content-center align-items-center align-content-center">
+          <div class="col-lg-3 col-md-4 col-6 mb-4">
+            <div class="e-card playing">
+                <div class="content">
+                    <div>
+                        <h2 class=" fw-bold"> نتیجه پرداخت</h2>
+                        <p class="fs-5 my-4 content-request">&nbsp;{{ message }}&nbsp;</p>
+                        <div *ngIf="ref_id">
+                          <p class="fs-5 fw-bold mt-5"><span class="">کد رهگیری:</span>   <strong class="content-request">{{ ref_id }}</strong></p>
+                        </div>
+                        <small>
+                          تشکر از اعتماد شما
+                        </small>
+                    </div>  
+                </div>
+            </div>
+        </div>
+            
+        </div>
+    </div>
+</section>

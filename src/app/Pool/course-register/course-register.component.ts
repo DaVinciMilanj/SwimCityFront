@@ -19,7 +19,7 @@ export class CourseRegisterComponent implements OnInit {
   courseDetails:courseEntity;
   couponCode: string ;
   discount: number | null = null;
-  finalPrice: number | null = null;
+  finalPrice: number = 0;
   errorMessage: string = '';
 
   ngOnInit(){
@@ -47,7 +47,7 @@ export class CourseRegisterComponent implements OnInit {
       },
       (error) => {
         this.discount = null;
-        this.finalPrice = null;
+        this.finalPrice = 0;
         this.errorMessage = error.error?.error || 'خطایی رخ داده است.';
       }
     );
@@ -55,14 +55,26 @@ export class CourseRegisterComponent implements OnInit {
 
   paidCouse(){
     if(this.finalPrice){
-      this._sevice.paidCourseWithPrice(this.courseId , this.poolId , this.finalPrice).subscribe((response)=>{
+      this._sevice.paidCourseWithPrice(this.courseId , this.poolId , this.finalPrice ).subscribe((response)=>{
         console.log(response);
+        console.log(this.courseDetails.total_price);
+        
+        window.open(response.url, "_blank");
+
        
       })
 
     }
-    this._sevice.paidCourse(this.courseId , this.poolId).subscribe((response)=>{
+    this._sevice.paidCourse( this.poolId ,this.courseId , this.finalPrice).subscribe((response)=>{
       console.log(response);
+      console.log(this.finalPrice);
+      console.log(this.courseDetails.total_price)
+      console.log( 'cousre Id :',this.courseId)
+      console.log('pool id :',this.poolId);
+      
+      
+      window.open(response.url, "_blank");
+
       
 
       

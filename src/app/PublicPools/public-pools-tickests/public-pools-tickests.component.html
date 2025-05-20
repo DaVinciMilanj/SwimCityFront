@@ -1,0 +1,59 @@
+<section >
+    <div class="container teacher-list">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="e-card playing">
+              <div class="wave"></div>
+              <div class="wave"></div>
+              <div class="wave"></div>
+    
+              <div class="card-image ms-1">
+                <img *ngIf="pool.image" [src]="pool.image" alt="{{ pool.name }}" class="img-fluid">
+              </div>
+    
+              <div class="card-content d-flex flex-column justify-content-center">
+                <h3 class="fw-bold mb-lg-5 fs-1 pool-name mt-5 mt-lg-0">استخر&nbsp;{{pool.name}}</h3>
+                <p class="text py-3 fs-4 w-50"><strong class="pool-info">آدرس :</strong> {{pool.address}}</p>
+                <p class="text py-3 fs-4"><strong class="pool-info">جنسیت :</strong>
+                  <span *ngIf="pool.gender === 'male'">
+                    مردانه
+                  </span>
+                  <span *ngIf="pool.gender === 'female'">
+                    زنانه
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="container m-5">
+        <div class="row justify-content-center">
+          <div class="card wrapper mx-3" *ngFor="let ticket of poolTickets">
+            <div class="wave-ticket">
+              <div class="single-wave"></div>
+            </div>
+            <div class="card-body content px-5 py-4">
+              <h2 class="card-title title-wave  fw-bold mb-3">{{ticket.description}}</h2>
+              <span class="text-decoration-line-through mb-lg-4 mb-4 d-inline-block" *ngIf="ticket.discount_amount > 0">{{ticket.price}} تومان</span>
+              <h5 class="card-subtitle mb-5 fs-3 mt-5 text-muted">{{ticket.final_price}} تومان</h5>
+              <button class="blob-btn-ticket" (click)="buyPage(ticket.id)" >
+                خرید این بلیط
+                <span class="blob-btn__inner-ticket">
+                  <span class="blob-btn__blobs-ticket">
+                    <span class="blob-btn__blob-ticket"></span>
+                    <span class="blob-btn__blob-ticket"></span>
+                    <span class="blob-btn__blob-ticket"></span>
+                    <span class="blob-btn__blob-ticket"></span>
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+</section>

@@ -2,7 +2,7 @@
   <div class="row mb-0">
     <!-- ردیف اول -->
     <div class="col-12">
-      <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center">
         <h2 class="title">لیست استخر ها</h2>
         <div class="search">
           <div class="search-box">
@@ -11,7 +11,16 @@
               <i class="bi bi-search"></i>
             </div>
           </div>
+
+          
         </div>
+        <!-- Select برای مرتب سازی -->
+        <select class="sort-select" [(ngModel)]="selectedGender">
+          <option value=""> فیلتر بر اساس جنسیت  </option>
+          <option value="male"> استخر های مردانه</option>
+          <option value="female">استخرهای زنانه</option>
+        </select>
+        
       </div>
     </div>
   </div>
@@ -19,7 +28,7 @@
 
   <div class="row ">
     <!-- ردیف دوم (کارت‌ها) -->
-    <div class="col-lg-6 mb-5 " *ngFor="let pool of allPools | filterPools: searchTerm">
+    <div class="col-lg-6 mb-5 " *ngFor="let pool of allPools | filterPools: searchTerm | poolsGenderFilter : selectedGender ">
       <div class="e-card playing ">
         <div class="wave"></div>
         <div class="wave"></div>
@@ -31,7 +40,8 @@
 
 
         <div class="card-content d-flex flex-column justify-content-center ms-4">
-          <h3 class="fw-bold mb-lg-5 fw-bold">استخر &nbsp;{{ pool.name }}</h3>
+          <h3 class="fw-bold mb-lg-3 fw-bold">استخر &nbsp;{{ pool.name }}</h3>
+          <small class="mb-2 text-muted fs-3">({{pool.gender | gender}})</small>
           <p class="text py-lg-2">مکان: {{ pool.address }}</p>  
           <button class="btn btn-detail px-5 fw-bold py-2 mt-lg-3" [routerLink]="['/pools', pool.id, 'course']">مشاهده
             دوره ها</button>
@@ -40,13 +50,4 @@
       </div>
     </div>
   </div>
-
-
-
-  <!-- <div class="row">
-     
-      <div class="col-12 text-end mt-4">
-        <button class="btn btn-primary">بیشتر ببینید</button>
-      </div>
-    </div> -->
 </div>

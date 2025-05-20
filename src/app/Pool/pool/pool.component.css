@@ -233,3 +233,15 @@
     margin-top: 150px;
   }
 }
+
+/********** select ***********/
+.sort-select {
+  margin: 20px;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 25px;
+  border: solid 3px rgb(12 , 78 , 78);
+  background: transparent;
+  color: rgb(12 , 78 , 78);
+  transition: all 0.3s ease;
+}

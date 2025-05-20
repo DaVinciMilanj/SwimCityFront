@@ -36,6 +36,12 @@
             <strong class="content-request ">متن درخواست:</strong>
             <p class="fs-5 fw-bold">{{ request.massage }}</p>
 
+            <p class="content-request">وضعیت پذیرش:
+              <span *ngIf="request.acceptation === true" class="text-success">پذیرفته شده</span>
+              <span *ngIf="request.acceptation === false" class="text-danger">رد شده</span>
+              <span *ngIf="request.acceptation === null" class="text-warning">در انتظار بررسی</span>
+            </p>
+
             <button [routerLink]="['/private-class', request.id]" class="btn btn-login">بیشتر</button>
           </div>
 

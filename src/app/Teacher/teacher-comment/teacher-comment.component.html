@@ -1,0 +1,144 @@
+<div class="container comment-section">
+    <div class="row">
+      <div class="col-12 text-center title">
+        <h2>نظر تو راجع به این مربی چیه؟</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="comment-box mt-2" >
+          <textarea class="form-control" [(ngModel)]="newComment" rows="4" placeholder="نظر خود را بنویسید..."></textarea>
+          <input type="hidden" [(ngModel)]="reply" value="false">
+          <button class="blob-btn  mt-3" (click)="addComment()" routerLink="/teacher">
+            ارسال نظر
+            <span class="blob-btn__inner">
+              <span class="blob-btn__blobs">
+                <span class="blob-btn__blob"></span>
+                <span class="blob-btn__blob"></span>
+                <span class="blob-btn__blob"></span>
+                <span class="blob-btn__blob"></span>
+              </span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-8">
+        <div class="comments-list">
+          <div *ngFor="let myCom of myComment" class="mb-5 comment">
+              <div class="d-flex align-content-center mb-3">
+                <img [src]="myCom.user.image" class="img-fluid comment-user-img mx-5" alt="profile-pic">
+                
+                <div class="cooment-content">
+                  <p class="comment-text">{{myCom.comment}}</p>
+                  <span class="comment-author">- {{myCom.user.first_name}} {{myCom.user.last_name}} </span>
+                  <span class="comment-date ms-2 my-3">{{myCom.create}}</span>
+                  <button class="btn-reply mt-4 " (click)="toggleReply(myCom.id)">پاسخ به این کامنت</button>
+                  <button class="blob-btn mt-4 mx-lg-4" (click)="getReplies(myCom.id)">مشاهده پاسخ ها
+                    <span class="blob-btn__inner">
+                      <span class="blob-btn__blobs">
+                        <span class="blob-btn__blob"></span>
+                        <span class="blob-btn__blob"></span>
+                        <span class="blob-btn__blob"></span>
+                        <span class="blob-btn__blob"></span>
+                      </span>
+                    </span>
+                  </button>
+                </div>
+                <div class="comment-actions mx-5 ms-auto">
+                  <i class="bi bi-patch-exclamation report-icon" (click)="reportComment(myCom.id)"  [class.disabled]="myCom.report"></i>
+                  <i class="bi bi-trash delete-icon" (click)="DeleteComment(myCom.id)" ></i>
+                </div>
+              </div>
+              <div *ngIf="myCom.is_reply_front" class="reply-box">
+                <textarea class="reply-textarea" [(ngModel)]="replyText" placeholder="پاسخ خود را بنویسید..."></textarea>
+                <button class="btn-send-reply" (click)="submitReply(myCom.id)">ارسال پاسخ</button>
+              </div>
+
+              <div *ngIf="myCom.replies && myCom.show_replies" >
+                  <!-- Replies List -->
+                    <div class="replies-list" *ngFor="let reply of myCom.replies | slice:0:visibleReplies[myCom.id]"  >
+                      <div class="reply d-flex align-content-center  mx-auto">
+                      <img [src]="reply.user.image" class="img-fluid comment-user-img mx-5" alt="profile-pic">
+                      <div class="reply-content">
+                        <p class="reply-text ">{{reply.comment}}</p>
+                        <span class="reply-author">- {{reply.user.first_name}} {{reply.user.last_name}}</span>
+                        <span class="reply-date ms-2 my-4">{{reply.create}}</span>
+                      </div>
+                  </div>
+                </div>
+                
+                <button *ngIf="myCom.replies.length > visibleReplies[myCom.id]" class="btn-show-replies fs-4 mx-5 mb-3 mt-2"
+                  (click)="showMoreReplies(myCom.id)">
+                  نمایش بیشتر
+                </button>
+              </div>
+          </div>          
+
+
+
+
+
+
+
+          <div *ngFor="let com of comments" class="comment">
+             <div class="d-flex align-content-center" >
+               <img [src]="com.user.image" class="img-fluid comment-user-img mx-5" alt="profile-pic" >
+               <div class="cooment-content">
+                 <p class="comment-text">{{com.comment}}</p>
+                 <span class="comment-author">-  {{com.user.first_name}} {{com.user.last_name}}</span>
+                 <span class="comment-date ms-2 my-3">{{com.create}}</span>
+                 <button class="btn-reply mt-4 " (click)="toggleReply(com.id)">پاسخ به این کامنت</button>
+                 <button class="blob-btn mt-4 mx-3" (click)="getReplies(com.id)">مشاهده پاسخ ها
+                  <span class="blob-btn__inner">
+                        <span class="blob-btn__blobs">
+                          <span class="blob-btn__blob"></span>
+                          <span class="blob-btn__blob"></span>
+                          <span class="blob-btn__blob"></span>
+                          <span class="blob-btn__blob"></span>
+                        </span>
+                      </span>
+                 </button>
+               </div>
+               <div class="comment-actions mx-5 ms-auto">
+                 <i class="bi bi-patch-exclamation report-icon" [class.disabled]="isReported" (click)="reportComment(com.id)"></i>
+               </div>       
+             </div>
+
+             <div *ngIf="com.is_reply_front" class="reply-box">
+              <textarea class="reply-textarea" [(ngModel)]="replyText" placeholder="پاسخ خود را بنویسید..."></textarea>
+              <button class="btn-send-reply" (click)="submitReply(com.id)">ارسال پاسخ</button>
+            </div>
+          
+          <!-- Replies List -->
+          <div *ngIf="com.replies && com.replies.length > 0">
+
+            
+              <div class="replies-list" *ngFor="let reply of com.replies | slice:0:visibleReplies[com.id]"  >
+                <div class="reply d-flex align-content-center  mx-auto">
+                  <img [src]="reply.user.image" class="img-fluid comment-user-img mx-5" alt="profile-pic">
+                  <div class="reply-content">
+                    <p class="reply-text ">{{reply.comment}}</p>
+                    <span class="reply-author">- {{reply.user.first_name}} {{reply.user.last_name}}</span>
+                    <span class="reply-date ms-2 my-4">{{reply.create}}</span>
+                  </div>
+                </div>
+              </div>
+
+              <button *ngIf="com.replies.length > visibleReplies[com.id]" class="btn-show-replies fs-4 mx-5 mb-3 mt-2"
+                (click)="showMoreReplies(com.id)">
+                نمایش بیشتر
+              
+              </button>
+
+              
+
+
+          </div>
+        </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>

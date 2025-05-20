@@ -13,7 +13,7 @@ export class SearchTablePipe implements PipeTransform {
 
     const searchLowerCase = searchText.toLowerCase();
     return courses.filter(course =>
-      course.teacher.toLowerCase().includes(searchLowerCase) || 
+      course.teacher.last_name.toLowerCase().includes(searchLowerCase) || 
       course.id.toString().includes(searchText)
     );
   }

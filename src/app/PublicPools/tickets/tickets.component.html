@@ -1,0 +1,118 @@
+<section class="course-register">
+    <div class="container h-100 w-100 justify-content-center d-flex flex-column mt-5">
+      <div class="row justify-content-center">
+        <!-- ردیف دوم (کارت‌ها) -->
+        <div class="col-lg-4 col-md-5 col-6 mb-4" >
+            <div class="e-card playing mt-6">
+                <div class="content text-start">
+                    <div *ngIf="step == 1">
+                        <strong class="content-request "> محل برگزاری:</strong>
+                        <p class="fs-5 fw-bold">استخر&nbsp;{{poolDetails.name}}&nbsp;</p>
+
+                        <p class="fs-5 fw-bold my-2 mb-4">استخر&nbsp;{{poolDetails.address}}&nbsp;</p>
+                        
+
+                        <div *ngIf="discount == null">
+                          <strong class="content-request ">قیمت بلیط :</strong>
+                          <p *ngIf="discount == null" class="fs-5 fw-bold">{{poolTicket.final_price }}&nbsp;تومان</p>
+                          <p *ngIf="discount != null" class="fs-5 fw-bold">{{poolTicket.price }}&nbsp;تومان</p>
+                        </div>
+
+                        <div *ngIf="discount != null">
+                          <strong class="content-request ">قیمت بلیط :</strong>
+                          <p class="fs-5 fw-bold text-decoration-line-through">{{poolTicket.price }}&nbsp;تومان</p>
+                          <p class="fs-5 fw-bold">{{ finalPrice }}&nbsp;تومان</p>
+
+                          
+                        </div>
+                        
+                        
+                        <div>
+                          <label  for="coupon" class="form-label fs-5 fw-bold">کد تخفیف:</label>
+                          <input type="text" class="form-control" id="coupon" [(ngModel)]="couponCode" />
+                          <button class="btn btn-paid mt-3 my-5" (click)="applyCoupon()">کد تخفیف</button>
+                        </div>
+
+
+                        <button class="btn btn-login" (click)="nextsStep()">مرحله بعد</button>
+                    </div>
+                    <div *ngIf="step == 2">
+                      <div>
+                        <label  for="coupon" class="form-label fs-5 fw-bold">اسم و فامیل</label>
+                        <input type="text" class="form-control" id="coupon" [(ngModel)]="full_name" />
+                      </div>
+                      <div class="my-3">
+                        <label  for="coupon" class="form-label fs-5 fw-bold">شماره تلفن</label>
+                        <input type="text" class="form-control" id="coupon" [(ngModel)]="phone" />
+                      </div>
+                      <div class="my-3 w-25">
+                        <label  for="coupon" class="form-label fs-5 fw-bold">تعداد</label>
+                        <input type="number" class="form-control" id="coupon" [(ngModel)]="quantity" />
+                      </div>
+
+
+                      <button class="btn btn-login" (click)="goFinall()">پرداخت</button>
+
+                      <div class="my-4 d-flex justify-content-end">
+                          <a (click)="backStep()"><span class="fw-bold">مرحله قبل</span></a>
+                      </div>
+
+
+
+
+                    </div>
+                    <div *ngIf="step == 3">
+                      <strong class="content-request "> نام و نام خانوادگی</strong>
+                      <p class="fs-5 fw-bold">&nbsp;{{reserveTicket.full_name}}&nbsp;</p>
+
+
+                      <strong class="content-request "> شماره تلفن</strong>
+                      <p class="fs-5 fw-bold my-2 mb-4">{{reserveTicket.phone_number}}</p>
+
+                      <strong class="content-request">تعداد</strong>
+                      <p class="fs-5 fw-bold my-2 mb-4">{{reserveTicket.quantity}}</p>
+
+                      
+
+                      <div>
+                        <strong class="content-request ">قیمت بلیط :</strong>
+                        <p *ngIf="discount == null" class="fs-5 fw-bold">{{paid_price }}&nbsp;تومان</p>
+                      </div>
+                      
+                      <button class="btn btn-login" (click)="PaidTicket()">پرداخت</button>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+  <!-- <div class="row">
+        <h1>استخر: {{ poolId }} | دوره: {{ courseId }}</h1>
+      </div>
+      <div class="row">
+        <div>
+          <label for="coupon">کد تخفیف:</label>
+          <input type="text" id="coupon" [(ngModel)]="couponCode" />
+          <button (click)="applyCoupon()">اعمال کوپن</button>
+        </div>
+  
+        <div *ngIf="errorMessage" class="error">
+          <p style="color: red">{{ errorMessage }}</p>
+        </div>
+  
+        <div *ngIf="discount !== null">
+          <p>مقدار تخفیف: {{ discount }} تومان</p>
+          <p>قیمت نهایی: {{ finalPrice }} تومان</p>
+        </div>
+      </div> -->

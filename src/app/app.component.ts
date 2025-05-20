@@ -21,7 +21,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.router.events.subscribe(() => {
       const currentUrl = this.router.url; 
-      if (currentUrl.includes('/auth') || currentUrl.includes('/teacher-form') || currentUrl.includes('/profile') || currentUrl.includes('/not-found') || currentUrl.includes('/access-denied')) {
+      if (currentUrl.includes('/auth') ||  currentUrl.includes('/payment-result') || currentUrl.includes('/teacher-form') || currentUrl.includes('/profile') || currentUrl.includes('/not-found') || currentUrl.includes('/access-denied')) {
         this.hideCommon = true;
       } else {
         this.hideCommon = false;

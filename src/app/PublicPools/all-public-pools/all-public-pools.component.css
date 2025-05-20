@@ -1,0 +1,235 @@
+.teacher-list {
+    margin-top: 200px;
+    margin-bottom: 150px;
+  }
+  
+  /* تنظیمات کارت */
+  .e-card {
+    margin: auto;
+    background: transparent;
+    box-shadow: 0px 8px 28px -9px rgba(0, 0, 0, 0.45);
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    height: 300px;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+   
+  }
+  
+  /* انیمیشن موج‌ها */
+  .wave {
+    position: absolute;
+    width: 540px;
+    height: 700px;
+    opacity: 0.6;
+    right: 0;
+    top: 0;
+    margin-right: -40%; 
+    margin-top: -50%;
+    background: linear-gradient(744deg, var(--dark-blue), var(--blue-main-navbar) 60%, var(--white));
+    border-radius: 40%;
+    animation: wave 55s infinite linear;
+    z-index: -100;
+  }
+  
+  .playing .wave:nth-child(2) {
+    animation-duration: 4000ms;
+  }
+  
+  .wave:nth-child(2) {
+    animation-duration: 50s;
+  }
+  
+  .playing .wave:nth-child(3) {
+    animation-duration: 5000ms;
+  }
+  
+  .wave:nth-child(3) {
+    animation-duration: 45s;
+  }
+  @keyframes wave {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* تنظیمات محتوا */
+  .card-image * , .card-content * {
+    z-index: 10;
+  }
+  /* تصویر گرد */
+  .card-image {
+    width: 70%;
+    height: 300px;
+    border-left: 20px solid var(--white);
+    border-right: 20px solid var(--white);
+    border-bottom: 40px solid var(--light-blue);
+    border-top: 40px solid var(--light-blue);
+    
+  } 
+  .card-image img{
+    width: 100%;
+    height: 100%;
+    border: 5px solid var(--white);
+    
+  
+  }
+  
+  /* متن */
+  .text {
+    color: var(--white);
+    font-size: 1.6rem;
+    width: 50%;
+  
+  }
+  
+  .title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: rgba(12 , 78 , 78 , .8);
+  }
+  /****************** search *************/
+  .search {
+    margin: 20px;
+  }
+  
+  .search > h3 {
+    font-weight: normal;
+  }
+  
+  
+  .search-box {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .search-box .icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: rgb(12 , 78 , 78);
+    font-size: 20px;
+  }
+  
+  .search-box input {
+    color: rgb(12 , 78 , 78);
+    font-size: 16px;
+    background: transparent;
+    width: 0;
+    height: 30px;
+    padding: 10px;
+    padding-left: 40px; /* فاصله از ذره‌بین */
+    border: solid 3px rgb(12 , 78 , 78);
+    outline: none;
+    border-radius: 25px;
+    transition: width 0.5s ease;
+  }
+  
+  .search-box input::placeholder {
+    color: var(--black);
+    opacity: 0;
+    transition: opacity 150ms ease-out;
+  }
+  
+  .search-box input:focus::placeholder {
+    opacity: 1;
+  }
+  
+  .search-box input:focus,
+  .search-box input:not(:placeholder-shown) {
+    width: 250px; /* اندازه‌ی باز شدن جستجو */
+  }
+  
+  .search-box input:focus + .icon,
+  .search-box input:not(:placeholder-shown) + .icon {
+    display: none; /* وقتی فیلد جستجو پر میشه ذره‌بین رو مخفی میکنه */
+  }
+  
+  /* button */
+  .btn-detail {
+    background-color: var(--white);
+    width: 160px;
+  }
+  .btn-detail:hover {
+    background-color: var(--dark-blue);
+    color: var(--white);
+  }
+  
+  
+  /**** responsive ****/
+   /* --- Medium devices (tablets, less than 992px) */
+   @media (min-width: 768px) and (max-width: 991.98px) { 
+    .title {
+      font-size: 2.7rem;
+     
+    }
+  
+   }
+  /* === Small devices (landscape phones, less than 768px) */
+  @media (max-width: 767.98px) { 
+    .e-card {
+      flex-direction: column; /* مشابه موبایل */
+      max-width: 300px;
+      height: 350px;
+      justify-content: center;
+      align-items: center;
+      
+    }
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .title {
+      font-size: 2.4rem;
+     
+    }
+   
+    .card-image {
+      z-index: 1000;
+      border: none;
+      width: 80%;
+      margin-top: 3rem;
+    }
+    .card-image img{
+      width: 100%;
+      
+    }
+    .card-content {
+      padding: 20px;
+      text-align: center;
+    }
+    .search-box input:focus,
+    .search-box input:not(:placeholder-shown) {
+    width: 180px; /* اندازه‌ی باز شدن جستجو */
+    }
+    .search-box {
+      margin-bottom: 10px;
+    }
+    .text {
+      font-size: 1.4rem;
+      
+    }
+  
+  
+  
+   }
+   
+    
+  
+   @media (min-width: 900px) and (max-width: 1200px) { 
+    .teacher-list {
+      margin-top: 150px;
+    }
+  }

@@ -1,0 +1,295 @@
+/* استایل کارت‌ها */
+.hover-card {
+    position: relative;
+    width: 300px;  /* عرض کارت */
+    height: 300px; /* ارتفاع کارت */
+    margin: 10px;
+    border: 1px solid var(--white);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.hover-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* استایل بک‌گراند و موج هنگام هاور */
+.hover-overlay {
+    position: absolute;
+    bottom: -100%;  /* پنهان کردن در ابتدا */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(26, 223, 223, 0.7);
+    clip-path: ellipse(50% 0% at 50% 100%);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: bottom 0.5s ease-in-out, clip-path 0.5s ease-in-out;
+}
+
+/* هنگام هاور: بالا آمدن بک‌گراند با افکت موج */
+.hover-card:hover .hover-overlay {
+    bottom: 0;
+    clip-path: ellipse(100% 100% at 50% 50%);
+}
+
+/* بازگشت آرام هنگام خروج ماوس */
+.hover-card:not(:hover) .hover-overlay {
+    bottom: -100%;
+    clip-path: ellipse(50% 0% at 50% 100%);
+}
+
+/* استایل متن داخل کارت */
+.hover-content {
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.5s ease-in-out 0.2s;
+}
+
+/* هنگام هاور: متن از پایین به بالا ظاهر شود */
+.hover-card:hover .hover-content {
+    transform: translateY(0);
+}
+
+/* هنگام خروج ماوس: متن به‌آرامی به پایین برگردد */
+.hover-card:not(:hover) .hover-content {
+    transform: translateY(100%);
+}
+
+/* دکمه‌ها */
+.blob-btn {
+    z-index: 1;
+    position: relative;
+    padding: 10px 30px;
+    margin-bottom: 0;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--dark-blue);
+    font-size: 16px;
+    font-weight: bold;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    transition: color 0.5s;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+.blob-btn:before, .blob-btn:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+}
+
+.blob-btn:before {
+    z-index: 1;
+    left: 0;
+    top: 0;
+    border: 2px solid var(--dark-blue);
+}
+
+.blob-btn:hover {
+    color: var(--white);
+}
+
+.blob-btn:hover:after {
+    left: 0;
+    top: 0;
+}
+
+.blob-btn__inner {
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    background: var(--white);
+}
+
+.blob-btn__blobs {
+    position: relative;
+    display: block;
+    height: 100%;
+    filter: url('#goo');
+}
+
+.blob-btn__blob {
+    position: absolute;
+    top: 2px;
+    width: 25%;
+    height: 100%;
+    background: var(--dark-blue);
+    border-radius: 100%;
+    transform: translate3d(0, 150%, 0) scale(1.4);
+    transition: transform 0.45s;
+}
+
+.blob-btn:hover .blob-btn__blob {
+    transform: translateZ(0) scale(1.4);
+}
+
+.blob-btn__blob:nth-child(1) { left: 0; transition-delay: 0s; }
+.blob-btn__blob:nth-child(2) { left: 25%; transition-delay: 0.08s; }
+.blob-btn__blob:nth-child(3) { left: 50%; transition-delay: 0.16s; }
+.blob-btn__blob:nth-child(4) { left: 75%; transition-delay: 0.24s; }
+
+.title {
+    margin-bottom: 30px;
+    color: var(--dark-title);
+}
+
+.title h2 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+/* دکمه اطلاعات بیشتر */
+/* button */
+.blob-btn {
+    z-index: 1;
+    position: relative;
+    padding: 10px 30px;
+    margin-bottom: 0;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--dark-blue);
+    font-size: 16px;
+    font-weight: bold;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    transition: color 0.5s;
+    cursor: pointer;
+    border-radius: 30px;
+  }
+  
+  .blob-btn:before, .navbar .blob-btn:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+  }
+  
+   .blob-btn:before {
+    z-index: 1;
+    left: 0;
+    top: 0;
+    border: 2px solid var(--dark-blue);
+  }
+  
+  .blob-btn:after {
+    z-index: -2;
+    left: 3px;
+    top: 3px;
+    transition: all 0.3s 0.2s;
+  }
+  
+   .blob-btn:hover {
+    color: var(--white);
+  }
+  
+   .blob-btn:hover:after {
+    left: 0;
+    top: 0;
+  }
+  
+   .blob-btn__inner {
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    background: var(--white);
+  }
+  
+   .blob-btn__blobs {
+    position: relative;
+    display: block;
+    height: 100%;
+    filter: url('#goo');
+  }
+  
+   .blob-btn__blob {
+    position: absolute;
+    top: 2px;
+    width: 25%;
+    height: 100%;
+    background: var(--dark-blue);
+    border-radius: 100%;
+    transform: translate3d(0, 150%, 0) scale(1.4);
+    transition: transform 0.45s;
+  }
+  
+   .blob-btn:hover .blob-btn__blob {
+    transform: translateZ(0) scale(1.4);
+  }
+  
+   .blob-btn__blob:nth-child(1) {
+    left: 0;
+    transition-delay: 0s;
+  }
+  
+   .blob-btn__blob:nth-child(2) {
+    left: 25%;
+    transition-delay: 0.08s;
+  }
+  
+   .blob-btn__blob:nth-child(3) {
+    left: 50%;
+    transition-delay: 0.16s;
+  }
+  
+   .blob-btn__blob:nth-child(4) {
+    left: 75%;
+    transition-delay: 0.24s;
+  }
+
+
+  .btn-readmore {
+    background-color: var(--white);
+    color: var(--dark-title);
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+  
+  
+
+/* --- تنظیمات واکنش‌گرا --- */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+    .hover-card {
+        width: 23rem;
+        height: 23rem;
+    }
+
+    .title h2 {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 767.98px) { 
+    .hover-card {
+        width: 18rem;
+        height: 18rem;
+    }
+
+    .title h2 {
+        font-size: 2.5rem;
+    }
+
+    .blob-btn {  
+        font-size: 13px; 
+      }
+}

@@ -24,6 +24,12 @@ import { AccessDeniedComponent } from './site/access-denied/access-denied.compon
 import { CourseRegisterComponent } from './Pool/course-register/course-register.component';
 import { FAQComponent } from './FAQ/faq/faq.component';
 import { AboutUsComponent } from './aboutUs/about-us/about-us.component';
+import { AllPublicPoolsComponent } from './PublicPools/all-public-pools/all-public-pools.component';
+import { PublicPoolsTickestsComponent } from './PublicPools/public-pools-tickests/public-pools-tickests.component';
+import { PaymentResultComponent } from './payment-result/payment-result.component';
+import { TicketsComponent } from './PublicPools/tickets/tickets.component';
+import { TicketResultComponent } from './PublicPools/ticket-result/ticket-result.component';
+import { PrivatePaymentComponent } from './private-payment/private-payment.component';
 
 export const routes: Routes = [
     {path :'', component:WelcomeComponent},
@@ -34,6 +40,9 @@ export const routes: Routes = [
         {path:'signup' , component:SignupComponent , canActivate:[forbiddenGuard]}, 
         {path:'forgetPassword' , component:ForgetPasswordComponent , canActivate:[forbiddenGuard]}
     ]},
+    {path : 'public-pools' , component : AllPublicPoolsComponent},
+    {path : 'public-pools/:poolId/tickets' , component:PublicPoolsTickestsComponent},
+    {path:'public-pools/:poolId/tickets/:ticketId' , component:TicketsComponent},
     {path:'pools' , component:PoolComponent },
     {path: 'pools/:poolId/course', component: CourseComponent },
     {path:'pools/:poolId/course/:courseId' , component:CourseRegisterComponent},
@@ -47,6 +56,9 @@ export const routes: Routes = [
     {path:'request-class' , component:SendRequestPrivateClassComponent ,canActivate:[authGuard]},
     {path:'create-private-class/:requestId', component:CreatePrivateClassComponent , canActivate:[authGuard , onlyTeacherGuard]},
     {path:'my-private-class' , component:UserPrivateClassesComponent , canActivate:[authGuard]} ,
+    {path : 'private-payment' , component:PrivatePaymentComponent},
+    {path: 'payment-result',component: PaymentResultComponent},
+    {path: 'ticket-result',component: TicketResultComponent},
     {path : 'access-denied' , component : AccessDeniedComponent }, 
     {path : 'not-found' , component : NotFoundComponent },
     {path: '**', redirectTo:'/not-found'}

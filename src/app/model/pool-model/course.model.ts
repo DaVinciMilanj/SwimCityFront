@@ -9,10 +9,10 @@ export interface courseEntity{
     end:string,
     start_clock:string,
     end_clock:string,
+    title : string
     price:number,
     discount:number,
     total_price:number,
     limit_register : number,
     register_count : number
-
 }

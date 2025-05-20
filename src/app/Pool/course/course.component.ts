@@ -105,7 +105,7 @@ export class CourseComponent implements OnInit {
     this.updateDisplayedCourses();
   }
 
-  // جستجو
+  // // جستجو
   onSearch() {
     const searchLowerCase = this.searchText.toLowerCase();
     this.filteredCourses = this.courses.filter(course =>

@@ -6,20 +6,22 @@ import { AuthService } from '../../service/auth.service';
 import { CommonModule } from '@angular/common';
 import { Profile } from '../../model/users/profile.model';
 import { ReturnStatement } from '@angular/compiler';
+import { FormsModule } from '@angular/forms';
+import { TeacherComment } from '../../model/users/teacher-comment.model';
+import { TeacherCommentComponent } from "../teacher-comment/teacher-comment.component";
+
 
 @Component({
   selector: 'app-teacher-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, TeacherCommentComponent],
   templateUrl: './teacher-details.component.html',
   styleUrl: './teacher-details.component.css'
 })
 export class TeacherDetailsComponent implements OnInit {
-  constructor(private activeRoute : ActivatedRoute , private _service:HttpService , private authService : AuthService,private router: Router
+  constructor(private activeRoute : ActivatedRoute , private _service:HttpService ,
+     private authService : AuthService,private router: Router ,
   ){}
-
-
-  
 
   sendUserId : number ;
   teacherId : number;
@@ -31,6 +33,9 @@ export class TeacherDetailsComponent implements OnInit {
   rate : number = 0
   hoveredRating :number = -1;
   userStatus : any ;
+  
+  comments: TeacherComment[] = [];
+  newComment: string = '';
 
 
   ngOnInit(): void {
@@ -49,6 +54,8 @@ export class TeacherDetailsComponent implements OnInit {
        
         
       })
+
+      this.loadComments();
     }
     
     this._service.getTeacherDetails(this.teacherId).subscribe(
@@ -64,7 +71,22 @@ export class TeacherDetailsComponent implements OnInit {
         console.error('Error fetching teacher details:', error);
       }
     );
+
+    
+
+
   }
+
+
+  loadComments():void{
+    this._service.getComments(this.teacherId).subscribe((response)=>{
+      this.comments = response;
+    })
+  }
+
+
+
+
   rateTeacher(rating: number): void {
     this.selectedRating = this.stars.length - rating + 1;
   }

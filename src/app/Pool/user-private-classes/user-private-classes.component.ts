@@ -43,4 +43,17 @@ export class UserPrivateClassesComponent implements OnInit {
 
   }
 
+  Paid(price : any , privateClassId : any){
+    console.log(privateClassId);
+    
+    this._service.paidPrivateClass(price , privateClassId).subscribe((response)=>{
+      console.log(response);
+
+      window.open(response.url, "_blank");
+
+     
+    })
+
+  }
+
 }

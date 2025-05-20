@@ -1,0 +1,43 @@
+<div class="container teacher-list">
+    <div class="row mb-0">
+      <!-- ردیف اول -->
+      <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2 class="title">لیست استخر ها</h2>
+          <div class="search">
+            <div class="search-box">
+              <input type="text" placeholder="جستجو استخر..." required [(ngModel)]="searchTerm">
+              <div class="icon">
+                <i class="bi bi-search"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+    <div class="row ">
+      <!-- ردیف دوم (کارت‌ها) -->
+      <div class="col-lg-6 mb-5 " *ngFor="let pool of allPublicPools | filterPools: searchTerm">
+        <div class="e-card playing ">
+          <div class="wave"></div>
+          <div class="wave"></div>
+          <div class="wave"></div>
+  
+          <div class="card-image">
+            <img *ngIf="pool.image" [src]="pool.image" alt="{{ pool.name }}" class="img-fluid">
+          </div>
+  
+  
+          <div class="card-content d-flex flex-column justify-content-center ms-4">
+            <h3 class="fw-bold mb-lg-3 fw-bold">استخر &nbsp;{{ pool.name }}</h3>
+            <small class="mb-2 text-muted">{{pool.gender | gender}}</small>
+            <p class="text py-lg-2">مکان: {{ pool.address }}</p>  
+            <button class="btn btn-detail px-5 fw-bold py-2 mt-lg-3" [routerLink]="['/public-pools', pool.id, 'tickets']">خرید بلیط</button>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>

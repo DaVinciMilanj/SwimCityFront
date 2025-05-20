@@ -8,6 +8,7 @@ import { poolsEntity } from '../model/pool-model/pools.model';
 export class FilterPoolsPipe implements PipeTransform {
 
   transform(pools: poolsEntity[], searchTerm : string): poolsEntity[] {
+    
     if (!pools || !searchTerm) {
       return pools; 
      }
@@ -18,6 +19,8 @@ export class FilterPoolsPipe implements PipeTransform {
       return poolName.startsWith(lowerSearchTerm);
     });
   }
+
+  
 
 }
 
