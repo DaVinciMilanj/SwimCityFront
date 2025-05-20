@@ -14,10 +14,10 @@ interface LoginResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  // private loginUrl: string = 'https://qahramananemrooz.com/api/accounts/login/';
-  // private signupUrl: string = 'https://qahramananemrooz.com/api/accounts/signup/';
-  private loginUrl: string = 'http://127.0.0.1:8000/api/accounts/login/'
-  private signupUrl: string = 'http://127.0.0.1:8000/api/accounts/signup/'
+  private loginUrl: string = 'https://qahramananemrooz.com/api/accounts/login/';
+  private signupUrl: string = 'https://qahramananemrooz.com/api/accounts/signup/';
+  // private loginUrl: string = 'http://127.0.0.1:8000/api/accounts/login/'
+  // private signupUrl: string = 'http://127.0.0.1:8000/api/accounts/signup/'
 
 
   constructor(private http: HttpClient, private router: Router) {}

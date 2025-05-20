@@ -24,10 +24,10 @@ export class HttpService {
  
 
   constructor(private http : HttpClient , private router : Router) { }
-  // apiBase : string = 'https://qahramananemrooz.com/api/'
-  // profileUrl : string = 'https://qahramananemrooz.com/api/accounts/profile/';
-   apiBase : string = 'http://127.0.0.1:8000/api/';
-   profileUrl : string = 'http://127.0.0.1:8000/api/accounts/profile/';
+  apiBase : string = 'https://qahramananemrooz.com/api/'
+  profileUrl : string = 'https://qahramananemrooz.com/api/accounts/profile/';
+  //  apiBase : string = 'http://127.0.0.1:8000/api/';
+  //  profileUrl : string = 'http://127.0.0.1:8000/api/accounts/profile/';
    
   private getAuthHeaders(): HttpHeaders {
       const token = localStorage.getItem('authToken');
