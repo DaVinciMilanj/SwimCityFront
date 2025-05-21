@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../service/http.service';
 import { AuthService } from '../../service/auth.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule  , RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
