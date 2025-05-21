@@ -67,7 +67,7 @@
 }
 /* تصویر گرد */
 .card-image {
-  width: 70%;
+  width: 50%;
   height: 300px;
   border-left: 20px solid var(--white);
   border-right: 20px solid var(--white);
@@ -180,7 +180,7 @@
   .e-card {
     flex-direction: column; /* مشابه موبایل */
     max-width: 300px;
-    height: 350px;
+    height: auto;
     justify-content: center;
     align-items: center;
     
