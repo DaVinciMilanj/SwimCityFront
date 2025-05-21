@@ -14,14 +14,14 @@
 
                         <div *ngIf="discount == null">
                           <strong class="content-request ">قیمت دوره :</strong>
-                          <p *ngIf="discount == null" class="fs-5 fw-bold">{{courseDetails.total_price }}&nbsp;تومان</p>
-                          <p *ngIf="discount != null" class="fs-5 fw-bold">{{courseDetails.price }}&nbsp;تومان</p>
+                          <p *ngIf="discount == null" class="fs-5 fw-bold">{{courseDetails.total_price }}&nbsp;ریال</p>
+                          <p *ngIf="discount != null" class="fs-5 fw-bold">{{courseDetails.price }}&nbsp;ریال</p>
                         </div>
 
                         <div *ngIf="discount != null">
                           <strong class="content-request ">قیمت دوره :</strong>
-                          <p class="fs-5 fw-bold text-decoration-line-through">{{courseDetails.price }}&nbsp;تومان</p>
-                          <p class="fs-5 fw-bold">{{ finalPrice }}&nbsp;تومان</p>
+                          <p class="fs-5 fw-bold text-decoration-line-through">{{courseDetails.price }}&nbsp;ریال</p>
+                          <p class="fs-5 fw-bold">{{ finalPrice }}&nbsp;ریال</p>
 
                           
                         </div>
