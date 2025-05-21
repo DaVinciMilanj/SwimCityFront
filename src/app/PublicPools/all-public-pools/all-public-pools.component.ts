@@ -6,6 +6,7 @@ import { RouterLink, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FilterPoolsPipe } from '../../pip/filter-pools.pipe';
 import { GenderPipe } from '../../pip/gender.pipe';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-all-public-pools',
@@ -15,7 +16,7 @@ import { GenderPipe } from '../../pip/gender.pipe';
   styleUrl: './all-public-pools.component.css'
 })
 export class AllPublicPoolsComponent implements OnInit {
-  constructor(private _service:HttpService){}
+  constructor(private _service:HttpService ,private title: Title, private meta: Meta){}
   searchTerm : string = '';
   allPublicPools : poolsEntity[];
 
@@ -23,7 +24,12 @@ export class AllPublicPoolsComponent implements OnInit {
     this._service.getPublicPools().subscribe((response)=>{
       this.allPublicPools = response
     })
-    
+    this.meta.updateTag({
+      name: 'description',
+      content: `خزانه‌ای از بهترین مجموعه‌های شنا در مشهد - امکانات، سانس‌ها، آدرس و رزرو آنلاین.`
+
+        
+      })
   }
 
 

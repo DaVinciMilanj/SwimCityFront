@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { FilterCoursePricePipe } from '../../pip/filter-course-price.pipe';
 import { MyCourse } from '../../model/pool-model/my-course.model';
 import { AuthService } from '../../service/auth.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-course',
@@ -35,7 +36,9 @@ export class CourseComponent implements OnInit {
   totalPages: number = 0;
   userStatus : any ;
 
-  constructor(private http: HttpService, private authService : AuthService ,private route: ActivatedRoute ,private router : Router) {}
+  constructor(private http: HttpService, private authService : AuthService ,private route: ActivatedRoute ,private router : Router
+    , private title: Title, private meta: Meta
+  ) {}
 
   ngOnInit() {
     this.poolId = Number(this.route.snapshot.paramMap.get('poolId'));
@@ -74,6 +77,14 @@ export class CourseComponent implements OnInit {
         this.updateMyCourses();
     });
     }
+
+
+    this.title.setTitle(`${this.pool.name} |آموزش شنا در بهترین مجموعه`);
+
+    this.meta.updateTag({
+      name: 'description',
+      content: `اطلاعات کامل درباره ${this.pool.name} در مشهد - امکانات، سانس‌ها، آدرس و رزرو آنلاین.`
+    });
 
     
     

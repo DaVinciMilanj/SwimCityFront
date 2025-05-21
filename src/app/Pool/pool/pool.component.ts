@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { FilterPoolsPipe } from '../../pip/filter-pools.pipe';
 import { GenderPipe } from '../../pip/gender.pipe';
 import { PoolsGenderFilterPipe } from '../../pip/pools-gender-filter.pipe';
+import { Meta, Title } from '@angular/platform-browser';
 
 
 
@@ -24,13 +25,18 @@ export class PoolComponent implements OnInit {
   searchTerm : string = '';
   allPools : poolsEntity[];
   selectedGender: string = '';
-  constructor(private _service:HttpService){}
+  constructor(private _service:HttpService ,private title: Title, private meta: Meta){}
  
   ngOnInit(): void {
     this._service.getPools().subscribe((response)=>{
       
       this.allPools = response
       console.log(this.allPools);
+      this.title.setTitle('آموزش شنا در بهترین مجموعه');
+      this.meta.updateTag({
+        name: 'description',
+        content: 'آموزش شنا در بهترین مجموعه - امکانات، سانس‌ها، آدرس و رزرو آنلاین.'
+      });
       
       
       

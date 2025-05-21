@@ -4,6 +4,7 @@ import { poolsEntity } from '../../model/pool-model/pools.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../service/http.service';
 import { ticketEntity } from '../../model/pool-model/ticket.model';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-public-pools-tickests',
@@ -20,7 +21,7 @@ export class PublicPoolsTickestsComponent implements OnInit {
     poolTickets : ticketEntity[];
 
 
-    constructor(private route: ActivatedRoute , private _service : HttpService , private router:Router) { }
+    constructor(private route: ActivatedRoute , private _service : HttpService , private router:Router ,private title: Title, private meta: Meta) { }
   
   ngOnInit(): void {
     this.poolId = Number(this.route.snapshot.paramMap.get('poolId'));
@@ -28,6 +29,14 @@ export class PublicPoolsTickestsComponent implements OnInit {
     if (this.poolId) {
       this.getPoolDetails();
       this.getPoolTickets();
+      this.title.setTitle(`${this.pool.name} | شنا در بهترین مجموعه`);
+
+      this.meta.updateTag({
+        name: 'description',
+        content: `اطلاعات کامل درباره ${this.pool.name} در مشهد - امکانات، سانس‌ها، آدرس و رزرو آنلاین.`
+
+          
+        })
 
           
         }
