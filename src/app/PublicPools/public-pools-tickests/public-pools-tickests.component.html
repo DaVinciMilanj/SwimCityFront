@@ -39,7 +39,7 @@
             <div class="card-body content px-5 py-4">
               <h2 class="card-title title-wave  fw-bold mb-3">{{ticket.description}}</h2>
               <span class="text-decoration-line-through mb-lg-4 mb-4 d-inline-block" *ngIf="ticket.discount_amount > 0">{{ticket.price}} تومان</span>
-              <h5 class="card-subtitle mb-5 fs-3 mt-5 text-muted">{{ticket.final_price}} تومان</h5>
+              <h5 class="card-subtitle mb-5 fs-3 mt-5 text-muted">{{ticket.final_price}} ریال</h5>
               <button class="blob-btn-ticket" (click)="buyPage(ticket.id)" >
                 خرید این بلیط
                 <span class="blob-btn__inner-ticket">
